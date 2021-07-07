@@ -21,7 +21,7 @@ class authController {
                 authSchema.create({
                     username : username , password: password , _name : _name
                 })
-                res.redirect('/');
+                
             }   
        })
       }

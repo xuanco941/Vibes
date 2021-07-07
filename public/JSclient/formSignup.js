@@ -40,3 +40,40 @@ idhidePassword2.onclick = function show (){
         idhidePassword2.innerHTML = 'Hiển thị';
     }
 }
+
+var messageerror = document.querySelector('#messageerror');
+repeatpassword.onchange = ()=> {
+    if (idpassword.value == repeatpassword.value)
+    {
+        messageerror.textContent = '';
+    }
+    else{
+        messageerror.textContent = 'Mật khẩu nhập không trùng';
+    }
+}
+
+idpassword.onchange = () =>{
+    if (idpassword.value == repeatpassword.value)
+    {
+        messageerror.textContent = '';
+    }
+}
+
+var formSubmit = document.querySelector('#formSubmit');
+var name_ = document.querySelector('#name');
+formSubmit.addEventListener('submit' , (e) =>{
+    if(name_.value == ''){
+        messageerror.textContent = 'Chưa nhập tên đầy dủ';
+    }
+    if (idpassword.value == repeatpassword.value)
+    {
+        messageerror.textContent = 'Tạo tài khoản thành công';
+        messageerror.style.color = 'green';
+
+    }
+    else{
+        messageerror.textContent = 'Mật khẩu nhập không trùng';
+        messageerror.style.color = 'red';
+        e.preventDefault();
+    }
+})
