@@ -1,0 +1,30 @@
+{
+  "name": "vibes",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon --inspect app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/xuanco941/Vibes.git"
+  },
+  "author": "xuanco941",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/xuanco941/Vibes/issues"
+  },
+  "homepage": "https://github.com/xuanco941/Vibes#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.5",
+    "express": "^4.17.1",
+    "express-handlebars": "^5.3.2",
+    "mongoose": "^5.13.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.9"
+  }
+}

@@ -1,0 +1,9 @@
+:root{
+    --main-background-color : #fafafa;
+    --boder-color : #dbdbdb;
+    --white-color: #fff;
+    --component-color: #ffffff;
+    ;
+}
+body { margin:0; }
+* { margin:0; padding:0; box-sizing:border-box; }

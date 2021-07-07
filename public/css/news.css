@@ -1,0 +1,57 @@
+.News{
+    height: 500px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--component-color);
+    border-color:var(--boder-color);
+    border-width: 1px;
+    border-radius: 3px ;
+    border-style: solid;
+}
+.headNews{
+    height:10%;
+    background-color: brown;
+}
+.contentNews{
+    height: 50%;
+    background-color: cadetblue;
+}
+.matchNews{
+    height: 5%;
+    background-color: chartreuse;
+}
+.commentHistory{
+    height: 25%;
+    background-color: coral;
+}
+.comment{
+    height: 10%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+#inputComment{
+    height: 90%;
+    width: 90%;
+    border: 1px var(--border-color) solid;
+
+}
+#submitComment{
+    height: 90%;
+    width: 10%;
+    background-color: transparent;
+    color: gray;
+    border: 1px grey solid;
+}
+#submitComment:active{
+    background-color:grey;
+    color: honeydew;
+}
+#inputComment , #sunmitComment{
+    outline: none;
+}
+.user-news{
+    padding-left: 10px;
+}

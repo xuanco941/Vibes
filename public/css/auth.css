@@ -1,0 +1,217 @@
+body{
+    background-color: var(--main-background-color);
+}
+.spaceSignIn{
+    height: 80vh;
+}
+
+.formSignIn{
+    height: 90vh;
+    margin: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    
+
+}
+.spaceImageSignIn{
+    background-repeat: no-repeat;
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    
+}
+.spaceFormValidate{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content:flex-start;
+    align-items: center;
+}
+.spaceFormValidator{
+    width: 350px;
+    height: 640px;
+    min-width: 350px;
+
+}
+.formValidate{
+    background-color: #fff;
+    width: 100%;
+    height: 420px;
+    border-color: var(--boder-color);
+    border-width: 1px;
+    border-radius: 2px ;
+    border-style: solid;
+}
+.swapSignUp{
+    background-color: #fff;
+    width: 100%;
+    height: 60px;
+    border-color: var(--boder-color);
+    border-width: 1px;
+    border-radius: 2px ;
+    border-style: solid;
+    margin-top: 10px;
+}
+.nameAppFormSignIn{
+    height: 110px;
+    line-height: 100px;
+    text-align: center;
+    font-size: 2rem;
+}
+#idusername , #idpassword {
+    width: 270px;
+    height: 40px;
+    margin-bottom: 5px;
+    border-color: var(--boder-color) ;
+    border-width: 1px;
+    border-radius: 2px ;
+    border-style: solid;
+    margin-left: 40px;
+    background-color: #e8f0fe;
+}
+#idusername:focus , #idpassword:focus{
+    outline:1px solid gainsboro;
+}
+#idpassword{
+    width: 200px;
+    border-right: none;
+}
+#idhidePassword{
+    width: 70px;
+    text-align: center;
+    font-size: 0.8rem;
+    height: 40px;
+    border-color:var(--boder-color);
+    border-width: 1px;
+    border-radius: 2px ;
+    border-style: solid;
+    border-left: none;
+    margin-left: -3px;
+    background-color: var(--main-background-color);
+    font-weight: 500;
+}
+#idhidePassword:active{
+    background-color: dimgrey;
+}
+
+.formValidate ::placeholder { 
+    font-size: 0.8rem;
+}
+#idlogin{
+    width: 270px;
+    height: 32px;
+    font-size: 0.9rem;
+    background-color: #0095f6;
+    margin-left: 40px;
+    margin-top: 10px;
+    border:none;
+    border-radius: 3px;
+
+}
+.separation{
+    margin-top: 12px;
+    margin-left: 40px;
+    width: 270px;
+    display: flex;
+    justify-content: space-between;
+    color: #8e8e8e;
+    
+}
+.separate{
+    height: 1px;
+    width: 100px;
+    background-color: #858484;
+    margin-top: 12px;
+}
+#idloginWithFB{
+    text-decoration: none;
+    color: #385185;
+    line-height: 60px;
+    margin-left: 80px;
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+#idforgetPassword{
+    margin-left: 120px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    
+}
+.swapSignUp{
+    text-align: center;
+    line-height: 60px;
+}
+#idformSignUp{
+    text-decoration: none;
+}
+.footerForm{
+    width: 100%;
+    height: 100px;
+    margin-top: 10px;
+    text-align: center;
+    line-height: 50px;
+    font-size: 0.9rem;
+}
+.imglink{
+    max-height: 40px;
+    max-width: 135px;
+}
+.spaceFooter{
+    color: gray;
+    font-size: 0.8rem;
+    height: 10vh;
+    margin-top: 50px;
+}
+.space1 a{
+    text-decoration: none;
+    padding-right: 10px;
+    color: gray;
+    font-size: 0.8rem;
+}
+.space1 a:hover{
+    color:darkgrey;
+}
+.space1{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.space2{
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+
+@media (max-width: 767.98px) {
+    .formSignIn{    
+        justify-content:center;
+    }
+    .spaceImageSignIn{
+        display: none;
+    }
+    .spaceFormValidate{
+        justify-content: center;
+    }
+    .spaceFooter{
+        margin-top: 50%;
+    }
+    .spaceFormValidator{
+        margin-top: 120px;
+    }
+ }
+#messageerror{
+    font-size: 14px;
+    text-align: center;
+    color: red;
+    margin-top: 5px;
+    margin-left: 39px;
+    margin-right: 39px;
+}
+
+
+

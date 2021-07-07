@@ -1,0 +1,173 @@
+body{
+    background-color: var(--main-background-color);
+}
+.spaceNavbar{
+    display: flex;
+    height: 55px;
+    position: fixed;
+    left: 0;
+    justify-content: center;
+    background-color: var(--component-color);
+    
+}
+.navbarSeparate{
+    background-color:var(--boder-color);
+    height: 1px;
+    width: 100vw;
+    position: fixed;
+    top: 55px;
+}
+.navbar-Instagram{
+    height: 55px;
+    font-size: 1.5rem;
+    text-align: center;
+}
+.navbar-Instagram a{
+    color: black;
+    text-decoration: none;
+    line-height: 50px;
+}
+.navbar-Search{
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+
+}
+#idsearch{
+    width: 70%;
+    height: 28px;
+    min-width: 150px;
+    border: var(--boder-color) 1px solid;
+    font-size: 13px;
+}
+
+#idsearch:focus{
+    outline: none;
+}
+.navbar-Search ::placeholder{
+    font-size: 14px;
+    padding-left: 35%;
+}
+.recent::before{
+    content: "";
+    border: 15px solid;
+    border-color: transparent transparent var(--white-color) transparent ;
+    border-radius: 2px;
+    position: absolute;
+    top : -30px;
+    right : 45%;
+}
+.spaceNotification{
+    position: fixed;
+    width: 350px;
+    height: 350px;
+    background-color: var(--white-color);
+    top: 65px;
+    border: var(--boder-color) 1px solid ;
+    display: none;
+}
+.recent{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+.notification {
+    width: 100%;
+    height: 80%;
+    text-align: center;
+}
+.notification p {
+    padding-top: 35%;
+    font-size: 14px;
+    color: gray;
+}
+#idsearch:focus + .spaceNotification{
+    display: block;
+}
+.navbar-Main{
+    height: 55px;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.control{
+    width: 30px;
+    height: 100%;
+    margin-left: 20px;
+    margin-right: 5px;
+    text-align: center;
+    font-size: 25px;
+
+}
+.control-user{
+    margin-right: 0;
+    font-size: 1.2rem;
+    line-height: 50px;
+}
+li{
+    list-style: none;
+}
+li a {
+    text-decoration: none;
+    color: black;
+    
+}
+li .fas , .fab , .far{
+    margin-top: 15px;
+}
+.control:hover{
+    cursor: pointer;
+}
+li .fas:hover , .fab:hover , .far:hover{
+    color: grey;
+}
+.control-camera-mobile , .control-messenger-mobile , .spaceNavbar-mobile , .navbarSeparate-mobile{
+    display: none;
+}
+@media (max-width: 767.98px) { 
+
+    .spaceNavbar{
+        right: 0px;
+        left: 0px;
+        height: 40px;
+    }
+    .navbar-Search , .navbar-Main{
+        display: none;
+    }
+    .navbar-Instagram{
+        text-align: center;
+        display: flex;
+        justify-content:space-between;
+        height: 40px;
+        align-items: center;
+    }
+    .control-camera-mobile , .control-messenger-mobile{
+        display: block;
+        margin-bottom: 10px;
+        
+    }
+    .control-camera-mobile{
+        margin-left: 10px;
+    }
+    .navbarSeparate{
+        top: 40px;
+    }
+    .spaceNavbar-mobile{
+        position: fixed;
+        bottom: 0;
+        display: flex;
+        height: 55px;
+        justify-content:space-around;
+        background-color: var(--component-color);
+        left: 0;
+    }
+    .navbarSeparate-mobile{
+        display: block;
+        background-color:var(--boder-color);
+        height: 1px;
+        width: 100%;
+        position: fixed;
+        bottom: 55px;
+        
+    }
+ }
