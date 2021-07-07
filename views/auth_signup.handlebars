@@ -26,13 +26,13 @@
                                 Vibes
                             </div>
                             <form action="" method="POST" id="formSubmit">
-                                <input type="text" name="_name" class="idusername" id="name" maxlength="30"
+                                <input type="text" name="_name" class="idusername" id="name" maxlength="30" minlength="2"
                                     placeholder="Tên Đầy Đủ">
-                                <input type="text" name="username" class="idusername" id="username" maxlength="35"
+                                <input type="text" name="username" class="idusername" id="username" maxlength="35" minlength="2"
                                     placeholder="Tên người dùng">
-                                <input type="password" name="password" class="idpassword" placeholder="Mật khẩu" id="password" maxlength="30">
+                                <input type="password" name="password" class="idpassword" placeholder="Mật khẩu" id="password" maxlength="30" minlength="4">
                                 <button class="hidePassword" id="idhidePassword1" type="button">Hiển thị</button>
-                                <input type="password" name="repeatpassword" class="idpassword" placeholder="Nhập lại mật khẩu" id="repeatpassword" maxlength="30">
+                                <input type="password" name="repeatpassword" class="idpassword" placeholder="Nhập lại mật khẩu" id="repeatpassword" maxlength="30" minlength="4">
                                 <button class="hidePassword" id="idhidePassword2" type="button">Hiển thị</button>
                                 <button id="idsignup" type="submit">Đăng ký</button>
                                 <div id="messageerror"></div>

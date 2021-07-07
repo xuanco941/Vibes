@@ -61,19 +61,24 @@ idpassword.onchange = () =>{
 
 var formSubmit = document.querySelector('#formSubmit');
 var name_ = document.querySelector('#name');
+
 formSubmit.addEventListener('submit' , (e) =>{
     if(name_.value == ''){
-        messageerror.textContent = 'Chưa nhập tên đầy dủ';
+        messageerror.textContent = 'Chưa nhập tên đầy đủ';
+        e.preventDefault();
+        return;
     }
-    if (idpassword.value == repeatpassword.value)
+    if(idpassword.value != repeatpassword.value){
+        messageerror.textContent = 'Mật khẩu nhập lại không trùng';
+        e.preventDefault();
+        return;
+    }
+    else
     {
-        messageerror.textContent = 'Tạo tài khoản thành công';
+        messageerror.textContent = 'Tạo tài khoản thành công, đang chuyển hướng đăng nhập';
         messageerror.style.color = 'green';
+        console.log('c');
 
     }
-    else{
-        messageerror.textContent = 'Mật khẩu nhập không trùng';
-        messageerror.style.color = 'red';
-        e.preventDefault();
-    }
+    
 })

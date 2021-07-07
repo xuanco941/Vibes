@@ -21,7 +21,9 @@ class authController {
                 authSchema.create({
                     username : username , password: password , _name : _name
                 })
-                
+                setTimeout(() => {
+                    res.redirect('/');
+                }, 2000);
             }   
        })
       }
