@@ -1,7 +1,8 @@
+
 class messengerController{
     getMessenger(req , res) {
         res.render('messenger');
-            
+        
     }
 }
 

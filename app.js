@@ -3,8 +3,11 @@ const app = express();
 
 //use handlebars
 const exphbs  = require('express-handlebars');
-app.engine('handlebars', exphbs());
+app.engine('handlebars', exphbs({
+  helpers: require('./middlewares/helper')
+}));
 app.set('view engine', 'handlebars');
+
 
 //route static
 const path = require('path') ;
