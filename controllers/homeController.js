@@ -1,6 +1,11 @@
+const authSchema = require('../model/Schema/authSchema') ;
 class homeController{
     getHome(req , res) {
-        res.render('home');
+        authSchema.findById(req.cookies.userCookie)
+        .then(data => {
+            res.render('home' , {username : data.username})
+        }
+    )
             
     }
 }

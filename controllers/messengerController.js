@@ -1,8 +1,10 @@
 
+const authSchema = require('../model/Schema/authSchema') ;
+
+
 class messengerController{
     getMessenger(req , res) {
-        res.render('messenger');
-        
+        res.render('messenger' , { foo : 'Foo'})
     }
 }
 

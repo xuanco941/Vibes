@@ -47,9 +47,6 @@ repeatpassword.onchange = ()=> {
     {
         messageerror.textContent = '';
     }
-    else{
-        messageerror.textContent = 'Mật khẩu nhập không trùng';
-    }
 }
 
 idpassword.onchange = () =>{
@@ -61,24 +58,47 @@ idpassword.onchange = () =>{
 
 var formSubmit = document.querySelector('#formSubmit');
 var name_ = document.querySelector('#name');
+var username = document.querySelector('#username');
 
 formSubmit.addEventListener('submit' , (e) =>{
     if(name_.value == ''){
         messageerror.textContent = 'Chưa nhập tên đầy đủ';
         e.preventDefault();
+        e.stopPropagation();
         return;
     }
+    if(username.value == ''){
+        messageerror.textContent = 'Chưa nhập tên tài khoản';
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+    }
+    if(idpassword.value == ''){
+        messageerror.textContent = 'Chưa nhập mật khẩu';
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+    }
+    if(repeatpassword.value == ''){
+        messageerror.textContent = 'Chưa nhập lại mật khẩu';
+        e.preventDefault();
+        e.stopPropagation();
+        return;
+    }
+
+
     if(idpassword.value != repeatpassword.value){
         messageerror.textContent = 'Mật khẩu nhập lại không trùng';
         e.preventDefault();
+        e.stopPropagation();
         return;
     }
+    
     else
     {
         messageerror.textContent = 'Tạo tài khoản thành công, đang chuyển hướng đăng nhập';
         messageerror.style.color = 'green';
-        console.log('c');
-
+        return true;
     }
     
 })

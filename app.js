@@ -3,9 +3,8 @@ const app = express();
 
 //use handlebars
 const exphbs  = require('express-handlebars');
-app.engine('handlebars', exphbs({
-  helpers: require('./middlewares/helper')
-}));
+const hdb = require('./controllers/handlebarsHelper')
+app.engine('handlebars', hdb.engine);
 app.set('view engine', 'handlebars');
 
 

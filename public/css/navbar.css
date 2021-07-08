@@ -20,7 +20,6 @@ body{
 .navbar-Instagram{
     height: 55px;
     font-size: 1.5rem;
-    text-align: center;
 }
 .navbar-Instagram a{
     color: black;
@@ -101,8 +100,12 @@ body{
 }
 .control-user{
     margin-right: 0;
-    font-size: 1.2rem;
+    font-size: 1em;
     line-height: 50px;
+    font-size: 1em;
+    width: 100px;
+    display: flex;
+    flex-wrap: nowrap;
 }
 li{
     list-style: none;
@@ -124,6 +127,7 @@ li .fas:hover , .fab:hover , .far:hover{
 .control-camera-mobile , .control-messenger-mobile , .spaceNavbar-mobile , .navbarSeparate-mobile{
     display: none;
 }
+  
 @media (max-width: 767.98px) { 
 
     .spaceNavbar{

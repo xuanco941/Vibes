@@ -16,11 +16,12 @@ class authController {
        authSchema.findOne({username : username})
        .then(data => {
            if (data) 
-            {res.send('Tai khoan nay da ton tai');}
+            {res.render('auth_signup' , {messageerror : 'Tên tài khoản đã tồn tại, vui lòng dùng tên tài khoản khác'});}
             else{
                 authSchema.create({
                     username : username , password: password , _name : _name
-                })
+                });
+
                 setTimeout(() => {
                     res.redirect('/');
                 }, 2000);
@@ -34,16 +35,16 @@ class authController {
         .then(data => {
             if(data)
             {
-            res.cookie('userCookie' , data._id.toString() , {expires: new Date (Date.now + (24*60*60*1000))});
+            res.cookie('userCookie' , data._id.toString() , {expires: new Date(Date.now() + 200000000) , httpOnly : true });
             res.redirect('/home');    
             
         }
             else
-            res.redirect('/');
+            res.render('auth' , {messageerror: 'Tài khoản hoặc mật khẩu không chính xác'});
        })
        .catch(err => {
-           res.send('ERROR!!!');
-       })
+        res.render('auth_signup' , { messageerror : 'Sorry, đang bị lỗi gì ấy, đợi mình fix đã nhé :v'});
+    })
        
       
     }

@@ -34,13 +34,16 @@
 }
 #inputComment{
     height: 90%;
-    width: 90%;
+    width: 82%;
     border: 1px var(--border-color) solid;
 
 }
+.News ::placeholder{
+    padding: 10px;
+}
 #submitComment{
     height: 90%;
-    width: 10%;
+    width: 18%;
     background-color: transparent;
     color: gray;
     border: 1px grey solid;
@@ -52,6 +55,4 @@
 #inputComment , #sunmitComment{
     outline: none;
 }
-.user-news{
-    padding-left: 10px;
-}
+

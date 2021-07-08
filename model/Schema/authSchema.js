@@ -6,7 +6,7 @@ const Schema = mongoose.Schema;
     password : String ,
     _name : String 
     } , {
-    collection: 'Authentication'
+    collection: 'User'
   });
 
 
