@@ -2,8 +2,16 @@ const authSchema = require('../model/Schema/authSchema') ;
 
 class authController {
     getsignin (req , res) {
-        res.render('auth' , {layout: false});
-      
+        authSchema.findById(req.cookies.userCookie)
+        .then( data => {
+            if(data)
+            res.redirect('/home');
+            else
+            res.render('auth' , {layout: false});
+        })
+        .catch((err)=>{
+            res.send('ERROR!!!');
+        })
     }
     getsignup (req , res) {
         res.render('auth_signup' , {layout: false});

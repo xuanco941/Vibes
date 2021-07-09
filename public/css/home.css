@@ -44,16 +44,16 @@ body{
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 71px;
+    top: 150px;
     right: 400px;
     width: 350px;
-    height: 500px;
+    height: 100vh;
 }
 .footerMain{
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 70%;
+    height: 30%;
     font-size: 80px;
 }
 .spaceFooter{

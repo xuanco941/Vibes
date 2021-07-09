@@ -37,10 +37,11 @@
     width: 82%;
     border: 1px var(--border-color) solid;
     overflow:hidden;
+    resize: none;
+    padding-top: 10px;
+    font-size: 14px;
 }
-.News ::placeholder{
-    padding: 0px
-}
+
 #submitComment{
     height: 90%;
     width: 18%;
