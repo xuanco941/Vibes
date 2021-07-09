@@ -24,16 +24,19 @@ body{
     .footerMain{
         display: none !important;
     }
+    .spaceBonus{
+        display: none !important;
+    }
  }
  @media (max-width: 1400px) {
     .spaceBonus{
-        display: none;
+        display: none !important;
     }
     
  }
 @media (max-width: 1500px) { 
     .spaceBonus{
-        right: 50px !important;
+        right: 220px !important;
     }
    }
 
@@ -42,7 +45,7 @@ body{
     flex-direction: column;
     position: fixed;
     top: 71px;
-    right: 390px;
+    right: 400px;
     width: 350px;
     height: 500px;
 }
@@ -86,4 +89,7 @@ body{
 .spaceNews{
     margin-top: 15px;
 }
-
+.footerMain a {
+    text-decoration: none;
+    color: purple;
+}

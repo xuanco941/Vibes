@@ -36,17 +36,17 @@
     height: 90%;
     width: 82%;
     border: 1px var(--border-color) solid;
-
+    overflow:hidden;
 }
 .News ::placeholder{
-    padding: 10px;
+    padding: 0px
 }
 #submitComment{
     height: 90%;
     width: 18%;
-    background-color: transparent;
     color: gray;
-    border: 1px grey solid;
+    border: 1px var(--white-color) solid;
+   outline: none;
 }
 #submitComment:active{
     background-color:grey;

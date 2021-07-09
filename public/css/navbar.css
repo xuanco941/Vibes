@@ -103,7 +103,7 @@ body{
     font-size: 1em;
     line-height: 50px;
     font-size: 1em;
-    width: 100px;
+    width: 70px;
     display: flex;
     flex-wrap: nowrap;
 }
@@ -175,3 +175,7 @@ li .fas:hover , .fab:hover , .far:hover{
         
     }
  }
+#vibes{
+    text-decoration: none;
+    color:purple;
+}
