@@ -4,7 +4,7 @@ const newsSchema = require('../model/Schema/newsSchema');
 
 class messengerController{
     getMessenger(req , res , next) { 
-        res.render('messenger');
+        res.render('messenger') ;
     }
 }
 

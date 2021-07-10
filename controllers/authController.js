@@ -4,8 +4,9 @@ class authController {
     getsignin (req , res) {
         authSchema.findById(req.cookies.userCookie)
         .then( data => {
-            if(data)
-            res.redirect('/home');
+            if(data){
+            res.redirect('/home');            
+            }
             else
             res.render('auth' , {layout: false});
         })
@@ -43,9 +44,8 @@ class authController {
         .then(data => {
             if(data)
             {
-            res.cookie('userCookie' , data._id.toString() , {expires: new Date(Date.now() + 200000000) , httpOnly : true });
+            res.cookie('userCookie' , data._id.toString() , {expires: new Date(Date.now() + 200000000) , httpOnly : false});
             res.redirect('/home');    
-            
         }
             else
             res.render('auth' , {messageerror: 'Tài khoản hoặc mật khẩu không chính xác'});

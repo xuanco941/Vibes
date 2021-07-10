@@ -178,6 +178,9 @@ li .fas:hover , .fab:hover , .far:hover{
         bottom: 150px !important;
         top: -80px !important;
     }
+    .modal-content{
+        height: 70vh !important;
+    }
 
  }
 #vibes{
@@ -215,10 +218,18 @@ li .fas:hover , .fab:hover , .far:hover{
     width: 100%;
     color: black;
 }
-.signout:hover , .profile:hover{
+.signout:hover , .profile:hover , .profile:hover a{ 
     background-color: grey;
     cursor: pointer;
+    color: white;
 }
-.profile a:hover{
-    color: black;
+.modal{
+    background-color: rgba(0,0,0,.6);
 }
+.modal-content{
+    height: 60vh;
+}
+@media (min-width: 576px){
+.modal-dialog {
+    max-width: 550px !important;
+}}
