@@ -1,10 +1,10 @@
 
 const authSchema = require('../model/Schema/authSchema') ;
-
+const newsSchema = require('../model/Schema/newsSchema');
 
 class messengerController{
-    getMessenger(req , res) {
-        res.render('messenger' , { foo : 'Foo'})
+    getMessenger(req , res , next) { 
+        res.render('messenger');
     }
 }
 

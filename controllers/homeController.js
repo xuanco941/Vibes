@@ -6,7 +6,6 @@ class homeController{
             res.render('home' , {username : data.username})
         }
     )
-            
     }
 }
 

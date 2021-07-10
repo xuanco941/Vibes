@@ -1,6 +1,7 @@
 const authRoute = require ('./authRoute');
 const homeRoute = require('./homeRoute');
 const messengerRoute = require('./messengerRoute');
+const uploadRoute = require ('./uploadRoute');
 const authMidleware = require('../middlewares/authMiddleware');
 
 function route(app) {
