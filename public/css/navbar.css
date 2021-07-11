@@ -206,10 +206,11 @@ li .fas:hover , .fab:hover , .far:hover{
 }
 .control-user-pc::after{
     content: '';
-    width: 70px;
+    width: 90px;
     height: 20px;
     position: absolute;
-    top: 40px;
+    top: 45px;
+    left: -10px;
 }
 .control-user:hover .spaceControlUser{
     display: block;
