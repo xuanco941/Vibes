@@ -1,10 +1,13 @@
 
 const authSchema = require('../model/Schema/authSchema') ;
-const newsSchema = require('../model/Schema/newsSchema');
 
 class messengerController{
-    getMessenger(req , res , next) { 
-        res.render('messenger') ;
+    getMessenger(req , res) {
+        authSchema.findById(req.cookies.userCookie)
+        .then(data => {
+            res.render('messenger' , {username : data.username})
+        }
+    )
     }
 }
 

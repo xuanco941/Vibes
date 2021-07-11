@@ -11,7 +11,7 @@ body{
     
 }
 .navbarSeparate{
-    background-color:var(--boder-color);
+    background-color:var(--border-color);
     height: 1px;
     width: 100vw;
     position: fixed;
@@ -37,7 +37,7 @@ body{
     width: 70%;
     height: 28px;
     min-width: 150px;
-    border: var(--boder-color) 1px solid;
+    border: var(--border-color) 1px solid;
     font-size: 13px;
 }
 
@@ -63,7 +63,7 @@ body{
     height: 350px;
     background-color: var(--white-color);
     top: 65px;
-    border: var(--boder-color) 1px solid ;
+    border: var(--border-color) 1px solid ;
     display: none;
 }
 .recent{
@@ -104,8 +104,9 @@ body{
     line-height: 50px;
     font-size: 1em;
     width: 70px;
-    display: flex;
+    display: inline-block;
     position: relative;
+    text-align: center !important;
 }
 li{
     list-style: none;
@@ -167,7 +168,7 @@ li .fas:hover , .fab:hover , .far:hover{
     }
     .navbarSeparate-mobile{
         display: block;
-        background-color:var(--boder-color);
+        background-color:var(--border-color);
         height: 1px;
         width: 100%;
         position: fixed;
@@ -177,6 +178,7 @@ li .fas:hover , .fab:hover , .far:hover{
     .spaceControlUser{
         bottom: 150px !important;
         top: -80px !important;
+        right: 5px !important;
     }
     .modal-content{
         height: 70vh !important;
@@ -193,9 +195,9 @@ li .fas:hover , .fab:hover , .far:hover{
     width: 100px;
     height: 80px;
     background-color: var(--white-color);
-    border: var(--boder-color) 1px solid ;
+    border: var(--border-color) 1px solid ;
     top: 56px;
-    left: -28px;
+    left: -14px;
     display: none;
     z-index: 2;
     font-size: 13px;
@@ -208,7 +210,6 @@ li .fas:hover , .fab:hover , .far:hover{
     height: 20px;
     position: absolute;
     top: 40px;
-    left: -13px;
 }
 .control-user:hover .spaceControlUser{
     display: block;

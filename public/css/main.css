@@ -1,8 +1,12 @@
 :root{
     --main-background-color : #fafafa;
-    --boder-color : #dbdbdb;
+    --border-color : #dbdbdb;
     --white-color: #fff;
     --component-color: #ffffff;
+    
 }
 body { margin:0; }
 * { margin:0; padding:0; box-sizing:border-box; }
+.btn-check:focus+.btn, .btn:focus{
+    box-shadow: none;
+}

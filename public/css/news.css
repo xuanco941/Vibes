@@ -4,7 +4,7 @@
     display: flex;
     flex-direction: column;
     background-color: var(--component-color);
-    border-color:var(--boder-color);
+    border-color:var(--border-color);
     border-width: 1px;
     border-radius: 3px ;
     border-style: solid;
@@ -12,6 +12,9 @@
 .headNews{
     height:10%;
     background-color: brown;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
 }
 .contentNews{
     height: 50%;
@@ -33,7 +36,7 @@
 
 }
 #inputComment{
-    height: 90%;
+    height: 100%;
     width: 82%;
     border: 1px var(--border-color) solid;
     overflow:hidden;
@@ -43,7 +46,7 @@
 }
 
 #submitComment{
-    height: 90%;
+    height: 100%;
     width: 18%;
     color: gray;
     border: 1px var(--white-color) solid;
@@ -56,4 +59,18 @@
 #inputComment , #sunmitComment{
     outline: none;
 }
+#btn-option{
+    position: relative;
+}
+#list-group{
+    display: none;
+    position: absolute;
+    z-index: 2;
+    left: -107px;
+    height: 200px;
+    width: 150px;
 
+}
+.list-group-item:hover{
+    background-color: var(--border-color);
+}

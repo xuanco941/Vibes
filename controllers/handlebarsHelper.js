@@ -3,7 +3,7 @@ const hdb = exphbs.create({
     defaultLayout: 'main',
     helpers:{
         usernam : function(value){
-            return value = '';
+            return value = 'none';
         }
     }
 })

@@ -45,7 +45,7 @@ class authController {
             if(data)
             {
             res.cookie('userCookie' , data._id.toString() , {expires: new Date(Date.now() + 200000000) , httpOnly : false});
-            res.redirect('/home');    
+            res.redirect('/home');
         }
             else
             res.render('auth' , {messageerror: 'Tài khoản hoặc mật khẩu không chính xác'});
