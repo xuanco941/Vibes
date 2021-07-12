@@ -8,9 +8,10 @@
     <title>Navbar</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="../public/font/fontawesome-free-5.15.2/fontawesome-free-5.15.2-web/css/all.min.css">
-    <link rel="stylesheet" href="../public/css/main.css">
-    <link rel="stylesheet" href="../public/css/navbar.css">
+    <link rel="stylesheet" href="/public/font/fontawesome-free-5.15.2/fontawesome-free-5.15.2-web/css/all.min.css">
+    <link rel="stylesheet" href="/public/css/main.css">
+    <link rel="stylesheet" href="/public/css/navbar.css">
+    <link rel="stylesheet" href="/public/css/upload_navbar.css">
 
 </head>
 
@@ -19,7 +20,8 @@
         <div class="row g-0 ">
             <div class="col spaceNavbar ">
                 <div class="col col-md-3 navbar-Instagram">
-                    <li class="control control-camera control-camera-mobile " id="control-camera-3"><i class="fas fa-camera"></i></li>
+                    <li class="control control-camera control-camera-mobile " id="control-camera-3"><i
+                            class="fas fa-camera"></i></li>
                     <a href="/home" id="vibes">Vibes</a>
                     <li class="control control-messenger control-messenger-mobile"><a href="/messenger"><i
                                 class="fab fa-facebook-messenger"></i></a></li>
@@ -84,7 +86,8 @@
             <form action="/upload" method="POST">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">Modal title</h5>
+                        <div>Tiêu đề</div>
+                        <textarea name="title" id="modal-title"></textarea>
                         <button type="button" id="btn-close" class="btn btn-close" data-bs-dismiss="modal"
                             aria-label="Close"></button>
                     </div>
@@ -105,48 +108,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
-    <script>
-        var camera = document.querySelector('#control-camera');
-        var camera2 = document.querySelector('#control-camera-2');
-        var camera3 = document.querySelector('#control-camera-3');
-
-        var modal = document.querySelector('#modal');
-        var btnclose = document.querySelector('#btn-close');
-        var btnclose2 = document.querySelector('#btn-close-2');
-
-
-        camera.onclick = () => {
-            history.pushState(null, '', '/upload');
-            modal.style.display = 'block';
-        };
-        camera2.onclick = () => {
-            history.pushState(null, '', '/upload');
-            modal.style.display = 'block';
-        };
-        camera3.onclick = () => {
-            history.pushState(null, '', '/upload');
-            modal.style.display = 'block';
-        };
-
-        btnclose.onclick = () => {
-            modal.style.display = 'none';
-
-        }
-
-        btnclose2.onclick = () => {
-            modal.style.display = 'none';
-
-        }
-
-        var signout = Array.from(document.querySelectorAll('.signout'));
-        signout.forEach(function (button) {
-            button.addEventListener('click', function () {
-                document.cookie = "userCookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-                window.location = '/';
-            })
-        })
-
-    </script>
+    <script src="/public/JSclient/upload.js"></script>
 </body>
 
 </html>

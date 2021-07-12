@@ -1,0 +1,12 @@
+#modal-title{
+    height: 100%;
+    width: 75%;
+    border: 1px var(--border-color) solid;
+    overflow:hidden;
+    resize: none;
+    font-size: 14px;
+    margin-left: 5px;
+}
+#modal-title:focus{
+    outline: none;
+}

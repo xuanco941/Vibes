@@ -74,6 +74,13 @@
 .list-group-item:hover{
     background-color: var(--border-color);
 }
+.link-user-news{
+    text-decoration: none;
+    color: black;
+}
+.link-user-news:hover{
+    color: black;
+}
 @media (max-width: 767.98px) { 
     .News{
         height: 500px;
