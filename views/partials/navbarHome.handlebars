@@ -19,7 +19,7 @@
         <div class="row g-0 ">
             <div class="col spaceNavbar ">
                 <div class="col col-md-3 navbar-Instagram">
-                    <li class="control control-camera control-camera-mobile"><i class="fas fa-camera"></i></li>
+                    <li class="control control-camera control-camera-mobile " id="control-camera-3"><i class="fas fa-camera"></i></li>
                     <a href="/home" id="vibes">Vibes</a>
                     <li class="control control-messenger control-messenger-mobile"><a href="/messenger"><i
                                 class="fab fa-facebook-messenger"></i></a></li>
@@ -80,21 +80,25 @@
 
     <div class="modal" tabindex="-1" id="modal">
         <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Modal title</h5>
-                    <button type="button" id="btn-close" class="btn btn-close" data-bs-dismiss="modal"
-                        aria-label="Close"></button>
+
+            <form action="/upload" method="POST">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Modal title</h5>
+                        <button type="button" id="btn-close" class="btn btn-close" data-bs-dismiss="modal"
+                            aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Modal body text goes here.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary">Đăng</button>
+                        <button type="button" class="btn btn-secondary" id="btn-close-2"
+                            data-bs-dismiss="modal">Thôi</button>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <p>Modal body text goes here.</p>
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-primary">Đăng</button>
-                    <button type="button" class="btn btn-secondary" id="btn-close-2"
-                        data-bs-dismiss="modal">Thôi</button>
-                </div>
-            </div>
+            </form>
+
         </div>
     </div>
 
@@ -104,16 +108,22 @@
     <script>
         var camera = document.querySelector('#control-camera');
         var camera2 = document.querySelector('#control-camera-2');
+        var camera3 = document.querySelector('#control-camera-3');
 
         var modal = document.querySelector('#modal');
         var btnclose = document.querySelector('#btn-close');
         var btnclose2 = document.querySelector('#btn-close-2');
+
 
         camera.onclick = () => {
             history.pushState(null, '', '/upload');
             modal.style.display = 'block';
         };
         camera2.onclick = () => {
+            history.pushState(null, '', '/upload');
+            modal.style.display = 'block';
+        };
+        camera3.onclick = () => {
             history.pushState(null, '', '/upload');
             modal.style.display = 'block';
         };

@@ -10,3 +10,10 @@ body { margin:0; }
 .btn-check:focus+.btn, .btn:focus{
     box-shadow: none;
 }
+a{
+    text-decoration: none;
+    color: black;
+}
+a:hover{
+    color: black;
+}

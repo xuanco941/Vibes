@@ -1,4 +1,4 @@
-class uploadImgController{
+class uploadController{
     postUpload(req , res , next) {
         
     }
@@ -7,4 +7,4 @@ class uploadImgController{
     }
 }
 
-module.exports = new uploadImgController;
+module.exports = new uploadController;
