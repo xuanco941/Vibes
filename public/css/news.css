@@ -61,11 +61,12 @@
 }
 #btn-option{
     position: relative;
+    z-index: 1;
 }
 #list-group{
     display: none;
     position: absolute;
-    z-index: 2;
+    z-index: 1;
     left: -107px;
     height: 200px;
     width: 150px;

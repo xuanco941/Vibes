@@ -54,23 +54,24 @@ var formSubmit = document.querySelector('#formSubmit');
 var name_ = document.querySelector('#name');
 var username = document.querySelector('#username');
 
-var routeName = ['home' , 'signup' , 'signin' , 'upload' , 'login' , 'messenger' , 'search' , 'admin' ];
+var routeName = ['home', 'signup', 'signin', 'upload', 'login', 'messenger', 'search', 'admin'];
 
-username.onmouseup = () =>{
-    routeName.forEach((routeName) => {
-        if (username.value == routeName)
-        {
+username.onkeyup = ()=>{
+    for (let index = 0; index < routeName.length; index++) {
+        if (username.value == routeName[index]) {
             messageerror.textContent = 'Tên tài khoản này không được sử dụng';
-            
+            break;
         }
-        else {
-            messageerror.textContent = '';
+        else{
+            messageerror.textContent='';
         }
-    })
+        
+    }
 }
 
 
 formSubmit.addEventListener('submit', (e) => {
+    
 
     if (name_.value == '') {
         messageerror.textContent = 'Chưa nhập tên đầy đủ';
@@ -84,7 +85,7 @@ formSubmit.addEventListener('submit', (e) => {
         e.stopPropagation();
         return;
     }
-    
+
     if (idpassword.value == '') {
         messageerror.textContent = 'Chưa nhập mật khẩu';
         e.preventDefault();

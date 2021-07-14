@@ -3,9 +3,9 @@ const authSchema = require('../model/Schema/authSchema') ;
 class authController {
     getsignin (req , res) {
         authSchema.findById(req.cookies.userCookie)
-        .then( data => {
-            if(data){
-            res.render('home');            
+        .then( usermain => {
+            if(usermain){
+            res.render('home' , {usermain : usermain.username});            
             }
             else
             res.render('auth' , {layout: false});

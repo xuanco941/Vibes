@@ -51,7 +51,7 @@ body{
 }
 .footerMain{
     display: flex;
-    align-items: center;
+    align-items:center;
     justify-content: center;
     height: 30%;
     font-size: 80px;
