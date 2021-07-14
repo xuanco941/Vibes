@@ -5,7 +5,7 @@ class authController {
         authSchema.findById(req.cookies.userCookie)
         .then( data => {
             if(data){
-            res.redirect('/home');            
+            res.render('home');            
             }
             else
             res.render('auth' , {layout: false});

@@ -193,7 +193,7 @@ li .fas:hover , .fab:hover , .far:hover{
 .spaceControlUser{
     position: absolute;
     width: 100px;
-    height: 80px;
+    height: 120px;
     background-color: var(--white-color);
     border: var(--border-color) 1px solid ;
     top: 56px;
@@ -215,12 +215,12 @@ li .fas:hover , .fab:hover , .far:hover{
 .control-user:hover .spaceControlUser{
     display: block;
 }
-.signout , .profile{
-    height: 50%;
+.signout , .profile , #newdisplay{
+    height: 33.33%;
     width: 100%;
     color: black;
 }
-.signout:hover , .profile:hover , .profile:hover a{ 
+.signout:hover , .profile:hover , .profile:hover a , #newdisplay:hover , #newdisplay:hover a{ 
     background-color: grey;
     cursor: pointer;
     color: white;

@@ -49,6 +49,9 @@
                                 <div class="profile">Trang cá nhân
                                 </div>
                             </a>
+                            <a href="/newdisplay">
+                                <div id="newdisplay">Giao diện khác</div>
+                            </a>
                             <div class="signout" id="signout-pc">Đăng xuất</div>
                         </div>
                     </li>
@@ -83,7 +86,7 @@
     <div class="modal" tabindex="-1" id="modal">
         <div class="modal-dialog">
 
-            <form action="/upload" method="POST">
+            <form action="/upload" method="POST" enctype="multipart/form-data">
                 <div class="modal-content">
                     <div class="modal-header">
                         <div>Tiêu đề</div>
@@ -92,7 +95,7 @@
                             aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <p>Modal body text goes here.</p>
+                        <input type="file" name="file" id="file">
                     </div>
                     <div class="modal-footer">
                         <button type="submit" class="btn btn-primary">Đăng</button>

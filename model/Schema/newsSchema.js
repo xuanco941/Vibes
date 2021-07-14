@@ -3,9 +3,10 @@ const Schema = mongoose.Schema;
 
 const News = new Schema (
     {
-        username : String ,
-        file : String ,
-        historyComment : String 
+        userpost : String ,
+        title : String ,
+        filename : String ,
+        uploadAt : {type : Date , default: Date.now} 
     },
     {
         collection : 'News'

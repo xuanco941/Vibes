@@ -26,6 +26,8 @@ connectDataBase();
 const cookieParser = require('cookie-parser');
 app.use(cookieParser())
 
+//multer
+const multer  = require('multer');
 
 //call all route
 const routes = require('./routes/index');
