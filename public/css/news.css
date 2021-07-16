@@ -11,22 +11,42 @@
 }
 .headNews{
     height:6%;
-    background-color: brown;
+    background-color: var(--component-color) ;
     display: flex;
     flex-direction: row;
     justify-content:space-between;
 }
 .contentNews{
     height: 68%;
-    background-color: cadetblue;
+    background-color: var(--purple-color);
+    
 }
 .matchNews{
     height: 5%;
-    background-color: chartreuse;
+    background-color: var(--component-color);
+    display: flex;
+    flex-wrap: nowrap;
 }
+.title , .match{
+    overflow-y: visible;
+    height: 40px;
+    border: 1px var(--border-color) solid;
+}
+.title{
+    width: 60%;
+}
+.match{
+    width: 40%;
+}
+.fa-heart-2{
+    font-size: 30px;
+    margin-top: 2%;
+}
+
 .commentHistory{
     height: 15%;
-    background-color: coral;
+    background-color:thistle;
+    overflow-y: scroll;
 }
 .comment{
     height: 6%;
@@ -49,12 +69,12 @@
     height: 100%;
     width: 18%;
     color: gray;
-    border: 1px var(--white-color) solid;
+    border: 1px var(--border-color) solid;
    outline: none;
 }
 #submitComment:active{
-    background-color:grey;
-    color: honeydew;
+    background-color: var(--purple-color);
+    color: var(--white-color);
 }
 #inputComment , #sunmitComment{
     outline: none;
@@ -80,11 +100,11 @@
     color: black;
 }
 .link-user-news:hover{
-    color: black;
+    color: var(--purple-color);
 }
 @media (max-width: 767.98px) { 
     .News{
-        height: 500px;
+        height: 550px;
     }
     #inputComment{
         padding-top: 3px;
@@ -96,4 +116,14 @@
         margin-bottom: 25px;
         padding: 0 5px 0 0;
     }
+    .fa-heart-2{
+        font-size: 23px;
+    }
+}
+.imgNews{
+    max-width: 100%;
+    max-height: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
 }

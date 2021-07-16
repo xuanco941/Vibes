@@ -6,6 +6,7 @@ const News = new Schema (
         userpost : String ,
         title : String ,
         filename : String ,
+        path : String ,
         uploadAt : {type : Date , default: Date.now} 
     },
     {

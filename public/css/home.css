@@ -4,11 +4,11 @@ body{
 @media (max-width: 767.98px) { 
     .spaceNews{
         padding: 0;
+        margin-top: 0px !important;
     }
     .spaceApp{
         margin-left: 0;
         margin-right: 0;
-        margin-top: 26px !important;
     }
 }
 @media (min-width: 768px) { 
