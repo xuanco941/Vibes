@@ -131,11 +131,16 @@ li .fas:hover , .fab:hover , .far:hover{
 }
   
 @media (max-width: 767.98px) { 
+    .container-mobile{
+        position: fixed;
+        bottom: 0;
+    }
 
     .spaceNavbar{
+        position: fixed;
         right: 0px;
         left: 0px;
-        height: 40px;
+        height: 7.5vh;
     }
     .navbar-Search , .navbar-Main{
         display: none;
@@ -144,25 +149,25 @@ li .fas:hover , .fab:hover , .far:hover{
         text-align: center;
         display: flex;
         justify-content:space-between;
-        height: 40px;
+        height: 7.5vh;
         align-items: center;
     }
     .control-camera-mobile , .control-messenger-mobile{
         display: block;
-        margin-bottom: 10px;
+        margin-bottom: 0;
         
     }
     .control-camera-mobile{
         margin-left: 10px;
     }
     .navbarSeparate{
-        top: 40px;
+        top: 7.5vh;
     }
     .spaceNavbar-mobile{
         position: fixed;
         bottom: 0;
         display: flex;
-        height: 55px;
+        height: 7.5vh;
         justify-content:space-around;
         background-color: var(--component-color);
         left: 0;
@@ -173,7 +178,7 @@ li .fas:hover , .fab:hover , .far:hover{
         height: 1px;
         width: 100%;
         position: fixed;
-        bottom: 55px;
+        bottom: 7.5vh;
         
     }
     .spaceControlUser{
@@ -194,13 +199,13 @@ li .fas:hover , .fab:hover , .far:hover{
 .spaceControlUser{
     position: absolute;
     width: 100px;
-    height: 120px;
+    height: 80px;
     background-color: var(--white-color);
     border: var(--border-color) 1px solid ;
     top: 56px;
     left: -14px;
     display: none;
-    z-index: 2;
+    z-index: 4;
     font-size: 13px;
     text-align: center;
     line-height: 40px;
@@ -212,16 +217,17 @@ li .fas:hover , .fab:hover , .far:hover{
     position: absolute;
     top: 45px;
     left: -10px;
+    z-index: 100;
 }
 .control-user:hover .spaceControlUser{
     display: block;
 }
-.signout , .profile , #newdisplay{
-    height: 33.33%;
+.signout , .profile {
+    height: 50%;
     width: 100%;
     color: black;
 }
-.signout:hover , .profile:hover , .profile:hover a , #newdisplay:hover , #newdisplay:hover a{ 
+.signout:hover , .profile:hover , .profile:hover a{ 
     background-color: grey;
     cursor: pointer;
     color: white;

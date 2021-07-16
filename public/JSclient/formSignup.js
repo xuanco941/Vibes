@@ -54,7 +54,7 @@ var formSubmit = document.querySelector('#formSubmit');
 var name_ = document.querySelector('#name');
 var username = document.querySelector('#username');
 
-var routeName = ['home', 'signup', 'signin', 'upload', 'login', 'messenger', 'search', 'admin'];
+var routeName = ['home', 'signup', 'signin', 'upload', 'login', 'messenger', 'search', 'admin' , 'profile' , 'notify'];
 
 username.onkeyup = ()=>{
     for (let index = 0; index < routeName.length; index++) {

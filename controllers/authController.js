@@ -25,7 +25,7 @@ class authController {
        authSchema.findOne({username : username})
        .then(data => {
            if (data) 
-            {res.render('auth_signup' , {messageerror : 'Tên tài khoản đã tồn tại, vui lòng dùng tên tài khoản khác'});}
+            {res.render('auth_signup' , { layout:false , messageerror : 'Tên tài khoản đã tồn tại, vui lòng dùng tên tài khoản khác'});}
             else{
                 authSchema.create({
                     username : username , password: password , _name : _name
@@ -48,10 +48,10 @@ class authController {
             res.redirect('/home');
         }
             else
-            res.render('auth' , {messageerror: 'Tài khoản hoặc mật khẩu không chính xác'});
+            res.render('auth' , { layout : false ,messageerror: 'Tài khoản hoặc mật khẩu không chính xác'});
        })
        .catch(err => {
-        res.render('auth_signup' , { messageerror : 'Sorry, đang bị lỗi gì ấy, đợi mình fix đã nhé :v'});
+        res.render('auth' , { messageerror : 'Sorry, đang bị lỗi gì ấy, đợi mình fix đã nhé :v'});
     })
        
       
