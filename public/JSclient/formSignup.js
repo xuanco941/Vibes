@@ -68,8 +68,6 @@ username.onkeyup = ()=>{
         
     }
 }
-
-
 formSubmit.addEventListener('submit', (e) => {
     
 

@@ -2,10 +2,11 @@
     height: 100%;
     width: 75%;
     border: 1px var(--border-color) solid;
-    overflow:hidden;
+    overflow-y:auto;
     resize: none;
-    font-size: 14px;
+    font-size: 18px;
     margin-left: 5px;
+    line-height: 35px;
 }
 #modal-title:focus{
     outline: none;

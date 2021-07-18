@@ -7,6 +7,19 @@ var btnclose = document.querySelector('#btn-close');
 var btnclose2 = document.querySelector('#btn-close-2');
 
 var btnupload = document.querySelector('#btn-upload');
+var formUpload = document.querySelector('#formUpload');
+var modaltitle = document.querySelector('#modal-title');
+var file = document.querySelector('#file');
+
+
+formUpload.onsubmit = (e) => {
+    if (modaltitle.textContent == '' && file.value == '' )
+    {
+        modal.style.display = 'none';
+        return false;
+    }
+}
+
 
 
 camera.onclick = () => {

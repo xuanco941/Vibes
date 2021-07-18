@@ -51,7 +51,7 @@ body{
     z-index: 1;
 }
 .headerBonus{
-    height: 5%;
+    height: 3%;
     text-align: center;
 }
 .listOnline{
@@ -81,10 +81,10 @@ body{
 }
 .itemOnline a {
     text-decoration: none;
-    color: purple;
+    color: var(--purple-color);
 }
 .itemOnline a:hover {
-    text-decoration:underline purple;
+    text-decoration:underline var(--purple-color);
     font-size: 25px;
 }
 
@@ -131,9 +131,35 @@ body{
 }
 .footerMain a {
     text-decoration: none;
-    color: purple;
+    color: var(--purple-color);
 }
 .user-news{
     margin-left: 5px;
     line-height: 50px;
+}
+#PostStatus{
+    height: 65px;
+    background-color: brown;
+    display: flex;
+    margin-bottom: 2vh;
+    
+}
+#inputStatus{
+    height: 100%;
+    width: 80%;
+    border: 1px var(--border-color) solid;
+    overflow-y:auto;
+    resize: none;
+    font-size: 18px;
+}
+#inputStatus:focus{
+    outline: none;
+}
+#submitStatus{
+    width: 20%;
+    height: 100%;
+    border: none;
+    background-color: plum;
+    border: 1px var(--border-color) solid;
+
 }

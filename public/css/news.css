@@ -9,6 +9,31 @@
     border-radius: 3px ;
     border-style: solid;
 }
+.Status{
+    height: 300px;
+    margin-bottom: 25px;
+    display: flex;
+    flex-direction: column;
+    background-color: var(--component-color);
+    border-color:var(--border-color);
+    border-width: 1px;
+    border-radius: 3px ;
+    border-style: solid;
+}
+.headStatus{
+    height:13%;
+    background-color: var(--component-color) ;
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+}
+.contentStatus{
+    min-height: 80px;
+    max-height: 1000px;
+    height: 37%;
+    background-color: rgba(0, 0, 0, 0.1);
+    
+}
 .headNews{
     height:6%;
     background-color: var(--component-color) ;
@@ -16,9 +41,15 @@
     flex-direction: row;
     justify-content:space-between;
 }
+.matchStatus{
+    height: 11%;
+    background-color: var(--component-color);
+    display: flex;
+    flex-wrap: nowrap;
+}
 .contentNews{
     height: 68%;
-    background-color: var(--purple-color);
+    background-color: rgba(0, 0, 0, 0.1);
     
 }
 .matchNews{
@@ -27,9 +58,13 @@
     display: flex;
     flex-wrap: nowrap;
 }
+.match-status{
+    overflow-y: visible;
+    border: 1px var(--border-color) solid;
+    width: 100%;
+}
 .title , .match{
     overflow-y: visible;
-    height: 40px;
     border: 1px var(--border-color) solid;
 }
 .title{
@@ -45,8 +80,13 @@
 
 .commentHistory{
     height: 15%;
-    background-color:thistle;
-    overflow-y:visible;
+    background-color:wheat;
+    overflow-y:auto;
+}
+.commentHistory-status{
+    height: 25%;
+    background-color:wheat;
+    overflow-y:auto;
 }
 .comment{
     height: 6%;
@@ -54,6 +94,16 @@
     justify-content: center;
     align-items: center;
 
+}
+.comment-status{
+    height: 14%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.user-status{
+    margin-top: 6px;
 }
 #inputComment{
     height: 100%;
@@ -79,7 +129,7 @@
 #inputComment , #sunmitComment{
     outline: none;
 }
-#btn-option{
+.btn-option{
     position: relative;
     z-index: 1;
 }
@@ -91,6 +141,10 @@
     height: 200px;
     width: 150px;
 
+}
+.fa-heart-status{
+    font-size: 30px;
+    width: 30px;
 }
 .list-group-item:hover{
     background-color: var(--border-color);
@@ -112,7 +166,7 @@
     .user-news{
         line-height: 25px;
     }
-    #btn-option{
+    .btn-option{
         margin-bottom: 25px;
         padding: 0 5px 0 0;
     }

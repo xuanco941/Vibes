@@ -18,6 +18,37 @@
     <div class="row spaceApp">
         <div class="col-md-6 col-xxl-5 spaceNews">
 
+            <form action="/home" method="post" id="PostStatus">
+                <textarea name="status" id="inputStatus" placeholder="Đăng trạng thái"></textarea>
+                <button type="submit" id="submitStatus">Post</button>
+            </form>
+
+            <div class="Status">
+                <div class="headStatus">
+                    <a href="/xuan" class="link-user-news">
+                        <div class="user-status">xuan</div>
+                    </a>
+                    <button type="button" class="btn btn-option">. . .
+                        <ul class="list-group" id="list-group">
+                            <li class="list-group-item" id="item-remove">Xóa khỏi bản tin</li>
+                            <li class="list-group-item" id="item-close">Đóng</li>
+                        </ul>
+                    </button>
+                </div>
+                <div class="contentStatus">
+                    1234
+                </div>
+                <div class="titleNews matchStatus">
+
+                    <i class="far fa-heart fa-heart-status"></i>
+
+                </div>
+                <div class="commentHistory-status"></div>
+                <div class="comment-status">
+                    <textarea type="text" name="comment" id="inputComment" placeholder="Thêm bình luận"></textarea>
+                    <button type="submit" id="submitComment">Đăng</button>
+                </div>
+            </div>
 
 
             {{#each news}}
@@ -26,7 +57,7 @@
                     <a href="/{{this.userpost}}" class="link-user-news">
                         <div class="user-news">{{this.userpost}}</div>
                     </a>
-                    <button type="button" class="btn" id="btn-option">. . .
+                    <button type="button" class="btn btn-option">. . .
                         <ul class="list-group" id="list-group">
                             <li class="list-group-item" id="item-remove">Xóa khỏi bản tin</li>
                             <li class="list-group-item" id="item-close">Đóng</li>
@@ -59,7 +90,7 @@
         </div>
     </div>
     <div class="spaceBonus">
-        <h5 class="headerBonus">Online</h5>
+        <h5 class="headerBonus">Bạn có biết những người này không?</h5>
         <div class="listOnline" id="listOnline"></div>
         <div class="footerMain"> <a href="/home">Vibes</a></div>
         <footer class="row spaceFooter g-0">
@@ -86,7 +117,7 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <script src="../public/JSclient/home.js"></script>
-    
+
 </body>
 
 </html>
