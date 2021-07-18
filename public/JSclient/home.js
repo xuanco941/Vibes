@@ -23,3 +23,4 @@ itemclose.onclick = () => {
 itemremove.onclick = () => {
     alert('Chưa hoàn thiện chức năng xóa ');
 }
+

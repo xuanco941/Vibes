@@ -46,7 +46,7 @@
 .commentHistory{
     height: 15%;
     background-color:thistle;
-    overflow-y: scroll;
+    overflow-y:visible;
 }
 .comment{
     height: 6%;

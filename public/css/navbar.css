@@ -8,6 +8,7 @@ body{
     left: 0;
     justify-content: center;
     background-color: var(--component-color);
+    z-index: 99;
     
 }
 .navbarSeparate{

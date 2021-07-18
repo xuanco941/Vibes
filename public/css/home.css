@@ -44,20 +44,60 @@ body{
     display: flex;
     flex-direction: column;
     position: fixed;
-    top: 150px;
+    top: 7.5vh;
     right: 400px;
     width: 350px;
-    height: 100vh;
+    height: 85vh;
+    z-index: 1;
 }
+.headerBonus{
+    height: 5%;
+    text-align: center;
+}
+.listOnline{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    overflow-y: auto;
+    max-height: 45%;
+    position: relative;
+}
+.itemOnline{
+    line-height: 40px;
+    text-align: center;
+    font-size: 20px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+}
+.tickOnline{
+    background-color: green;
+    height: 12px;
+    width: 12px;
+    margin-top: 17px;
+    border-radius: 100px;
+    
+}
+.itemOnline a {
+    text-decoration: none;
+    color: purple;
+}
+.itemOnline a:hover {
+    text-decoration:underline purple;
+    font-size: 25px;
+}
+
+
 .footerMain{
     display: flex;
     align-items:center;
     justify-content: center;
     height: 30%;
-    font-size: 80px;
+    font-size: 70px;
 }
 .spaceFooter{
-    height: 30%;
+    height: 20%;
     color: gray;
     font-size: 0.6rem;
 }
