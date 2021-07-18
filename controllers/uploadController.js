@@ -16,18 +16,12 @@ class uploadController {
     upload = multer({ storage: storageimg }).single('file');
 
     postUpload(req, res, next) {
-        authSchema.findById(req.cookies.userCookie).then((user) => {
-            newsSchema.create({
+        authSchema.findById(req.cookies.userCookie).then(async (user) => {
+            await newsSchema.create({
                 userpost: user.username, title: req.body.title, filename: user.username + 'AND' + req.file.filename, path: req.file.path
             })
-        })
-            .then(() => {
-                newsSchema.find({}).then((news) => {
-                    news = news.map(data => data.toObject());
-                    res.render('home', { news });
-                })
-            })
-            
+            res.redirect('/home');
+        })  
     }
     getUpload(req, res) {
         res.redirect('/home');

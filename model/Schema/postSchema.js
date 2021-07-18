@@ -2,7 +2,7 @@ const mongoose = require ('mongoose');
 const Schema = mongoose.Schema;
 
   const Post = new Schema({
-    username : String , 
+    userpost : String , 
     content : String ,
     uploadAt : {type : Date , default: Date.now}
     } , {

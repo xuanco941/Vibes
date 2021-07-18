@@ -22,11 +22,11 @@
                 <textarea name="status" id="inputStatus" placeholder="Đăng trạng thái"></textarea>
                 <button type="submit" id="submitStatus">Post</button>
             </form>
-
+            {{#each Status}}
             <div class="Status">
                 <div class="headStatus">
-                    <a href="/xuan" class="link-user-news">
-                        <div class="user-status">xuan</div>
+                    <a href="/{{this.userpost}}" class="link-user-news">
+                        <div class="user-status">{{this.userpost}}</div>
                     </a>
                     <button type="button" class="btn btn-option">. . .
                         <ul class="list-group" id="list-group">
@@ -36,22 +36,20 @@
                     </button>
                 </div>
                 <div class="contentStatus">
-                    1234
+                    {{this.content}}
                 </div>
-                <div class="titleNews matchStatus">
-
+                <div class="matchStatus">
                     <i class="far fa-heart fa-heart-status"></i>
-
                 </div>
                 <div class="commentHistory-status"></div>
                 <div class="comment-status">
                     <textarea type="text" name="comment" id="inputComment" placeholder="Thêm bình luận"></textarea>
-                    <button type="submit" id="submitComment">Đăng</button>
+                    <button type="submit" class="submitCommentStatus">Đăng</button>
                 </div>
             </div>
+            {{/each}}
 
-
-            {{#each news}}
+            {{#each News}}
             <div class="News">
                 <div class="headNews">
                     <a href="/{{this.userpost}}" class="link-user-news">
@@ -78,7 +76,7 @@
                 <div class="commentHistory"></div>
                 <div class="comment">
                     <textarea type="text" name="comment" id="inputComment" placeholder="Thêm bình luận"></textarea>
-                    <button type="submit" id="submitComment">Đăng</button>
+                    <button type="submit" class="submitComment">Đăng</button>
                 </div>
             </div>
             {{/each}}

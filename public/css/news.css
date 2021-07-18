@@ -4,34 +4,30 @@
     display: flex;
     flex-direction: column;
     background-color: var(--component-color);
-    border-color:var(--border-color);
-    border-width: 1px;
-    border-radius: 3px ;
-    border-style: solid;
+    margin-bottom: 70px;
 }
 .Status{
-    height: 300px;
+    min-height: 300px;
     margin-bottom: 25px;
     display: flex;
     flex-direction: column;
     background-color: var(--component-color);
-    border-color:var(--border-color);
-    border-width: 1px;
-    border-radius: 3px ;
-    border-style: solid;
+    margin-bottom: 70px;
 }
 .headStatus{
-    height:13%;
+    height:40px;
     background-color: var(--component-color) ;
     display: flex;
     flex-direction: row;
     justify-content:space-between;
+    border: 1px var(--border-color) solid;
 }
 .contentStatus{
-    min-height: 80px;
+    min-height: 150px;
     max-height: 1000px;
     height: 37%;
     background-color: rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
     
 }
 .headNews{
@@ -40,6 +36,8 @@
     display: flex;
     flex-direction: row;
     justify-content:space-between;
+    border: 1px var(--border-color) solid;
+
 }
 .matchStatus{
     height: 11%;
@@ -50,6 +48,9 @@
 .contentNews{
     height: 68%;
     background-color: rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
     
 }
 .matchNews{
@@ -81,12 +82,17 @@
 .commentHistory{
     height: 15%;
     background-color:wheat;
+    min-height: 60px;
+    max-height: 700px;
     overflow-y:auto;
 }
 .commentHistory-status{
+    display: flex;
     height: 25%;
     background-color:wheat;
     overflow-y:auto;
+    min-height: 60px;
+    max-height: 700px;
 }
 .comment{
     height: 6%;
@@ -96,38 +102,46 @@
 
 }
 .comment-status{
-    height: 14%;
+    height: 13%;
     display: flex;
     justify-content: center;
     align-items: center;
 
 }
-.user-status{
-    margin-top: 6px;
-}
+
 #inputComment{
-    height: 100%;
+    height: 45px;
     width: 82%;
     border: 1px var(--border-color) solid;
-    overflow:hidden;
+    overflow:auto;
     resize: none;
     padding-top: 10px;
     font-size: 14px;
 }
-
-#submitComment{
-    height: 100%;
+.submitCommentStatus{
+    height: 45px;
     width: 18%;
     color: gray;
     border: 1px var(--border-color) solid;
-   outline: none;
+    outline: none;
 }
-#submitComment:active{
+.submitComment{
+    height: 100%;
+    min-height: 45px;
+    width: 18%;
+    color: gray;
+    border: 1px var(--border-color) solid;
+    outline: none;
+}
+.submitComment:active{
     background-color: var(--purple-color);
     color: var(--white-color);
 }
-#inputComment , #sunmitComment{
+#inputComment , .submitComment{
     outline: none;
+}
+.fa-heart-status{
+    margin-top: 1px;
 }
 .btn-option{
     position: relative;
@@ -151,10 +165,10 @@
 }
 .link-user-news{
     text-decoration: none;
-    color: black;
 }
 .link-user-news:hover{
-    color: var(--purple-color);
+    color: black;
+    text-decoration: underline;
 }
 @media (max-width: 767.98px) { 
     .News{
@@ -176,8 +190,13 @@
 }
 .imgNews{
     max-width: 100%;
-    max-height: 100%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
+    max-height: 540px;
+}
+.fa-heart-2 , .fa-heart-status{
+    cursor: pointer;
+}
+.user-news , .user-status{
+    font-size: 24px;
+    font-style: italic;
+    color: var(--purple-color);
 }
