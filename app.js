@@ -44,6 +44,9 @@ server.listen(3000, () => {
   console.log(`Example app listening at http://localhost:3000`);
 })
 
+
+
+
 const authSchema = require('./model/Schema/authSchema');
 const newsSchema = require('./model/Schema/newsSchema');
 

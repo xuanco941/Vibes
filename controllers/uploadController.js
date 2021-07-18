@@ -28,7 +28,6 @@ class uploadController {
                 })
             })
             
-
     }
     getUpload(req, res) {
         res.redirect('/home');

@@ -6,6 +6,8 @@ var modal = document.querySelector('#modal');
 var btnclose = document.querySelector('#btn-close');
 var btnclose2 = document.querySelector('#btn-close-2');
 
+var btnupload = document.querySelector('#btn-upload');
+
 
 camera.onclick = () => {
     history.pushState(null, '', '/upload');
