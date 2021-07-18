@@ -22,13 +22,16 @@
     justify-content:space-between;
     border: 1px var(--border-color) solid;
 }
+.textcontent{
+    display: block;
+    overflow-y: auto;
+    word-wrap: break-word;
+}
 .contentStatus{
     min-height: 150px;
     max-height: 1000px;
     height: 37%;
     background-color: rgba(0, 0, 0, 0.1);
-    overflow-y: auto;
-    
 }
 .headNews{
     height:6%;
@@ -69,10 +72,10 @@
     border: 1px var(--border-color) solid;
 }
 .title{
-    width: 60%;
+    width: 70%;
 }
 .match{
-    width: 40%;
+    width: 30%;
 }
 .fa-heart-2{
     font-size: 30px;

@@ -20,10 +20,10 @@
 
             <form action="/home" method="post" id="PostStatus">
                 <textarea name="status" id="inputStatus" placeholder="Đăng trạng thái"></textarea>
-                <button type="submit" id="submitStatus">Post</button>
+                <button type="submit" id="submitStatus" disabled = 'true'>Post</button>
             </form>
             {{#each Status}}
-            <div class="Status">
+            <div class="Status" id="{{this._id}}">
                 <div class="headStatus">
                     <a href="/{{this.userpost}}" class="link-user-news">
                         <div class="user-status">{{this.userpost}}</div>
@@ -35,9 +35,12 @@
                         </ul>
                     </button>
                 </div>
-                <div class="contentStatus">
-                    {{this.content}}
+                <div class="textcontent">
+                    <div class="contentStatus">
+                        {{this.content}}
+                    </div>
                 </div>
+
                 <div class="matchStatus">
                     <i class="far fa-heart fa-heart-status"></i>
                 </div>
@@ -50,7 +53,7 @@
             {{/each}}
 
             {{#each News}}
-            <div class="News">
+            <div class="News" id="{{this._id}}">
                 <div class="headNews">
                     <a href="/{{this.userpost}}" class="link-user-news">
                         <div class="user-news">{{this.userpost}}</div>
@@ -68,10 +71,10 @@
                     </a>
                 </div>
                 <div class="titleNews matchNews">
-                    <div class="title">{{this.title}}</div>
                     <div class="match">
                         <i class="far fa-heart fa-heart-2"></i>
                     </div>
+                    <div class="title">{{this.title}}</div>     
                 </div>
                 <div class="commentHistory"></div>
                 <div class="comment">

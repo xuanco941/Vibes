@@ -13,14 +13,26 @@ btnoption.forEach((btn) => {
     }
 })
 
-var itemremove = document.querySelector('#item-remove');
-var itemclose = document.querySelector('#item-remove');
 
-itemclose.onclick = () => {
-    listgroup.style.display = 'none';
+var inputStatus = document.querySelector('#inputStatus');
+var PostStatus = document.querySelector('#PostStatus');
+var submitStatus = document.querySelector('#submitStatus');
+
+inputStatus.onkeyup = () => {
+    if (inputStatus.value != '')
+    {
+        submitStatus.disabled = false;
+    }
+    else{
+        submitStatus.disabled = true;
+    }
+
 }
 
-itemremove.onclick = () => {
-    alert('Chưa hoàn thiện chức năng xóa ');
+PostStatus.onsubmit = (e) => {
+    if(!inputStatus.value)
+    {
+        return false;
+    }    
 }
 
