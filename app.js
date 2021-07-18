@@ -53,17 +53,17 @@ io.on('connection', (socket) => {
     await authSchema.findById(valueCookie).then(user => {
       if (usersOnline.indexOf(user.username) < 0) {
         usersOnline.push(user.username);
-        socket.aUser = user.name;
       }
     });
     io.sockets.emit('get-all-user-online', usersOnline);
-    console.log('nhung nguoi dang onl' + usersOnline.toString())
+    console.log('1', usersOnline);
 
   }));
-  socket.on('signout', () => {
-    usersOnline.splice(usersOnline.indexOf(socket.aUser, 1));
-    socket.broadcast.emit('get-all-user-online', usersOnline);
+  socket.on('signout', async (valueCookie) => {
+    await authSchema.findById(valueCookie).then((user) => {
+      usersOnline.splice(usersOnline.indexOf(user.username, 1));
+    })
+    io.sockets.emit('get-all-user-online', usersOnline);
+    console.log('2', usersOnline);
   });
-  console.log('nhung nguoi onl con lai' + usersOnline.toString())
-
 });
