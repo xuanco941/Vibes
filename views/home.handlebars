@@ -20,7 +20,7 @@
 
             <form action="/home" method="post" id="PostStatus">
                 <textarea name="status" id="inputStatus" placeholder="Đăng trạng thái"></textarea>
-                <button type="submit" id="submitStatus" disabled = 'true'>Post</button>
+                <button type="submit" id="submitStatus" disabled='true'>Post</button>
             </form>
             {{#each Status}}
             <div class="Status" id="{{this._id}}">
@@ -28,10 +28,11 @@
                     <a href="/{{this.userpost}}" class="link-user-news">
                         <div class="user-status">{{this.userpost}}</div>
                     </a>
-                    <button type="button" class="btn btn-option">. . .
-                        <ul class="list-group" id="list-group">
-                            <li class="list-group-item" id="item-remove">Xóa khỏi bản tin</li>
-                            <li class="list-group-item" id="item-close">Đóng</li>
+                    <button type="button" class="btn btn-option" id="btnoptionstatus-{{this._id}}">. . .
+                        <ul class="list-group" id="listgroupstatus-{{this.id}}">
+                            <li class="list-group-item item-remove" id="itemremovestatus-{{this._id}}">Xóa khỏi bản tin
+                            </li>
+                            <li class="list-group-item item-close" id="itemclosestatus-{{this._id}}">Đóng</li>
                         </ul>
                     </button>
                 </div>
@@ -46,8 +47,10 @@
                 </div>
                 <div class="commentHistory-status"></div>
                 <div class="comment-status">
-                    <textarea type="text" name="comment" id="inputComment" placeholder="Thêm bình luận"></textarea>
-                    <button type="submit" class="submitCommentStatus">Đăng</button>
+                    <textarea type="text" name="comment" id="inputCommentstatus-{{this._id}}" class="inputComment"
+                        placeholder="Thêm bình luận"></textarea>
+                    <button type="submit" class="submitCommentStatus"
+                        id="submitCommentstatus-{{this._id}}">Đăng</button>
                 </div>
             </div>
             {{/each}}
@@ -58,10 +61,10 @@
                     <a href="/{{this.userpost}}" class="link-user-news">
                         <div class="user-news">{{this.userpost}}</div>
                     </a>
-                    <button type="button" class="btn btn-option">. . .
-                        <ul class="list-group" id="list-group">
-                            <li class="list-group-item" id="item-remove">Xóa khỏi bản tin</li>
-                            <li class="list-group-item" id="item-close">Đóng</li>
+                    <button type="button" class="btn btn-option" id="btnoption-{{this._id}}">. . .
+                        <ul class="list-group" id="listgroup-{{this.id}}">
+                            <li class="list-group-item item-remove" id="itemremove-{{this._id}}">Xóa khỏi bản tin</li>
+                            <li class="list-group-item item-close" id="itemclose-{{this._id}}">Đóng</li>
                         </ul>
                     </button>
                 </div>
@@ -74,18 +77,16 @@
                     <div class="match">
                         <i class="far fa-heart fa-heart-2"></i>
                     </div>
-                    <div class="title">{{this.title}}</div>     
+                    <div class="title">{{this.title}}</div>
                 </div>
-                <div class="commentHistory"></div>
+                <div class="commentHistory" id="commentHistory-{{this._id}}"></div>
                 <div class="comment">
-                    <textarea type="text" name="comment" id="inputComment" placeholder="Thêm bình luận"></textarea>
-                    <button type="submit" class="submitComment">Đăng</button>
+                    <textarea type="text" name="comment" id="inputComment-{{this._id}}" class="inputComment"
+                        placeholder="Thêm bình luận"></textarea>
+                    <button type="submit" class="submitComment" id="submitComent-{{this._id}}">Đăng</button>
                 </div>
             </div>
             {{/each}}
-
-
-
 
 
         </div>
@@ -118,6 +119,24 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <script src="../public/JSclient/home.js"></script>
+    <script>
+        var News = Array.from(document.querySelectorAll('.News'));
+
+        News.forEach(async (New) => {
+            var btnoption;
+            var listgroup;
+            await New.addEventListener('click', () => {
+                var id = New._id;
+                console.log('vua click vao :', New.id);
+                btnoption = document.querySelector(`#btnoption-${id}`);
+                listgroup = document.querySelector(`#listgroup-${id}`);
+                btnoption.addEventListener('click', () => {
+                    listgroup.style.display != 'flex' ? listgroup.style.display = 'flex' : listgroup.style.display = 'none';
+                })
+            });
+        })
+
+    </script>
 
 </body>
 

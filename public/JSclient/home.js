@@ -1,17 +1,17 @@
-var btnoption = Array.from(document.querySelectorAll('.btn-option'));
+// var btnoption = Array.from(document.querySelectorAll('.btn-option'));
 
-var listgroup = document.querySelector('.list-group');
+// var listgroup = document.querySelector('.list-group');
 
-btnoption.forEach((btn) => {
-    btn.onclick = () => {
-        if (listgroup.style.display != 'flex') {
-            listgroup.style.display = 'flex';
-        }
-        else {
-            listgroup.style.display = 'none';
-        }
-    }
-})
+// btnoption.forEach((btn) => {
+//     btn.onclick = () => {
+//         if (listgroup.style.display != 'flex') {
+//             listgroup.style.display = 'flex';
+//         }
+//         else {
+//             listgroup.style.display = 'none';
+//         }
+//     }
+// })
 
 
 var inputStatus = document.querySelector('#inputStatus');

@@ -112,7 +112,7 @@
 
 }
 
-#inputComment{
+.inputComment{
     height: 45px;
     width: 82%;
     border: 1px var(--border-color) solid;
@@ -140,7 +140,7 @@
     background-color: var(--purple-color);
     color: var(--white-color);
 }
-#inputComment , .submitComment{
+.inputComment , .submitComment{
     outline: none;
 }
 .fa-heart-status{
@@ -150,7 +150,7 @@
     position: relative;
     z-index: 1;
 }
-#list-group{
+.list-group{
     display: none;
     position: absolute;
     z-index: 1;
@@ -177,7 +177,7 @@
     .News{
         height: 550px;
     }
-    #inputComment{
+    .inputComment{
         padding-top: 3px;
     }
     .user-news{

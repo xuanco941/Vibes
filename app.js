@@ -52,6 +52,8 @@ const newsSchema = require('./model/Schema/newsSchema');
 
 var usersOnline = [];
 io.on('connection', (socket) => {
+  console.log('a people connect');
+
   socket.on('get-value-cookie', (async (valueCookie) => {
     await authSchema.findById(valueCookie).then(user => {
       if (usersOnline.indexOf(user.username) < 0) {
@@ -69,4 +71,8 @@ io.on('connection', (socket) => {
     io.sockets.emit('get-all-user-online', usersOnline);
     console.log('2', usersOnline);
   });
+
+
+
+
 });
