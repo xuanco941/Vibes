@@ -121,20 +121,23 @@
     <script src="../public/JSclient/home.js"></script>
     <script>
         var News = Array.from(document.querySelectorAll('.News'));
-
-        News.forEach(async (New) => {
-            var btnoption;
-            var listgroup;
-            await New.addEventListener('click', () => {
-                var id = New._id;
+        var btnoption;
+        var listgroup;
+        News.forEach((New) => {
+            New.addEventListener('click',(e) => {
                 console.log('vua click vao :', New.id);
-                btnoption = document.querySelector(`#btnoption-${id}`);
-                listgroup = document.querySelector(`#listgroup-${id}`);
-                btnoption.addEventListener('click', () => {
-                    listgroup.style.display != 'flex' ? listgroup.style.display = 'flex' : listgroup.style.display = 'none';
-                })
-            });
-        })
+                btnoption = document.querySelector('#btnoption'+New.id);
+                listgroup = document.querySelector('#listgroup'+New.id);
+                e.preventDefault();
+                e.stopPropagation();
+                return false;
+            })
+        });
+        if(btnoption)
+        {
+            btnoption.addEventListener('click', () => {
+            listgroup.style.display != 'flex' ? listgroup.style.display = 'flex' : listgroup.style.display = 'none';
+        } )}
 
     </script>
 
