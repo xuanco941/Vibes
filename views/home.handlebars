@@ -26,9 +26,10 @@
             <div class="Status" id="{{this._id}}">
                 <div class="headStatus">
                     <a href="/{{this.userpost}}" class="link-user-news">
-                        <div class="user-status">{{this.userpost}}</div>
+                        <div class="user-status" id="userstatus-{{this._id}}">{{this.userpost}}</div>
                     </a>
-                    <button type="button" class="btn btn-option btn-option-Status" id="btnoptionstatus-{{this._id}}">. . .
+                    <button type="button" class="btn btn-option btn-option-Status" id="btnoptionstatus-{{this._id}}">. .
+                        .
                         <ul class="list-group" id="listgroupstatus-{{this._id}}">
                             <li class="list-group-item item-remove" id="itemremovestatus-{{this._id}}">Xóa khỏi bản tin
                             </li>
@@ -45,16 +46,11 @@
                 <div class="matchStatus">
                     <i class="far fa-heart fa-heart-status"></i>
                 </div>
-                <div class="commentHistory-status">
-                    <div class="detailComment">
-                        <div class="userComment"><a href="">xuancomment</a></div> :
-                        <div class="textComment">hello</div>
-                    </div>
-                </div>
+                <div class="commentHistory-status" id="commenthistorystatus-{{this._id}}"></div>
                 <div class="comment-status">
                     <textarea type="text" name="comment" id="inputCommentstatus-{{this._id}}" class="inputComment"
                         placeholder="Thêm bình luận"></textarea>
-                    <button type="submit" class="submitCommentStatus"
+                    <button type="button" class="submitCommentStatus"
                         id="submitCommentstatus-{{this._id}}">Đăng</button>
                 </div>
             </div>
@@ -85,17 +81,18 @@
                     <div class="title">{{this.title}}</div>
                 </div>
                 <div class="commentHistory" id="commentHistory-{{this._id}}">
-                    
+
                     <div class="detailComment">
                         <div class="userComment"><a href="">xuancomment</a></div> :
                         <div class="textComment">hello</div>
                     </div>
                     
+
                 </div>
                 <div class="comment">
                     <textarea type="text" name="comment" id="inputComment-{{this._id}}" class="inputComment"
                         placeholder="Thêm bình luận"></textarea>
-                    <button type="submit" class="submitComment" id="submitComent-{{this._id}}">Đăng</button>
+                    <button type="button" class="submitComment" id="submitComent-{{this._id}}">Đăng</button>
                 </div>
             </div>
             {{/each}}
@@ -134,57 +131,66 @@
     <script>
 
         window.onload = () => {
+            //btn option news
             var btnoptions = Array.from(document.querySelectorAll('.btn-option-News'));
-            var itemremove;
-            var News;
-            var listgroup;
             btnoptions.forEach((btn) => {
                 btn.onclick = () => {
-                    var btnid = btn.id;
-                    var Newsid = btnid.slice(btnid.indexOf('-') + 1);
+
+                    //lay ra id cua cac element trong 1 stt sau khi click button option 
+                    var Newsid = btn.id.slice(btn.id.indexOf('-') + 1);
                     console.log(Newsid);
-                    News = document.getElementById(`${Newsid}`);
-                    listgroup = document.querySelector(`#listgroup-${Newsid}`);
-                    itemremove = document.querySelector(`#itemremove-${Newsid}`);
+                    var News = document.getElementById(`${Newsid}`);
+                    var listgroup = document.querySelector(`#listgroup-${Newsid}`);
+                    var itemremove = document.querySelector(`#itemremove-${Newsid}`);
+
+                    //click settings in stt
                     listgroup.style.display != 'flex' ? listgroup.style.display = 'flex' : listgroup.style.display = 'none';
+
+                    //an khoi ban tin
                     if (itemremove) {
                         itemremove.onclick = (e) => {
                             e.stopPropagation();
                             News.style.display = 'none';
                         }
                     }
-                    
                 }
-
             });
 
 
-
-
-
+            // btn option stt
             var btnoptionstatus = Array.from(document.querySelectorAll('.btn-option-Status'));
-            var itemremovestatus;
-            var Status;
-            var listgroupstatus;
             btnoptionstatus.forEach((btn) => {
+
                 btn.onclick = () => {
-                    var btnidstatus = btn.id;
-                    var Statusid = btnidstatus.slice(btnidstatus.indexOf('-') + 1);
+                    var Statusid = btn.id.slice(btn.id.indexOf('-') + 1);
                     console.log(Statusid);
-                    Status = document.getElementById(`${Statusid}`);
-                    listgroupstatus = document.querySelector(`#listgroupstatus-${Statusid}`);
-                    itemremovestatus = document.querySelector(`#itemremovestatus-${Statusid}`);
+                    var Status = document.getElementById(`${Statusid}`);
+                    var listgroupstatus = document.querySelector(`#listgroupstatus-${Statusid}`);
+                    var itemremovestatus = document.querySelector(`#itemremovestatus-${Statusid}`);
+                    //click settings in stt
                     listgroupstatus.style.display != 'flex' ? listgroupstatus.style.display = 'flex' : listgroupstatus.style.display = 'none';
+                    //an khoi ban tin
                     if (itemremovestatus) {
                         itemremovestatus.onclick = (e) => {
                             e.stopPropagation();
                             Status.style.display = 'none';
                         }
                     }
-                    
+                }
+            });
+
+            //button comment stt
+            var submitCommentstatus = Array.from(document.querySelectorAll('.submitCommentStatus'));
+            submitCommentstatus.forEach((btn) => {
+                btn.onclick = () => {
+                    var Statusid = btn.id.slice(btn.id.indexOf('-') + 1);
+                    var Status = document.getElementById(`${Statusid}`);
+                    var inputCommentstatus = document.querySelector(`#inputCommentstatus-${Statusid}`);
+
+
                 }
 
-            });
+            })
 
 
 

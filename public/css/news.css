@@ -89,13 +89,12 @@
     background-color:wheat;
     min-height: 60px;
     max-height: 700px;
-    overflow-y:auto;
+    overflow-y:hidden;
 }
 .commentHistory-status{
-    display: flex;
     height: 25%;
     background-color:wheat;
-    overflow-y:auto;
+    overflow-y:hidden;
     min-height: 60px;
     max-height: 700px;
 }
@@ -138,7 +137,11 @@
     border: 1px var(--border-color) solid;
     outline: none;
 }
-.submitComment:active{
+.submitComment:hover{
+    background-color: var(--purple-color);
+    color: var(--white-color);
+}
+.submitCommentStatus:hover{
     background-color: var(--purple-color);
     color: var(--white-color);
 }

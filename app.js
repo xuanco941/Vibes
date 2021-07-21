@@ -56,19 +56,24 @@ io.on('connection', (socket) => {
 
   socket.on('get-value-cookie', (async (valueCookie) => {
     await authSchema.findById(valueCookie).then(user => {
+      // get usermain
+      socket.emit('usermain' , user.username );
+      console.log('usermain' , user.username);
+      //push on list peopleonline
       if (usersOnline.indexOf(user.username) < 0) {
         usersOnline.push(user.username);
       }
     });
-    io.sockets.emit('get-all-user-online', usersOnline);
+    io.emit('get-all-user-online', usersOnline);
     console.log('1', usersOnline);
+
 
   }));
   socket.on('signout', async (valueCookie) => {
     await authSchema.findById(valueCookie).then((user) => {
       usersOnline.splice(usersOnline.indexOf(user.username, 1));
     })
-    io.sockets.emit('get-all-user-online', usersOnline);
+    io.emit('get-all-user-online', usersOnline);
     console.log('2', usersOnline);
   });
 
