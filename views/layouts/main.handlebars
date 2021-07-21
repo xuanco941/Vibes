@@ -109,8 +109,7 @@
                         commenthistorystatus.insertAdjacentHTML('beforeend' , 
                         `<div class="detailComment"><div class="userComment"><a href="/${usermain}">${usermain}</a></div>:<div class="textComment">${inputCommentstatus.value}</div></div>`);
                         // send comment to server
-                        socket.emit('Comment', aComment);
-                        socket.emit('Statusid' , Statusid);
+                        socket.emit('Comment', Statusid ,aComment);
                         // server response
                     }
                 })

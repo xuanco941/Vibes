@@ -49,6 +49,7 @@ server.listen(3000, () => {
 
 const authSchema = require('./model/Schema/authSchema');
 const newsSchema = require('./model/Schema/newsSchema');
+const postSchema = require('./model/Schema/postSchema');
 
 var usersOnline = [];
 io.on('connection', (socket) => {
@@ -56,9 +57,11 @@ io.on('connection', (socket) => {
 
   socket.on('get-value-cookie', (async (valueCookie) => {
     await authSchema.findById(valueCookie).then(user => {
+
       // get usermain
-      socket.emit('usermain' , user.username );
-      console.log('usermain' , user.username);
+      socket.emit('usermain', user.username);
+      console.log(user.username);
+
       //push on list peopleonline
       if (usersOnline.indexOf(user.username) < 0) {
         usersOnline.push(user.username);
@@ -78,14 +81,11 @@ io.on('connection', (socket) => {
   });
 
   //Comment Stt
-  var Statusid ;
-  socket.on('Statusid' , (statusid) =>{
-    Statusid = statusid;
+  socket.on('Comment', (Statusid, aComment) => {
+    console.log(aComment, Statusid);
+    postSchema.findById(Statusid).then((post) => {
+      postSchema.create({comment : aComment});
+    } )
   })
-  console.log(Statusid);
-  socket.on('Comment' , (aComment) => {
-
-  } )
-
 
 });
