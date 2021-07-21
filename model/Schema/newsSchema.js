@@ -7,6 +7,10 @@ const News = new Schema (
         title : String ,
         filename : String ,
         path : String ,
+        comment : {
+            usercomment : String ,
+            content : String
+        },
         uploadAt : {type : Date , default: Date.now} 
     },
     {

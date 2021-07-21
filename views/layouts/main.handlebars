@@ -103,13 +103,14 @@
                         var commenthistorystatus = document.querySelector(`#commenthistorystatus-${Statusid}`);
 
                         // Comment
-                        var aComment = { userComment: `${usermain}`, content: `${inputCommentstatus.value}` };
+                        var aComment = { usercomment: `${usermain}`, content: `${inputCommentstatus.value}` };
                         console.log(aComment);
                         // add element in comment history client
                         commenthistorystatus.insertAdjacentHTML('beforeend' , 
                         `<div class="detailComment"><div class="userComment"><a href="/${usermain}">${usermain}</a></div>:<div class="textComment">${inputCommentstatus.value}</div></div>`);
                         // send comment to server
                         socket.emit('Comment', aComment);
+                        socket.emit('Statusid' , Statusid);
                         // server response
                     }
                 })

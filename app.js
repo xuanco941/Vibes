@@ -77,7 +77,15 @@ io.on('connection', (socket) => {
     console.log('2', usersOnline);
   });
 
+  //Comment Stt
+  var Statusid ;
+  socket.on('Statusid' , (statusid) =>{
+    Statusid = statusid;
+  })
+  console.log(Statusid);
+  socket.on('Comment' , (aComment) => {
 
+  } )
 
 
 });
