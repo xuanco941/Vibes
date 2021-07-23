@@ -4,12 +4,9 @@ const Schema = mongoose.Schema;
 const Post = new Schema({
   userpost: String,
   content: String,
-  comment: {
-  usercomment: String,
-  content: String
-  },
-  uploadAt: { type: Date, default: Date.now }
+  comment: {type : [] , default : {usercomment: '' , text: ''}}
 }, {
+  timestamps: true,
   collection: 'Post'
 });
 

@@ -1,7 +1,7 @@
 const authSchema = require('../model/Schema/authSchema') ;
 
 class authController {
-    getsignin (req , res) {
+    getsignin (req , res , next) {
         authSchema.findById(req.cookies.userCookie)
         .then( usermain => {
             if(usermain){
@@ -10,18 +10,16 @@ class authController {
             else
             res.render('auth' , {layout: false});
         })
-        .catch((err)=>{
-            res.send('ERROR!!!');
-        })
+        .catch(next)
     }
     getsignup (req , res) {
         res.render('auth_signup' , {layout: false});
       
     }
     postsignup (req , res) {
-        let username = req.body.username;
-        let password = req.body.password;
-        let _name = req.body._name;
+        let username = req.body.username.trim();
+        let password = req.body.password.trim();
+        let _name = req.body._name.trim();
        authSchema.findOne({username : username})
        .then(data => {
            if (data) 
@@ -38,8 +36,8 @@ class authController {
        })
       }
     postsignin (req , res ){
-        let username = req.body.username;
-        let password = req.body.password;
+        let username = req.body.username.trim();
+        let password = req.body.password.trim();
         authSchema.findOne({username : username , password: password })
         .then(data => {
             if(data)

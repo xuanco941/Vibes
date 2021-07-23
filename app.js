@@ -60,7 +60,6 @@ io.on('connection', (socket) => {
 
       // get usermain
       socket.emit('usermain', user.username);
-      console.log(user.username);
 
       //push on list peopleonline
       if (usersOnline.indexOf(user.username) < 0) {
@@ -68,7 +67,6 @@ io.on('connection', (socket) => {
       }
     });
     io.emit('get-all-user-online', usersOnline);
-    console.log('1', usersOnline);
 
 
   }));
@@ -81,11 +79,14 @@ io.on('connection', (socket) => {
   });
 
   //Comment Stt
-  socket.on('Comment', (Statusid, aComment) => {
-    console.log(aComment, Statusid);
-    postSchema.findById(Statusid).then((post) => {
-      postSchema.create({comment : aComment});
-    } )
+  socket.on('Comment', (Statusid, arrComment) => {
+    console.log(Statusid, arrComment);
+    arrComment.forEach((aComment)=>{
+      postSchema.findByIdAndUpdate({Statusid},
+        { $set: {comment: {usercomment: aComment.usercomment , text: aComment.text}} },
+        { new: true, upsert: true }
+      );
+    })
   })
 
 });

@@ -8,12 +8,12 @@ const News = new Schema (
         filename : String ,
         path : String ,
         comment : {
-            usercomment : String ,
-            content : String
-        },
-        uploadAt : {type : Date , default: Date.now} 
+            type: Map ,
+            of : String
+        }
     },
     {
+        timestamps: true,
         collection : 'News'
     }
 
