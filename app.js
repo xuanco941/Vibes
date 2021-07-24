@@ -52,8 +52,9 @@ const newsSchema = require('./model/Schema/newsSchema');
 const postSchema = require('./model/Schema/postSchema');
 
 var usersOnline = [];
-io.on('connection', (socket) => {
+io.on('connect', (socket) => {
   console.log('a people connect');
+
 
   socket.on('get-value-cookie', (async (valueCookie) => {
     await authSchema.findById(valueCookie).then(user => {
@@ -68,22 +69,24 @@ io.on('connection', (socket) => {
     });
     io.emit('get-all-user-online', usersOnline);
 
-
   }));
+
+  //sign out
+
   socket.on('signout', async (valueCookie) => {
     await authSchema.findById(valueCookie).then((user) => {
-      usersOnline.splice(usersOnline.indexOf(user.username, 1));
+      usersOnline.splice(usersOnline.indexOf(user.username), 1);
     })
-    io.emit('get-all-user-online', usersOnline);
-    console.log('2', usersOnline);
+    socket.broadcast.emit('get-all-user-online', usersOnline);
   });
+
 
   //Comment Stt
   socket.on('Comment', (Statusid, arrComment) => {
     console.log(Statusid, arrComment);
-    arrComment.forEach((aComment)=>{
-      postSchema.findByIdAndUpdate({Statusid},
-        { $set: {comment: {usercomment: aComment.usercomment , text: aComment.text}} },
+    arrComment.forEach((aComment) => {
+      postSchema.findByIdAndUpdate({ Statusid },
+        { $set: { comment: { usercomment: aComment.usercomment, text: aComment.text } } },
         { new: true, upsert: true }
       );
     })

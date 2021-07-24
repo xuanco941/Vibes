@@ -89,6 +89,7 @@ img{ max-width:100%;}
   float: left;
   padding: 30px 15px 0 25px;
   width: 60%;
+  height: 100%;
 }
 
  .sent_msg p {
@@ -128,6 +129,7 @@ img{ max-width:100%;}
   width: 33px;
 }
 .msg_history {
+  height: 75vh;
   max-height: 75vh;
   overflow-y: scroll;
 }
@@ -164,4 +166,7 @@ img{ max-width:100%;}
     .messaging{
       margin-top: 7.5vh;
     }
+}
+@media (min-width: 768px) {
+  
 }
