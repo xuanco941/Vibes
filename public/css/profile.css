@@ -1,0 +1,44 @@
+.profilepage{
+    margin-top: 7.5vh;
+    padding: 0;
+}
+.spaceProfile{
+    height: 85vh;
+    width: 100%;
+}
+.spaceAvatar{
+    height: 50%;
+    background-color: brown;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.divavatar{
+    width: 320px;
+    height: 320px;
+    background-color: cornflowerblue;
+    border: 1px solid var(--border-color);
+    border-radius: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+}
+.imgavt{
+    width: 320px;
+    height: 320px;
+    border-radius: 100%;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit:fill;
+}
+.spaceInfo{
+    height: 50%;
+    display: flex;
+    justify-content: center;
+}
+.iteminfo{
+    font-size: 24px;
+    margin-top: 15px;
+}
