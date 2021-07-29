@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const Post = new Schema({
   userpost: String,
   content: String,
-  comment: {type : [] , default : {usercomment: '' , text: ''}}
+  comment: []
 }, {
   timestamps: true,
   collection: 'Post'

@@ -207,7 +207,6 @@
             var submitCommentstatus = Array.from(document.querySelectorAll('.submitCommentStatus'));
             socket.on('usermain', (usermain) => {
                 submitCommentstatus.forEach((btn) => {
-                    var arrComment = [];
                     btn.onclick = () => {
                         var Statusid = btn.id.slice(btn.id.indexOf('-') + 1);
                         var Status = document.getElementById(`${Statusid}`);
@@ -215,18 +214,24 @@
                         var commenthistorystatus = document.querySelector(`#commenthistorystatus-${Statusid}`);
 
                         // Comment
-                        if (inputCommentstatus.value.trim()) {
-                            var aComment = { usercomment: `${usermain}`, text: `${inputCommentstatus.value.trim()}` };
-                            arrComment.push(aComment);
-                            console.log(arrComment);
-                            // add element in comment history client
-                            commenthistorystatus.insertAdjacentHTML('beforeend',
-                                `<div class="detailComment"><div class="userComment"><a href="/${usermain}">${usermain}</a></div>:<div class="textComment">${inputCommentstatus.value.trim()}</div></div>`);
-                            inputCommentstatus.value = '';
+                        if (inputCommentstatus.value) {
+                            var aComment = { usercomment: `${usermain}`, text: `${inputCommentstatus.value.trim()}`, commentAt: new Date(Date.now()) };
+                            console.log(aComment);
+
                             // send comment to server
-                            socket.emit('Comment', Statusid, arrComment);
+                            socket.emit('Comment', Statusid, aComment);
+                            // server response
+                            socket.on('refreshComment', (comment) => {
+                                // add element in comment history client
+                                comment.forEach((cmt) => {
+                                    commenthistorystatus.insertAdjacentHTML('beforeend',
+                                        `<div class="detailComment"><div class="userComment"><a href="/${cmt.usercomment}">${cmt.usercomment}</a></div>:<div class="textComment">${cmt.text}</div></div>`);
+                                    inputCommentstatus.value = '';
+                                })
+                            })
+
                         }
-                        // server response
+
                     }
                 })
             })

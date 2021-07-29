@@ -82,13 +82,13 @@ io.on('connect', (socket) => {
 
 
   //Comment Stt
-  socket.on('Comment', (Statusid, arrComment) => {
-    console.log(Statusid, arrComment);
-    arrComment.forEach((aComment) => {
-      postSchema.findByIdAndUpdate({ Statusid },
-        { $set: { comment: { usercomment: aComment.usercomment, text: aComment.text } } },
-        { new: true, upsert: true }
-      );
+  socket.on('Comment', (Statusid, aComment) => {
+    console.log(Statusid, aComment);
+      postSchema.findOne({ _id: Statusid }).then( async (post) => {
+      arrComment = post.comment;
+      arrComment.push(aComment);
+      await post.save();
+      io.emit('refreshComment' , post.comment);
     })
   })
 

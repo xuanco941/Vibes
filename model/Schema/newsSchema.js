@@ -7,10 +7,7 @@ const News = new Schema (
         title : String ,
         filename : String ,
         path : String ,
-        comment : {
-            type: Map ,
-            of : String
-        }
+        comment : []
     },
     {
         timestamps: true,

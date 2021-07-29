@@ -88,15 +88,15 @@
     height: 15%;
     background-color:wheat;
     min-height: 60px;
-    max-height: 700px;
-    overflow-y:hidden;
+    max-height: 1000px;
+    overflow-y:auto;
 }
 .commentHistory-status{
     height: 25%;
     background-color:wheat;
-    overflow-y:hidden;
+    overflow-y:auto;
     min-height: 60px;
-    max-height: 700px;
+    max-height: 1000px;
 }
 .comment{
     height: 6%;
