@@ -223,3 +223,8 @@
     word-break: break-all;
     margin-left: 5px;
 }
+.typing{
+    font-size: 12px;
+    opacity: 0.6;
+    display: none;
+}

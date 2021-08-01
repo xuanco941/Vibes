@@ -83,12 +83,11 @@ io.on('connect', (socket) => {
 
   //Comment Stt
   socket.on('Comment', (Statusid, aComment) => {
-    console.log(Statusid, aComment);
       postSchema.findOne({ _id: Statusid }).then( async (post) => {
-      arrComment = post.comment;
-      arrComment.push(aComment);
+      post.comment.push(aComment);
       await post.save();
-      io.emit('refreshComment' , post.comment);
+      console.log(aComment);
+      io.emit('aComment' , Statusid, aComment);
     })
   })
 

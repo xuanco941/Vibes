@@ -46,7 +46,16 @@
                 <div class="matchStatus">
                     <i class="far fa-heart fa-heart-status"></i>
                 </div>
-                <div class="commentHistory-status" id="commenthistorystatus-{{this._id}}"></div>
+                <div class="commentHistory-status" id="commenthistorystatus-{{this._id}}">
+
+                    {{#each this.comment}}
+                    <div class="detailComment">
+                        <div class="userComment"><a href="/{{this.usercomment}}">{{this.usercomment}}</a></div>:<div
+                            class="textComment">{{this.text}}</div>
+                    </div>
+                    {{/each}}
+                    <div class="typing">Có người đang nhập bình luận . . .</div>
+                </div>
                 <div class="comment-status">
                     <textarea type="text" name="comment" id="inputCommentstatus-{{this._id}}" class="inputComment"
                         placeholder="Thêm bình luận"></textarea>
@@ -86,8 +95,7 @@
                         <div class="userComment"><a href="">xuancomment</a></div> :
                         <div class="textComment">hello</div>
                     </div>
-
-
+                    <div class="typing">Có người đang nhập bình luận . . .</div>
                 </div>
                 <div class="comment">
                     <textarea type="text" name="comment" id="inputComment-{{this._id}}" class="inputComment"
@@ -203,6 +211,17 @@
                 }
             });
 
+            //typing
+            var inputtyping = Array.from(document.querySelectorAll('.inputComment'));
+            inputtyping.forEach((elm) => {
+                elm.onchange = () => {
+                    var Statusid = elm.id.slice(elm.id.indexOf('-') + 1);
+                    var commenthistorystatus = document.querySelector(`#commenthistorystatus-${Statusid}`);
+                    commenthistorystatus.insertAdjacentHTML('beforeend' , '<div class="typing">Có người đang nhập bình luận . . .</div>');
+                }
+            })
+
+
             //button comment stt
             var submitCommentstatus = Array.from(document.querySelectorAll('.submitCommentStatus'));
             socket.on('usermain', (usermain) => {
@@ -211,29 +230,25 @@
                         var Statusid = btn.id.slice(btn.id.indexOf('-') + 1);
                         var Status = document.getElementById(`${Statusid}`);
                         var inputCommentstatus = document.querySelector(`#inputCommentstatus-${Statusid}`);
-                        var commenthistorystatus = document.querySelector(`#commenthistorystatus-${Statusid}`);
 
                         // Comment
                         if (inputCommentstatus.value) {
                             var aComment = { usercomment: `${usermain}`, text: `${inputCommentstatus.value.trim()}`, commentAt: new Date(Date.now()) };
                             console.log(aComment);
-
                             // send comment to server
                             socket.emit('Comment', Statusid, aComment);
-                            // server response
-                            socket.on('refreshComment', (comment) => {
-                                // add element in comment history client
-                                comment.forEach((cmt) => {
-                                    commenthistorystatus.insertAdjacentHTML('beforeend',
-                                        `<div class="detailComment"><div class="userComment"><a href="/${cmt.usercomment}">${cmt.usercomment}</a></div>:<div class="textComment">${cmt.text}</div></div>`);
-                                    inputCommentstatus.value = '';
-                                })
-                            })
-
+                            inputCommentstatus.value = '';
                         }
-
                     }
                 })
+            })
+            // server response
+            socket.on('aComment', (Statusid, aComment) => {
+                // add element in comment history client
+                console.log(aComment);
+                var commenthistorystatus = document.querySelector(`#commenthistorystatus-${Statusid}`);
+                commenthistorystatus.insertAdjacentHTML('beforeend',
+                    `<div class="detailComment"><div class="userComment"><a href="/${aComment.usercomment}">${aComment.usercomment}</a></div>:<div class="textComment">${aComment.text}</div></div>`);
             })
 
         }
