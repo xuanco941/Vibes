@@ -12,21 +12,16 @@ inputStatus.onkeyup = () => {
     }
 
 }
-
 PostStatus.onsubmit = (e) => {
     if (!inputStatus.value) {
         return false;
     }
 }
 
-var socket = io('http://localhost:3000/');
-
 window.onload = () => {
 
     //part 1
     var listOnline = document.querySelector('#listOnline');
-
-    var userCookie = document.cookie;
     socket.emit('get-value-cookie', userCookie.slice(userCookie.indexOf('=') + 1));
 
     socket.on('get-all-user-online', (usersOnline) => {
@@ -35,15 +30,6 @@ window.onload = () => {
             listOnline.insertAdjacentHTML('afterbegin', `<div class="itemOnline"><div class="tickOnline"></div> &nbsp<a href="/${userOnline}">${userOnline}</a></div>`);
         })
     });
-    var signout = Array.from(document.querySelectorAll('.signout'));
-    signout.forEach(function (button) {
-        button.addEventListener('click', function () {
-            socket.emit('signout', userCookie.slice(userCookie.indexOf('=') + 1));
-            document.cookie = "userCookie=; expires=Thu, 01 Jan 1970 00:00:00 UTC";
-            window.location = '/';
-
-        })
-    })
 
     //part 2
     //btn option news

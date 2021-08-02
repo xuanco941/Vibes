@@ -19,5 +19,18 @@ class profileController {
             }
         }).catch(next);
     }
+
+    postProfile(req , res , next){
+        authSchema.findById(req.cookies.userCookie).then((usermain)=>{
+            usermain._name = req.body.FullName;
+            usermain.username = req.body.userName;
+            usermain.birthday = req.body.birthday;
+            usermain.city = req.body.city;
+            usermain.link = req.body.link;
+            usermain.save();
+            res.redirect(`/${usermain.username}`);
+        })
+        .catch(next);
+    }
 }
 module.exports = new profileController;

@@ -1,146 +1,122 @@
-<!DOCTYPE html>
-<html lang="en">
+<link rel="stylesheet" href="../public/css/home.css">
+<link rel="stylesheet" href="../public/css/news.css">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vibes</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="../public/font/fontawesome-free-5.15.2/fontawesome-free-5.15.2-web/css/all.min.css">
-    <link rel="stylesheet" href="../public/css/main.css">
-    <link rel="stylesheet" href="../public/css/home.css">
-    <link rel="stylesheet" href="../public/css/news.css">
-</head>
+<div class="row spaceApp">
+    <div class="col-md-6 col-xxl-5 spaceNews">
 
-<body>
-    <div class="row spaceApp">
-        <div class="col-md-6 col-xxl-5 spaceNews">
-
-            <form action="/home" method="post" id="PostStatus">
-                <textarea name="status" id="inputStatus" placeholder="Đăng trạng thái"></textarea>
-                <button type="submit" id="submitStatus" disabled='true'>Post</button>
-            </form>
-            {{#each Status}}
-            <div class="Status" id="{{this._id}}">
-                <div class="headStatus">
-                    <a href="/{{this.userpost}}" class="link-user-news">
-                        <div class="user-status" id="userstatus-{{this._id}}">{{this.userpost}}</div>
-                    </a>
-                    <button type="button" class="btn btn-option btn-option-Status" id="btnoptionstatus-{{this._id}}">. .
-                        .
-                        <ul class="list-group" id="listgroupstatus-{{this._id}}">
-                            <li class="list-group-item item-remove" id="itemremovestatus-{{this._id}}">Xóa khỏi bản tin
-                            </li>
-                            <li class="list-group-item item-close" id="itemclosestatus-{{this._id}}">Đóng</li>
-                        </ul>
-                    </button>
-                </div>
-                <div class="textcontent">
-                    <div class="contentStatus">
-                        {{this.content}}
-                    </div>
-                </div>
-
-                <div class="matchStatus">
-                    <i class="far fa-heart fa-heart-status"></i>
-                </div>
-                <div class="commentHistory-status" id="commenthistorystatus-{{this._id}}">
-
-                    {{#each this.comment}}
-                    <div class="detailComment">
-                        <div class="userComment"><a href="/{{this.usercomment}}">{{this.usercomment}}</a></div>:<div
-                            class="textComment">{{this.text}}</div>
-                    </div>
-                    {{/each}}
-
-                </div>
-                <div class="typing" id="typing-{{this._id}}">Có người đang nhập bình luận . . .</div>
-                <div class="comment-status">
-                    <textarea type="text" name="comment" id="inputCommentstatus-{{this._id}}" class="inputComment"
-                        placeholder="Thêm bình luận"></textarea>
-                    <button type="button" class="submitCommentStatus"
-                        id="submitCommentstatus-{{this._id}}">Đăng</button>
+        <form action="/home" method="post" id="PostStatus">
+            <textarea name="status" id="inputStatus" placeholder="Đăng trạng thái"></textarea>
+            <button type="submit" id="submitStatus" disabled='true'>Post</button>
+        </form>
+        {{#each Status}}
+        <div class="Status" id="{{this._id}}">
+            <div class="headStatus">
+                <a href="/{{this.userpost}}" class="link-user-news">
+                    <div class="user-status" id="userstatus-{{this._id}}">{{this.userpost}}</div>
+                </a>
+                <button type="button" class="btn btn-option btn-option-Status" id="btnoptionstatus-{{this._id}}">. .
+                    .
+                    <ul class="list-group" id="listgroupstatus-{{this._id}}">
+                        <li class="list-group-item item-remove" id="itemremovestatus-{{this._id}}">Xóa khỏi bản tin
+                        </li>
+                        <li class="list-group-item item-close" id="itemclosestatus-{{this._id}}">Đóng</li>
+                    </ul>
+                </button>
+            </div>
+            <div class="textcontent">
+                <div class="contentStatus">
+                    {{this.content}}
                 </div>
             </div>
-            {{/each}}
 
-            {{#each News}}
-            <div class="News" id="{{this._id}}">
-                <div class="headNews">
-                    <a href="/{{this.userpost}}" class="link-user-news">
-                        <div class="user-news">{{this.userpost}}</div>
-                    </a>
-                    <button type="button" class="btn btn-option btn-option-News" id="btnoption-{{this._id}}">. . .
-                        <ul class="list-group list-group-News" id="listgroup-{{this._id}}">
-                            <li class="list-group-item item-remove" id="itemremove-{{this._id}}">Xóa khỏi bản tin</li>
-                            <li class="list-group-item item-close" id="itemclose-{{this._id}}">Đóng</li>
-                        </ul>
-                    </button>
-                </div>
-                <div class="contentNews">
-                    <a href="../{{this.path}}">
-                        <img src="../{{this.path}}" alt="" srcset="" class="imgNews">
-                    </a>
-                </div>
-                <div class="titleNews matchNews">
-                    <div class="match">
-                        <i class="far fa-heart fa-heart-2"></i>
-                    </div>
-                    <div class="title">{{this.title}}</div>
-                </div>
-                <div class="commentHistory" id="commentHistory-{{this._id}}">
-                    {{#each this.comment}}
-                    <div class="detailComment">
-                        <div class="userComment"><a href="/{{this.usercomment}}">{{this.usercomment}}</a></div>:<div
-                            class="textComment">{{this.text}}</div>
-                    </div>
-                    {{/each}}
-                </div>
-                <div class="typing" id="typing-{{this._id}}">Có người đang nhập bình luận . . .</div>
-                <div class="comment">
-                    <textarea type="text" name="comment" id="inputComment-{{this._id}}" class="inputComment"
-                        placeholder="Thêm bình luận"></textarea>
-                    <button type="button" class="submitComment" id="submitComent-{{this._id}}">Đăng</button>
-                </div>
+            <div class="matchStatus">
+                <i class="far fa-heart fa-heart-status"></i>
             </div>
-            {{/each}}
+            <div class="commentHistory-status" id="commenthistorystatus-{{this._id}}">
 
+                {{#each this.comment}}
+                <div class="detailComment">
+                    <div class="userComment"><a href="/{{this.usercomment}}">{{this.usercomment}}</a></div>:<div
+                        class="textComment">{{this.text}}</div>
+                </div>
+                {{/each}}
 
+            </div>
+            <div class="typing" id="typing-{{this._id}}">Có người đang nhập bình luận . . .</div>
+            <div class="comment-status">
+                <textarea type="text" name="comment" id="inputCommentstatus-{{this._id}}" class="inputComment"
+                    placeholder="Thêm bình luận"></textarea>
+                <button type="button" class="submitCommentStatus" id="submitCommentstatus-{{this._id}}">Đăng</button>
+            </div>
         </div>
-    </div>
-    <div class="spaceBonus">
-        <h5 class="headerBonus">Bạn có biết những người này không?</h5>
-        <div class="listOnline" id="listOnline"></div>
-        <div class="footerMain"> <a href="/home">Vibes</a></div>
-        <footer class="row spaceFooter g-0">
-            <div class="space1">
-                <a href="">Giới thiệu</a>
-                <a href="">Blog</a>
-                <a href="">Việc làm</a>
-                <a href="">Trợ giúp</a>
-                <a href="">API</a>
-                <a href="">Quyền riêng tư</a>
-                <a href="">Điều khoản</a>
-                <a href="">Tài khoản liên quan nhất</a>
-                <a href="">Hash tag</a>
-                <a href="">Vị trí</a>
+        {{/each}}
+
+        {{#each News}}
+        <div class="News" id="{{this._id}}">
+            <div class="headNews">
+                <a href="/{{this.userpost}}" class="link-user-news">
+                    <div class="user-news">{{this.userpost}}</div>
+                </a>
+                <button type="button" class="btn btn-option btn-option-News" id="btnoption-{{this._id}}">. . .
+                    <ul class="list-group list-group-News" id="listgroup-{{this._id}}">
+                        <li class="list-group-item item-remove" id="itemremove-{{this._id}}">Xóa khỏi bản tin</li>
+                        <li class="list-group-item item-close" id="itemclose-{{this._id}}">Đóng</li>
+                    </ul>
+                </button>
             </div>
-            <div class="space2">
-                <div class="language">Tiếng Việt </div>&emsp;&copy; 2021 Vibes from Xuan
+            <div class="contentNews">
+                <a href="../{{this.path}}">
+                    <img src="../{{this.path}}" alt="" srcset="" class="imgNews">
+                </a>
             </div>
-        </footer>
+            <div class="titleNews matchNews">
+                <div class="match">
+                    <i class="far fa-heart fa-heart-2"></i>
+                </div>
+                <div class="title">{{this.title}}</div>
+            </div>
+            <div class="commentHistory" id="commentHistory-{{this._id}}">
+                {{#each this.comment}}
+                <div class="detailComment">
+                    <div class="userComment"><a href="/{{this.usercomment}}">{{this.usercomment}}</a></div>:<div
+                        class="textComment">{{this.text}}</div>
+                </div>
+                {{/each}}
+            </div>
+            <div class="typing" id="typing-{{this._id}}">Có người đang nhập bình luận . . .</div>
+            <div class="comment">
+                <textarea type="text" name="comment" id="inputComment-{{this._id}}" class="inputComment"
+                    placeholder="Thêm bình luận"></textarea>
+                <button type="button" class="submitComment" id="submitComent-{{this._id}}">Đăng</button>
+            </div>
+        </div>
+        {{/each}}
+
+
     </div>
+</div>
+<div class="spaceBonus">
+    <h5 class="headerBonus">Bạn có biết những người này không?</h5>
+    <div class="listOnline" id="listOnline"></div>
+    <div class="footerMain"> <a href="/home">Vibes</a></div>
+    <footer class="row spaceFooter g-0">
+        <div class="space1">
+            <a href="">Giới thiệu</a>
+            <a href="">Blog</a>
+            <a href="">Việc làm</a>
+            <a href="">Trợ giúp</a>
+            <a href="">API</a>
+            <a href="">Quyền riêng tư</a>
+            <a href="">Điều khoản</a>
+            <a href="">Tài khoản liên quan nhất</a>
+            <a href="">Hash tag</a>
+            <a href="">Vị trí</a>
+        </div>
+        <div class="space2">
+            <div class="language">Tiếng Việt </div>&emsp;&copy; 2021 Vibes from Xuan
+        </div>
+    </footer>
+</div>
 
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <script src="/socket.io/socket.io.js"></script>
-    <script src="../public/JSclient/home.js"></script>
-
-
-</body>
-
-</html>
+<script src="../public/JSclient/home.js"></script>

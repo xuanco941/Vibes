@@ -1,50 +1,46 @@
-<!DOCTYPE html>
-<html lang="en">
+<link rel="stylesheet" href="../public/css/profile.css">
 
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vibes</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <link rel="stylesheet" href="../public/font/fontawesome-free-5.15.2/fontawesome-free-5.15.2-web/css/all.min.css">
-    <link rel="stylesheet" href="../public/css/main.css">
-    <link rel="stylesheet" href="../public/css/profile.css">
-</head>
-
-<body>
-    <div class="container profilepage">
-        <div class="row spaceProfile g-0">
-           <div class="spaceAvatar">
-               <div class="divavatar">
-                   <img src="../public/img/ImageSignIn/ggplay.png" alt="avatar" srcset="" class="imgavt">
-               </div>
-           </div>
-           <div class="spaceInfo">
-               <div class="alignspace">
-                   <ul class="info">
-                   <li class="iteminfo">Tên đầy đủ : {{user._name}}</li>
-                   <li class="iteminfo">Username : {{user.username}} </li>
-                   <li class="iteminfo">Ngày sinh : </li>
-                   <li class="iteminfo">Quê quán : </li>
-                   <li class="iteminfo">Link : </li>
-               </ul>
-               </div>
-           </div>
+<div class="container profilepage">
+    <div class="row spaceProfile g-0">
+        <div class="spaceAvatar">
+            <div class="divavatar">
+                <img src="../public/img/ImageSignIn/ggplay.png" alt="avatar" srcset="" class="imgavt">
+            </div>
         </div>
-
+        <div class="spaceInfo">
+            <div class="alignspace">
+                <form action="" method="post" class="formprofile">
+                    <ul class="info">
+                        <li class="iteminfo">Tên đầy đủ : <input class="inputprofile" type="text" name="FullName"
+                                id="FullName" value="{{user._name}}"></li>
+                        <li class="iteminfo">Tên người dùng : <input class="inputprofile" type="text" name="userName"
+                                id="userName" value="{{user.username}}"></li>
+                        <li class="iteminfo">Ngày sinh : <input class="inputprofile" type="date" name="birthday"
+                                id="birthday" value="{{user.birthday}}"> </li>
+                        <li class="iteminfo">Quê quán : <input class="inputprofile" type="text" name="city" id="city"
+                                value="{{user.city}}"> </li>
+                        <li class="iteminfo">Link : <input class="inputprofile" type="text" name="link" id="link"
+                                value="{{user.link}}"></li>
+                    </ul>
+                    <button type="submit" class="submitprofile" id="submitprofile" name="{{usermain}}">Thay đổi</button>
+                </form>
+            </div>
+        </div>
     </div>
 
+</div>
 
+<script>
+    window.onload = () => {
+        var userName = document.querySelector('#userName');
+        var submitprofile = document.querySelector('#submitprofile');
+        var inputprofile = Array.from(document.getElementsByClassName('inputprofile'));
 
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
-        crossorigin="anonymous"></script>
-    <script src="/socket.io/socket.io.js"></script>
-
-
-</body>
-
-</html>
+        if (userName.value != submitprofile.name) {
+            submitprofile.style.display = 'none';
+            inputprofile.forEach((elm) => {
+                elm.setAttribute('disabled', 'true');
+            })
+        }
+    }
+</script>
