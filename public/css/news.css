@@ -110,7 +110,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 .inputComment{
@@ -224,7 +223,9 @@
     margin-left: 5px;
 }
 .typing{
+    height: 25px;
     font-size: 12px;
-    opacity: 0.6;
+    opacity: 0.5;
     display: none;
+    
 }

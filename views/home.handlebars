@@ -54,8 +54,9 @@
                             class="textComment">{{this.text}}</div>
                     </div>
                     {{/each}}
-                    <div class="typing">Có người đang nhập bình luận . . .</div>
+                    
                 </div>
+                <div class="typing" id="typing-{{this._id}}">Có người đang nhập bình luận . . .</div>
                 <div class="comment-status">
                     <textarea type="text" name="comment" id="inputCommentstatus-{{this._id}}" class="inputComment"
                         placeholder="Thêm bình luận"></textarea>
@@ -90,13 +91,14 @@
                     <div class="title">{{this.title}}</div>
                 </div>
                 <div class="commentHistory" id="commentHistory-{{this._id}}">
-
+                    {{#each this.comment}}
                     <div class="detailComment">
-                        <div class="userComment"><a href="">xuancomment</a></div> :
-                        <div class="textComment">hello</div>
+                        <div class="userComment"><a href="/{{this.usercomment}}">{{this.usercomment}}</a></div>:<div
+                            class="textComment">{{this.text}}</div>
                     </div>
-                    <div class="typing">Có người đang nhập bình luận . . .</div>
+                    {{/each}}
                 </div>
+                <div class="typing" id="typing-{{this._id}}">Có người đang nhập bình luận . . .</div>
                 <div class="comment">
                     <textarea type="text" name="comment" id="inputComment-{{this._id}}" class="inputComment"
                         placeholder="Thêm bình luận"></textarea>
@@ -211,14 +213,28 @@
                 }
             });
 
-            //typing
+            //typing comment stt and pic
             var inputtyping = Array.from(document.querySelectorAll('.inputComment'));
             inputtyping.forEach((elm) => {
-                elm.onchange = () => {
+
+                elm.onfocus = () => {
                     var Statusid = elm.id.slice(elm.id.indexOf('-') + 1);
-                    var commenthistorystatus = document.querySelector(`#commenthistorystatus-${Statusid}`);
-                    commenthistorystatus.insertAdjacentHTML('beforeend' , '<div class="typing">Có người đang nhập bình luận . . .</div>');
+                    socket.emit('type', Statusid);
                 }
+
+                elm.onblur = () => {
+                    var Statusid = elm.id.slice(elm.id.indexOf('-') + 1);
+                    socket.emit('stop-type', Statusid)
+                }
+            })
+            socket.on('type-focus', (Statusid) => {
+
+                var typing = document.querySelector(`#typing-${Statusid}`);
+                typing.style.display = 'block';
+            })
+            socket.on('type-blur', (Statusid) => {
+                var typing = document.querySelector(`#typing-${Statusid}`);
+                typing.style.display = 'none';
             })
 
 
@@ -250,6 +266,34 @@
                 commenthistorystatus.insertAdjacentHTML('beforeend',
                     `<div class="detailComment"><div class="userComment"><a href="/${aComment.usercomment}">${aComment.usercomment}</a></div>:<div class="textComment">${aComment.text}</div></div>`);
             })
+
+            //button comment news
+            var submitComment = Array.from(document.querySelectorAll('.submitComment'));
+            socket.on('usermain', (usermain) => {
+                submitComment.forEach((btn) => {
+                    btn.onclick = () => {
+                        var Newsid = btn.id.slice(btn.id.indexOf('-') + 1);
+                        var News = document.getElementById(`${Newsid}`);
+                        var inputComment = document.querySelector(`#inputComment-${Newsid}`);
+
+                        // Comment
+                        if (inputComment.value) {
+                            var aComment = { usercomment: `${usermain}`, text: `${inputComment.value.trim()}`, commentAt: new Date(Date.now()) };
+                            // send comment to server
+                            socket.emit('CommentNews', Newsid, aComment);
+                            inputComment.value = '';
+                        }
+                    }
+                })
+            })
+            // server response
+            socket.on('aCommentNews', (Newsid, aComment) => {
+                // add element in comment history client
+                var commentHistory = document.querySelector(`#commentHistory-${Newsid}`);
+                commentHistory.insertAdjacentHTML('beforeend',
+                    `<div class="detailComment"><div class="userComment"><a href="/${aComment.usercomment}">${aComment.usercomment}</a></div>:<div class="textComment">${aComment.text}</div></div>`);
+            })
+
 
         }
     </script>

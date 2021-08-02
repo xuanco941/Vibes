@@ -80,15 +80,31 @@ io.on('connect', (socket) => {
     socket.broadcast.emit('get-all-user-online', usersOnline);
   });
 
+  // typing 
+  socket.on('type' , (Statusid) => {
+    socket.broadcast.emit('type-focus' , Statusid)
+  });
+  socket.on('stop-type' , (Statusid) => {
+    socket.broadcast.emit('type-blur' , Statusid)
+  });
+
 
   //Comment Stt
   socket.on('Comment', (Statusid, aComment) => {
       postSchema.findOne({ _id: Statusid }).then( async (post) => {
       post.comment.push(aComment);
       await post.save();
-      console.log(aComment);
       io.emit('aComment' , Statusid, aComment);
     })
+  });
+
+  //Comment News
+  socket.on('CommentNews', (Newsid, aComment) => {
+    newsSchema.findOne({ _id: Newsid }).then( async (news) => {
+    news.comment.push(aComment);
+    await news.save();
+    io.emit('aCommentNews' , Newsid, aComment);
   })
+});
 
 });
