@@ -11,7 +11,8 @@ class profileController {
         authSchema.findOne({username: req.params.username})
         .then(user => {
             if (user){
-                res.render('profile' , {username : user.username , usermain: usermain } );
+
+                res.render('profile' , {user : user.toObject(), usermain: usermain } );
             }
             else {
                 res.send('Khong co user nay');

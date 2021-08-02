@@ -42,7 +42,7 @@ class authController {
         .then(data => {
             if(data)
             {
-            res.cookie('userCookie' , data._id.toString() , {expires: new Date(Date.now() + 200000000) , httpOnly : false});
+            res.cookie('userCookie' , data._id.toString() , {expires: new Date(Date.now() + 8000000) , httpOnly : false});
 
             // expires: new Date(Date.now() + 200000000) set time cookie will die after 2 days
 

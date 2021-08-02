@@ -42,3 +42,20 @@
     font-size: 24px;
     margin-top: 15px;
 }
+.alignspace{
+    width: 50%;
+    background-color: blueviolet;
+}
+@media (max-width: 767.98px){
+    .alignspace{
+        width: 100%;
+    }
+    .divavatar{
+        height: 250px;
+        width: 250px;
+    }
+    .imgavt{
+        height: 250px;
+        width: 250px;
+    }
+}
