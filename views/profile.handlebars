@@ -3,8 +3,14 @@
 <div class="container profilepage">
     <div class="row spaceProfile g-0">
         <div class="spaceAvatar">
+            <div class="leftAvatar">
+                <div class="itemAvatar follow">Theo Dõi</div>
+            </div>
             <div class="divavatar">
                 <img src="../public/img/ImageSignIn/ggplay.png" alt="avatar" srcset="" class="imgavt">
+            </div>
+            <div class="rightAvatar">
+                <div class="itemAvatar msg"><i class=" iconmsg far fa-envelope"></i> Nhắn tin</div>
             </div>
         </div>
         <div class="spaceInfo">
@@ -37,12 +43,13 @@
     var link = document.querySelector('#link');
     var birthday = document.querySelector('#birthday');
     if (!birthday.value) {
-        birthday.value = '9999-09-09'
+        birthday.value = '2004-09-09'
     }
     if (userName.value != submitprofile.name) {
         submitprofile.style.display = 'none';
         inputprofile.forEach((elm) => {
             elm.setAttribute('disabled', 'true');
+            elm.style.border = 'none';
         })
         var itemlink = document.querySelector('#itemlink');
         var aLink = link.value;
