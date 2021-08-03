@@ -4,24 +4,35 @@ class profileController {
     //lấy ra profile của user qua URl , res.params.[name] , /:name dùng làm biến cho route
     //var cho handlebars : usermain là tên tài khoản truy cập , username là tài khoản khách
 
-    getProfile(req , res , next){
-        
-        var usermain ;
-        authSchema.findById(req.cookies.userCookie).then(user => usermain = user.username) ;
-        authSchema.findOne({username: req.params.username})
-        .then(user => {
-            if (user){
+    getProfile(req, res, next) {
 
-                res.render('profile' , {user : user.toObject(), usermain: usermain } );
-            }
-            else {
-                res.send('Khong co user nay');
-            }
-        }).catch(next);
+        var usermain;
+        authSchema.findById(req.cookies.userCookie).then(user => usermain = user.username);
+        authSchema.findOne({ username: req.params.username })
+            .then(user => {
+                if (user) {
+                    var birthday;
+                    if (user.birthday) {
+                        var day = user.birthday.getDate();
+                        var month = user.birthday.getMonth() + 1;
+                        var year = user.birthday.getFullYear();
+
+                        if (day < 10) { day = '0' + day; }
+
+                        if (month < 10) { month = '0' + month; }
+                        birthday = `${year}-${month}-${day}`;
+                    }
+
+                    res.render('profile', { user: user.toObject(), usermain: usermain, birthday });
+                }
+                else {
+                    res.send('Khong co user nay');
+                }
+            }).catch(next);
     }
 
-    postProfile(req , res , next){
-        authSchema.findById(req.cookies.userCookie).then((usermain)=>{
+    postProfile(req, res, next) {
+        authSchema.findById(req.cookies.userCookie).then((usermain) => {
             usermain._name = req.body.FullName;
             usermain.username = req.body.userName;
             usermain.birthday = req.body.birthday;
@@ -30,7 +41,7 @@ class profileController {
             usermain.save();
             res.redirect(`/${usermain.username}`);
         })
-        .catch(next);
+            .catch(next);
     }
 }
 module.exports = new profileController;

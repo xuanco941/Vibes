@@ -44,7 +44,7 @@ class authController {
             {
             res.cookie('userCookie' , data._id.toString() , {expires: new Date(Date.now() + 10000000) , httpOnly : false});
 
-            // expires: new Date(Date.now() + 200000000) set time cookie will die after 2 days
+            // expires: new Date(Date.now() + 10000000) set time cookie will die after 2 hours
 
             res.redirect('/home');
         }

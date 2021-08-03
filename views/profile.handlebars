@@ -16,11 +16,11 @@
                         <li class="iteminfo">Tên người dùng : <input class="inputprofile" type="text" name="userName"
                                 id="userName" value="{{user.username}}"></li>
                         <li class="iteminfo">Ngày sinh : <input class="inputprofile" type="date" name="birthday"
-                                id="birthday" value="{{user.birthday}}"> </li>
+                                id="birthday" value="{{birthday}}"> </li>
                         <li class="iteminfo">Quê quán : <input class="inputprofile" type="text" name="city" id="city"
                                 value="{{user.city}}"> </li>
-                        <li class="iteminfo">Link : <input class="inputprofile" type="text" name="link" id="link"
-                                value="{{user.link}}"></li>
+                        <li class="iteminfo" id="itemlink">Link : <input class="inputprofile" type="text" name="link"
+                                id="link" value="{{user.link}}"></li>
                     </ul>
                     <button type="submit" class="submitprofile" id="submitprofile" name="{{usermain}}">Thay đổi</button>
                 </form>
@@ -31,16 +31,25 @@
 </div>
 
 <script>
-    window.onload = () => {
-        var userName = document.querySelector('#userName');
-        var submitprofile = document.querySelector('#submitprofile');
-        var inputprofile = Array.from(document.getElementsByClassName('inputprofile'));
+    var userName = document.querySelector('#userName');
+    var submitprofile = document.querySelector('#submitprofile');
+    var inputprofile = Array.from(document.getElementsByClassName('inputprofile'));
+    var link = document.querySelector('#link');
+    var birthday = document.querySelector('#birthday');
+    if (!birthday.value) {
+        birthday.value = '9999-09-09'
+    }
+    if (userName.value != submitprofile.name) {
+        submitprofile.style.display = 'none';
+        inputprofile.forEach((elm) => {
+            elm.setAttribute('disabled', 'true');
+        })
+        var itemlink = document.querySelector('#itemlink');
+        var aLink = link.value;
+        if (aLink.indexOf('www.') == -1 || aLink.indexOf('http') == -1)
+            itemlink.innerHTML = `Link : <a href="www.${aLink}" target="_blank">${aLink}</a>`;
+        else
+            itemlink.innerHTML = `Link : <a href="${aLink}" target="_blank">${aLink}</a>`;
 
-        if (userName.value != submitprofile.name) {
-            submitprofile.style.display = 'none';
-            inputprofile.forEach((elm) => {
-                elm.setAttribute('disabled', 'true');
-            })
-        }
     }
 </script>

@@ -107,11 +107,17 @@ img{ max-width:100%;}
 }
 .input_msg_write input {
   background: rgba(0, 0, 0, 0) none repeat scroll 0 0;
-  border: medium none;
+  border: none;
   color: #4c4c4c;
   font-size: 15px;
   min-height: 48px;
   width: 100%;
+}
+.input_msg_write:focus-visible{
+  outline: none;
+}
+.write_msg:focus-visible{
+  outline: none;
 }
 
 .type_msg {border-top: 1px solid #c4c4c4;position: relative;}
@@ -167,6 +173,6 @@ img{ max-width:100%;}
       margin-top: 7.5vh;
     }
 }
-@media (min-width: 768px) {
-  
+.input_msg_write{
+  border: none;
 }
