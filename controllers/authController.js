@@ -31,7 +31,7 @@ class authController {
 
                 setTimeout(() => {
                     res.redirect('/');
-                }, 2000);
+                }, 1000);
             }   
        })
       }

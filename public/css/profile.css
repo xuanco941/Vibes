@@ -3,15 +3,19 @@
     padding: 0;
 }
 .spaceProfile{
-    height: 85vh;
+    height: 1000px;
     width: 100%;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    overflow: hidden;
+
 }
 .spaceAvatar{
-    height: 45%;
-    background-color:darkgray;
+    height: 35%;
     display: flex;
-    justify-content:space-around;
+    justify-content:space-evenly;
     align-items: center;
+    background-color:slategrey;
 }
 .divavatar{
     width: 290px;
@@ -33,19 +37,28 @@
     object-fit:fill;
 }
 .spaceInfo{
-    height: 55%;
+    height: 65%;
     display: flex;
     justify-content: center;
-    overflow: auto;
+}
+.info{
+    width: 310px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding: 0;
+
 }
 .iteminfo{
-    font-size: 24px;
+    font-size: 20px;
     margin-top: 15px;
     color: purple;
+    max-width: 250px;
+    margin-left: 5px;
+    margin-right: 5px;
 }
 .inputprofile{
     border: 1px var(--border-color) solid;
-    width: 400px;
+    width: 300px;
 }
 .formprofile{
     display: flex;
@@ -57,7 +70,9 @@
     height: 40px;
     border: 1px var(--border-color) solid;
     background-color: plum;
-    margin-bottom: 20px;
+    margin-bottom: 25px;
+    margin-top: 20px;
+    border-radius: 10px;
 }
 .submitprofile:hover{
     background-color: var(--purple-color);
@@ -66,8 +81,8 @@
 @media (max-width: 767.98px){
     
     .divavatar{
-        height: 180px;
-        width: 180px;
+        height: 170px;
+        width: 170px;
     }
     .spaceAvatar{
         height: 35%;
@@ -75,23 +90,96 @@
     .spaceInfo{
         height: 65%;
     }
+    .itemAvatar{
+        width: 75px;
+        height: 35px;
+        font-size: 15px;
+    }
+    .leftAvatar{
+        width: 75px;
+        height: 125px;
+        font-size: 17px;
+    }
     
 }
+
 .itemAvatar{
+    width:95px;
     display: flex;
     align-items: center;
-    width: 110px;
+    max-width: 110px;
     height: 45px;
     background-color: plum;
     font-size: 18px;
     justify-content: center;
     border: 1px var(--border-color) solid;
     border-radius: 3px;
+    margin-top: 10px;
 }
 .itemAvatar:hover{
     cursor: pointer;
-    font-size: 20px;
+    font-size: 19px;
 }
 .iconmsg{
     margin-top: 0 !important;
+}
+.rightAvatar{
+    max-width: 110px;
+    display: none ;
+}
+.leftAvatar{
+    width: 95px;
+    max-width: 110px;
+    height: 155px;
+    display: flex;
+    align-items: center;
+    background-color: plum;
+    font-size: 20px;
+    text-align: center;
+    border: 1px var(--border-color) solid;
+    border-radius: 3px;
+}
+.leftAvatar:hover{
+    cursor: pointer;
+    font-size: 21px;
+}
+.modal-profile{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    z-index: 200;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+.editAvatar{
+    width: 250px;
+    height: 250px;
+    border: 5px var(--border-color) solid;
+    border-radius: 5px;
+    background-color: slategrey;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    justify-content: center;
+    align-items:center;
+}
+#buttonUpAvatar{
+    width: 100px;
+    height: 40px;
+    background-color: tan;
+}
+.formUpAvatar{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+#inputavatar{
+    width: 100px;
 }

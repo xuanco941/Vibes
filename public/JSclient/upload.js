@@ -24,8 +24,17 @@ formUpload.onclick = (e) => {
     e.stopPropagation();
 }
 
-modal.onclick = (e) => {
+modal.onclick = () => {
     modal.style.display = 'none';
+}
+
+modal.onmousemove = () => {
+    modal.style.cursor = 'pointer';
+}
+
+formUpload.onmousemove = (e) => {
+    modal.style.cursor = 'default';
+    e.stopPropagation();
 }
 
 camera.onclick = () => {

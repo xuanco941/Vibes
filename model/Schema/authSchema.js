@@ -8,7 +8,7 @@ const User = new Schema({
   birthday : Date ,
   city : String ,
   link : String ,
-  avatar : String
+  avatar : {type : String , default : '../public/img/avatar-default.png'}
 }, {
   timestamps: true,
   collection: 'User'

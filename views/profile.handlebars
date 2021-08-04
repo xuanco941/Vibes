@@ -3,60 +3,99 @@
 <div class="container profilepage">
     <div class="row spaceProfile g-0">
         <div class="spaceAvatar">
-            <div class="leftAvatar">
-                <div class="itemAvatar follow">Theo Dõi</div>
+            <div class="leftAvatar" id="leftAvatar">Bài đăng của {{user.username}}</div>
+            <div class="divavatar" id="divavatar">
+                <img src="{{user.avatar}}" alt="avatar" srcset="" class="imgavt" id="imgavt">
             </div>
-            <div class="divavatar">
-                <img src="../public/img/ImageSignIn/ggplay.png" alt="avatar" srcset="" class="imgavt">
-            </div>
-            <div class="rightAvatar">
+            <div class="rightAvatar" id="rightAvatar">
+                <div class="itemAvatar follow">Theo dõi</div>
                 <div class="itemAvatar msg"><i class=" iconmsg far fa-envelope"></i> Nhắn tin</div>
+                <div class="itemAvatar block">Chặn</div>
             </div>
         </div>
         <div class="spaceInfo">
-            <div class="alignspace">
-                <form action="" method="post" class="formprofile">
-                    <ul class="info">
-                        <li class="iteminfo">Tên đầy đủ : <input class="inputprofile" type="text" name="FullName"
-                                id="FullName" value="{{user._name}}"></li>
-                        <li class="iteminfo">Tên người dùng : <input class="inputprofile" type="text" name="userName"
-                                id="userName" value="{{user.username}}"></li>
-                        <li class="iteminfo">Ngày sinh : <input class="inputprofile" type="date" name="birthday"
-                                id="birthday" value="{{birthday}}"> </li>
-                        <li class="iteminfo">Quê quán : <input class="inputprofile" type="text" name="city" id="city"
-                                value="{{user.city}}"> </li>
-                        <li class="iteminfo" id="itemlink">Link : <input class="inputprofile" type="text" name="link"
-                                id="link" value="{{user.link}}"></li>
-                    </ul>
-                    <button type="submit" class="submitprofile" id="submitprofile" name="{{usermain}}">Thay đổi</button>
-                </form>
-            </div>
+            <form action="" method="post" class="formprofile">
+                <ul class="info">
+                    <li class="iteminfo">Tên đầy đủ : <input class="inputprofile" type="text" name="FullName"
+                            id="FullName" value="{{user._name}}"></li>
+                    <li class="iteminfo">Tên người dùng : <input class="inputprofile" type="text" name="userName" disabled
+                            id="userName" value="{{user.username}}"></li>
+                    <li class="iteminfo">Ngày sinh : <input class="inputprofile" type="date" name="birthday"
+                            id="birthday" value="{{birthday}}"> </li>
+                    <li class="iteminfo">Quê quán : <input class="inputprofile" type="text" name="city" id="city"
+                            value="{{user.city}}"> </li>
+                    <li class="iteminfo" id="itemlink">Link Facebook : <input class="inputprofile" type="text"
+                            name="link" id="link" value="{{user.link}}"></li>
+                </ul>
+                <button type="submit" class="submitprofile" id="submitprofile" name="{{usermain}}">Thay đổi</button>
+            </form>
         </div>
     </div>
-
+</div>
+<div class="modal-profile" id="modal-profile">
+    <div class="editAvatar" id="editAvatar">
+        <form action="/update/avatar" method="post" class="formUpAvatar" enctype="multipart/form-data">
+            <input type="file" name="file" id="inputavatar">
+            <button type="submit" id="buttonUpAvatar" >Cập nhật</button>
+        </form>
+    </div>
 </div>
 
 <script>
+    var divavatar = document.querySelector('#divavatar');
+    var modalprofile = document.querySelector('#modal-profile');
+    var editAvatar = document.querySelector('#editAvatar');
+
+    divavatar.onclick = () => {
+        history.pushState(null, '', '/update/avatar');
+        modalprofile.style.display = 'block';
+    }
+    modalprofile.onclick = () => {
+        modalprofile.style.display = 'none';
+    }
+    editAvatar.onclick = (e) => {
+        e.stopPropagation();
+    }
+    modalprofile.onmousemove = () => {
+        modalprofile.style.cursor = 'pointer';
+    }
+    editAvatar.onmousemove = (e) => {
+        editAvatar.style.cursor = 'default';
+        e.stopPropagation();
+        
+    }
+
+
     var userName = document.querySelector('#userName');
     var submitprofile = document.querySelector('#submitprofile');
     var inputprofile = Array.from(document.getElementsByClassName('inputprofile'));
     var link = document.querySelector('#link');
     var birthday = document.querySelector('#birthday');
+    var rightAvatar = document.querySelector('#rightAvatar');
+    var leftAvatar = document.querySelector('#leftAvatar');
+
+
+
     if (!birthday.value) {
         birthday.value = '2004-09-09'
     }
     if (userName.value != submitprofile.name) {
+        rightAvatar.style.display = 'block';
         submitprofile.style.display = 'none';
         inputprofile.forEach((elm) => {
             elm.setAttribute('disabled', 'true');
             elm.style.border = 'none';
-        })
+            elm.style.color = 'black';
+        });
         var itemlink = document.querySelector('#itemlink');
         var aLink = link.value;
         if (aLink.indexOf('www.') == -1 || aLink.indexOf('http') == -1)
-            itemlink.innerHTML = `Link : <a href="www.${aLink}" target="_blank">${aLink}</a>`;
+            itemlink.innerHTML = `Đường dẫn gì đó : <a href="www.${aLink}" target="_blank">${aLink}</a>`;
         else
-            itemlink.innerHTML = `Link : <a href="${aLink}" target="_blank">${aLink}</a>`;
+            itemlink.innerHTML = `Đường dẫn gì đó : <a href="${aLink}" target="_blank">${aLink}</a>`;
 
+    }
+    else {
+        leftAvatar.textContent = 'Bài đăng của bạn';
     }
 </script>

@@ -177,7 +177,7 @@
 }
 @media (max-width: 767.98px) { 
     .News{
-        height: 550px;
+        min-height: 550px;
     }
     .inputComment{
         padding-top: 3px;

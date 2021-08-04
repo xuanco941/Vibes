@@ -21,7 +21,8 @@ class uploadController {
                 userpost: user.username, title: req.body.title, filename: user.username + 'AND' + req.file.filename, path: req.file.path
             })
             res.redirect('/home');
-        })  
+        })
+        .catch(next);
     }
     getUpload(req, res) {
         res.redirect('/home');
