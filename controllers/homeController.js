@@ -3,7 +3,7 @@ const newsSchema = require('../model/Schema/newsSchema');
 const postSchema = require('../model/Schema/postSchema');
 class homeController {
     getHome(req, res, next) {
-        var News; var Status ; var cmt;
+        var News; var Status ;
         authSchema.findById(req.cookies.userCookie)
             .then(async (usermain) => {
                 await newsSchema.find({}).then((news) => {
@@ -14,6 +14,7 @@ class homeController {
                     status = status.map(data => data.toObject());
                     Status = status;
                 });
+                
                 res.render('home', { News, Status, usermain: usermain.username});
             }
             ).catch(next);

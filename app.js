@@ -55,6 +55,30 @@ var usersOnline = [];
 io.on('connect', (socket) => {
   console.log('a people connect');
 
+  //match
+  socket.on('matchnews', (ID, count, usermatch) => {
+    newsSchema.findById(ID).then((news) => {
+      news.match = count;
+      if (news.usermatch.indexOf(usermatch) < 0) {
+        news.usermatch.push(usermatch);
+      }
+      news.save();
+      io.emit('count-match-news', ID, news.match);
+    });
+  });
+
+  socket.on('matchstatus', (ID, count, usermatch) => {
+    postSchema.findById(ID).then((post) => {
+      post.match = count;
+      if (post.usermatch.indexOf(usermatch) < 0) {
+        post.usermatch.push(usermatch);
+      }
+      post.save();
+      io.emit('count-match-status', ID, post.match);
+    });
+  })
+
+
 
   socket.on('get-value-cookie', (async (valueCookie) => {
     await authSchema.findById(valueCookie).then(user => {
@@ -81,30 +105,30 @@ io.on('connect', (socket) => {
   });
 
   // typing 
-  socket.on('type' , (Statusid) => {
-    socket.broadcast.emit('type-focus' , Statusid)
+  socket.on('type', (Statusid) => {
+    socket.broadcast.emit('type-focus', Statusid)
   });
-  socket.on('stop-type' , (Statusid) => {
-    socket.broadcast.emit('type-blur' , Statusid)
+  socket.on('stop-type', (Statusid) => {
+    socket.broadcast.emit('type-blur', Statusid)
   });
 
 
   //Comment Stt
   socket.on('Comment', (Statusid, aComment) => {
-      postSchema.findOne({ _id: Statusid }).then( async (post) => {
+    postSchema.findOne({ _id: Statusid }).then(async (post) => {
       post.comment.push(aComment);
       await post.save();
-      io.emit('aComment' , Statusid, aComment);
+      io.emit('aComment', Statusid, aComment);
     })
   });
 
   //Comment News
   socket.on('CommentNews', (Newsid, aComment) => {
-    newsSchema.findOne({ _id: Newsid }).then( async (news) => {
-    news.comment.push(aComment);
-    await news.save();
-    io.emit('aCommentNews' , Newsid, aComment);
-  })
-});
+    newsSchema.findOne({ _id: Newsid }).then(async (news) => {
+      news.comment.push(aComment);
+      await news.save();
+      io.emit('aCommentNews', Newsid, aComment);
+    })
+  });
 
 });

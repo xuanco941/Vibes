@@ -1,5 +1,5 @@
 .News{
-    height: 800px;
+    min-height: 800px;
     margin-bottom: 25px;
     display: flex;
     flex-direction: column;
@@ -50,7 +50,6 @@
     flex-wrap: nowrap;
 }
 .contentNews{
-    height: 68%;
     background-color: rgba(0, 0, 0, 0.1);
     display: flex;
     justify-content: center;
@@ -85,7 +84,6 @@
 }
 
 .commentHistory{
-    height: 15%;
     background-color:wheat;
     min-height: 60px;
     max-height: 1000px;
@@ -194,10 +192,13 @@
     .fa-heart-2{
         font-size: 23px;
     }
+    .imgNews{
+        max-height: 100%;
+    }
 }
 .imgNews{
     max-width: 100%;
-    max-height: 540px;
+    max-height: 100%;
 }
 .fa-heart-2 , .fa-heart-status{
     cursor: pointer;
@@ -227,5 +228,4 @@
     font-size: 12px;
     opacity: 0.5;
     display: none;
-    
 }

@@ -20,7 +20,13 @@ formUpload.onsubmit = (e) => {
     }
 }
 
+formUpload.onclick = (e) => {
+    e.stopPropagation();
+}
 
+modal.onclick = (e) => {
+    modal.style.display = 'none';
+}
 
 camera.onclick = () => {
     history.pushState(null, '', '/upload');

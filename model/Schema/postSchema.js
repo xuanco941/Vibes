@@ -4,7 +4,9 @@ const Schema = mongoose.Schema;
 const Post = new Schema({
   userpost: String,
   content: String,
-  comment: []
+  comment: [],
+  match : Number,
+  usermatch : []
 }, {
   timestamps: true,
   collection: 'Post'

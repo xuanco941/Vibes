@@ -7,7 +7,9 @@ const News = new Schema (
         title : String ,
         filename : String ,
         path : String ,
-        comment : []
+        comment : [] ,
+        match : Number,
+        usermatch : []
     },
     {
         timestamps: true,

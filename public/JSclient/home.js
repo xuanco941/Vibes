@@ -20,6 +20,50 @@ PostStatus.onsubmit = (e) => {
 
 window.onload = () => {
 
+    //match news
+    var heartmatchnews = Array.from(document.getElementsByClassName('heartmatchnews'));
+    socket.on('usermain', (usermatch) => {
+        heartmatchnews.forEach((elm) => {
+            elm.onclick = () => {
+                var ID = elm.id.slice(elm.id.indexOf('-') + 1);
+                var count = parseInt(elm.textContent);
+                if (Number.isNaN(count)) {
+                    count = 0;
+                }
+                if (!elm.style.color) {
+                    elm.style.color = 'purple';
+                }
+                count++;
+                socket.emit('matchnews', ID, count, usermatch);
+            }
+        });
+    })
+    socket.on('count-match-news' , (ID , count) => {
+        document.getElementById(`heartnews-${ID}`).textContent = count;
+    });
+
+    //match stt
+    var heartmatchstatus = Array.from(document.getElementsByClassName('heartmatchstatus'));
+    socket.on('usermain', (usermatch) => {
+        heartmatchstatus.forEach((elm) => {
+            elm.onclick = () => {
+                var ID = elm.id.slice(elm.id.indexOf('-') + 1);
+                var count = parseInt(elm.textContent);
+                if (Number.isNaN(count)) {
+                    count = 0;
+                }
+                if (!elm.style.color) {
+                    elm.style.color = 'purple';
+                }
+                count++;
+                socket.emit('matchstatus', ID, count, usermatch);
+            }
+        });
+    })
+    socket.on('count-match-status' , (ID , count) => {
+        document.getElementById(`heartstatus-${ID}`).textContent = count;
+    })
+
     //part 1
     var listOnline = document.querySelector('#listOnline');
     socket.emit('get-value-cookie', userCookie.slice(userCookie.indexOf('=') + 1));
