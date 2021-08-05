@@ -1,13 +1,23 @@
 <link rel="stylesheet" href="../public/css/search.css">
 
 <div class="container">
-    <div class="col search">
+    <div class="col spaceSearch">
         <form action="" method="get" id="formSearch">
-            <div class="input-group flex-nowrap">
-                <span class="input-group-text" id="addon-wrapping">@</span>
-                <input type="text" class="form-control" placeholder="Username" aria-label="Username"
-                    aria-describedby="addon-wrapping">
-            </div>
+            <span class="brand">@</span>
+            <input type="search" name="search" id="inputSearch">
+            <button type="submit" id="submitSearch">Tìm kiếm</button>
         </form>
+        <div class="listUserSearch">
+            {{#each userQuery}}
+            <a href="/{{this.username}}" class="userSearch">
+                <div class="nameSearch">{{this.username}}</div>
+                <img src="{{this.avatar}}" alt="avatar" srcset="" class="imgSearch">
+            </a>
+            {{/each}}
+        </div>
     </div>
 </div>
+
+<script>
+  
+</script>

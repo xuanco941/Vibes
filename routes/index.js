@@ -9,8 +9,7 @@ const searchRoute = require('./searchRoute');
 
 function route(app) {
     app.use ('/' , authRoute) ;
-    app.use('/' , authMidleware ,homeRoute , messengerRoute , uploadRoute , errorRoute , profileRoute );
-    app.use('/home/' , searchRoute);
+    app.use('/' , authMidleware ,homeRoute , messengerRoute , uploadRoute , errorRoute , searchRoute , profileRoute );
 }
 
 
