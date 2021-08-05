@@ -18,7 +18,7 @@
                 <ul class="info">
                     <li class="iteminfo">Tên đầy đủ : <input class="inputprofile" type="text" name="FullName"
                             id="FullName" value="{{user._name}}"></li>
-                    <li class="iteminfo">Tên người dùng : <input class="inputprofile" type="text" name="userName" disabled
+                    <li class="iteminfo">Tên người dùng : <input class="inputprofile" type="text" name="userName"
                             id="userName" value="{{user.username}}"></li>
                     <li class="iteminfo">Ngày sinh : <input class="inputprofile" type="date" name="birthday"
                             id="birthday" value="{{birthday}}"> </li>
@@ -34,9 +34,10 @@
 </div>
 <div class="modal-profile" id="modal-profile">
     <div class="editAvatar" id="editAvatar">
-        <form action="/update/avatar" method="post" class="formUpAvatar" enctype="multipart/form-data">
+        <form action="/update/avatar" method="post" class="formUpAvatar" id="formUpAvatar"
+            enctype="multipart/form-data">
             <input type="file" name="file" id="inputavatar">
-            <button type="submit" id="buttonUpAvatar" >Cập nhật</button>
+            <button type="submit" id="buttonUpAvatar">Cập nhật</button>
         </form>
     </div>
 </div>
@@ -45,13 +46,34 @@
     var divavatar = document.querySelector('#divavatar');
     var modalprofile = document.querySelector('#modal-profile');
     var editAvatar = document.querySelector('#editAvatar');
+    var userName = document.querySelector('#userName');
+    var submitprofile = document.querySelector('#submitprofile');
+    var inputprofile = Array.from(document.getElementsByClassName('inputprofile'));
+    var link = document.querySelector('#link');
+    var birthday = document.querySelector('#birthday');
+    var rightAvatar = document.querySelector('#rightAvatar');
+    var leftAvatar = document.querySelector('#leftAvatar');
+    var imgavt = document.querySelector('#imgavt');
+    var inputavatar = document.querySelector('#inputavatar');
+    var formUpAvatar = document.querySelector('#formUpAvatar');
 
-    divavatar.onclick = () => {
-        history.pushState(null, '', '/update/avatar');
-        modalprofile.style.display = 'block';
+
+    formUpAvatar.onsubmit = (e) => {
+        if (!inputavatar.value) {
+            return false;
+        }
     }
-    modalprofile.onclick = () => {
-        modalprofile.style.display = 'none';
+
+    var src = imgavt.src;
+    var divHTML = divavatar.innerHTML;
+    if (userName.value != submitprofile.name) {
+        divavatar.innerHTML = `<a href="${src}" class="detailimgavt">${divHTML}</a>`;
+    }
+    divavatar.onclick = () => {
+        if (userName.value == submitprofile.name) {
+            history.pushState(null, '', '/update/avatar');
+            modalprofile.style.display = 'block';
+        }
     }
     editAvatar.onclick = (e) => {
         e.stopPropagation();
@@ -62,18 +84,13 @@
     editAvatar.onmousemove = (e) => {
         editAvatar.style.cursor = 'default';
         e.stopPropagation();
-        
+
     }
 
-
-    var userName = document.querySelector('#userName');
-    var submitprofile = document.querySelector('#submitprofile');
-    var inputprofile = Array.from(document.getElementsByClassName('inputprofile'));
-    var link = document.querySelector('#link');
-    var birthday = document.querySelector('#birthday');
-    var rightAvatar = document.querySelector('#rightAvatar');
-    var leftAvatar = document.querySelector('#leftAvatar');
-
+    modalprofile.onclick = () => {
+        modalprofile.style.display = 'none';
+        history.pushState(null, '', `/${submitprofile.name}`)
+    }
 
 
     if (!birthday.value) {

@@ -8,7 +8,7 @@ const errorRoute = require('./errorRoute');
 
 function route(app) {
     app.use ('/' , authRoute) ;
-    app.use('/' , authMidleware ,homeRoute , messengerRoute , profileRoute , uploadRoute );
+    app.use('/' , authMidleware ,homeRoute , messengerRoute , uploadRoute , profileRoute );
     app.use('/' , errorRoute);
 }
 

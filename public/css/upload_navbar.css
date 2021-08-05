@@ -1,6 +1,6 @@
 #modal-title{
-    height: 100%;
-    width: 75%;
+    min-height: 70px;
+    width: 90%;
     border: 1px var(--border-color) solid;
     overflow-y:auto;
     resize: none;

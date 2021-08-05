@@ -13,11 +13,12 @@ var file = document.querySelector('#file');
 
 
 formUpload.onsubmit = (e) => {
-    if (modaltitle.textContent == '' && file.value == '' )
+    if ((modaltitle.textContent == '' && file.value == '') ?? modaltitle.textContent)
     {
         modal.style.display = 'none';
         return false;
     }
+
 }
 
 formUpload.onclick = (e) => {

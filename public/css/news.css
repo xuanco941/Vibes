@@ -1,18 +1,16 @@
 .News{
-    min-height: 800px;
-    margin-bottom: 25px;
+    min-height: 300px;
     display: flex;
     flex-direction: column;
     background-color: var(--component-color);
-    margin-bottom: 70px;
+    margin-bottom: 50px;
 }
 .Status{
     min-height: 300px;
-    margin-bottom: 25px;
     display: flex;
     flex-direction: column;
     background-color: var(--component-color);
-    margin-bottom: 70px;
+    margin-bottom: 50px;
 }
 .headStatus{
     height:40px;
@@ -176,9 +174,6 @@
     text-decoration: underline;
 }
 @media (max-width: 767.98px) { 
-    .News{
-        min-height: 550px;
-    }
     .inputComment{
         padding-top: 3px;
     }
