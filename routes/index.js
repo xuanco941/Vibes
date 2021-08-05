@@ -5,11 +5,12 @@ const authMidleware = require('../middlewares/authMiddleware');
 const uploadRoute = require('./uploadRoute');
 const profileRoute = require('./profileRoute');
 const errorRoute = require('./errorRoute');
+const searchRoute = require('./searchRoute');
 
 function route(app) {
     app.use ('/' , authRoute) ;
-    app.use('/' , authMidleware ,homeRoute , messengerRoute , uploadRoute , profileRoute );
-    app.use('/' , errorRoute);
+    app.use('/' , authMidleware ,homeRoute , messengerRoute , uploadRoute , errorRoute , profileRoute );
+    app.use('/home/' , searchRoute);
 }
 
 

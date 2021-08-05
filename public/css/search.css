@@ -1,0 +1,13 @@
+.search{
+    margin-top: 7.5vh;
+    margin-bottom: 7.5vh;
+    height: 85vh;
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+#formSearch{
+    height: 90%;
+    display: flex;
+    align-items: center;
+}
