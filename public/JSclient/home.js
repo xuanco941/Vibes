@@ -18,6 +18,19 @@ PostStatus.onsubmit = (e) => {
     }
 }
 
+var ImageNews = Array.from(document.getElementsByClassName('ImageNews'));
+var VideoNews = Array.from(document.getElementsByClassName('VideoNews'));
+ImageNews.forEach((i) => {
+    if (i.id == 'none') {
+        i.style.display = 'none';
+    }
+});
+VideoNews.forEach((i) => {
+    if (i.id == 'none') {
+        i.style.display = 'none';
+    }
+})
+
 window.onload = () => {
 
     //match news
@@ -38,7 +51,7 @@ window.onload = () => {
             }
         });
     })
-    socket.on('count-match-news' , (ID , count) => {
+    socket.on('count-match-news', (ID, count) => {
         document.getElementById(`heartnews-${ID}`).textContent = count;
     });
 
@@ -60,7 +73,7 @@ window.onload = () => {
             }
         });
     })
-    socket.on('count-match-status' , (ID , count) => {
+    socket.on('count-match-status', (ID, count) => {
         document.getElementById(`heartstatus-${ID}`).textContent = count;
     })
 

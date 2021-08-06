@@ -26,7 +26,6 @@ class homeController {
                 res.redirect('/home');
             })
             .catch(next);
-
     }
 }
 
