@@ -37,6 +37,7 @@
         <form action="/update/avatar" method="post" class="formUpAvatar" id="formUpAvatar"
             enctype="multipart/form-data">
             <input type="file" name="file" id="inputavatar">
+            <label id="labelinputavatar" for="inputavatar">Chọn ảnh</label>
             <button type="submit" id="buttonUpAvatar">Cập nhật</button>
         </form>
     </div>
@@ -56,6 +57,10 @@
     var imgavt = document.querySelector('#imgavt');
     var inputavatar = document.querySelector('#inputavatar');
     var formUpAvatar = document.querySelector('#formUpAvatar');
+    var labelinputavatar = document.getElementById('#labelinputavatar');
+
+
+
 
 
     formUpAvatar.onsubmit = (e) => {

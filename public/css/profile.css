@@ -185,5 +185,13 @@
     align-items: center;
 }
 #inputavatar{
+    display: none;
+}
+#labelinputavatar{
     width: 100px;
+    height: 100px;
+    background-color: blanchedalmond;
+}
+#labelinputavatar:hover{
+    cursor: pointer;
 }

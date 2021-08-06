@@ -37,7 +37,7 @@ class profileController {
                     res.render('profile', { user: user.toObject(), usermain: usermain, birthday });
                 }
                 else {
-                    res.render('error' , {layout : false} );
+                    res.render('error', { layout: false });
                 }
             }).catch(next);
     }
@@ -62,12 +62,15 @@ class profileController {
     upload = multer({ storage: storageimg }).single('file');
 
     postAvatar(req, res, next) {
-        authSchema.findById(req.cookies.userCookie).then((user) =>{
-            user.avatar = req.file.path;
-            user.save();
+        authSchema.findById(req.cookies.userCookie).then((user) => {
+            var path = req.file.path;
+            if (path.indexOf('png') > -1 || path.indexOf('jpg') > -1 || path.indexOf('jpeg') > -1 || path.indexOf('gif') > -1 || path.indexOf('psd') > -1) {
+                user.avatar = req.file.path;
+                user.save();
+            }
             res.redirect(`/${user.username}`);
         })
-        .catch(next);
+            .catch(next);
     }
 }
 module.exports = new profileController;

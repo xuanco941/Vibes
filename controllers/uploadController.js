@@ -17,12 +17,15 @@ class uploadController {
 
     postUpload(req, res, next) {
         authSchema.findById(req.cookies.userCookie).then(async (user) => {
-            await newsSchema.create({
-                userpost: user.username, title: req.body.title, filename: user.username + 'AND' + req.file.filename, path: req.file.path
-            })
+            var path = req.file.path;
+            if (path.indexOf('png') > -1 || path.indexOf('jpg') > -1 || path.indexOf('jpeg') > -1 || path.indexOf('gif') > -1 || path.indexOf('psd') > -1) {
+                await newsSchema.create({
+                    userpost: user.username, title: req.body.title, filename: req.file.filename, path: path
+                })
+            }
             res.redirect('/home');
         })
-        .catch(next);
+            .catch(next);
     }
     getUpload(req, res) {
         res.redirect('/home');
