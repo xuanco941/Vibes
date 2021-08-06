@@ -4,8 +4,6 @@ var editAvatar = document.querySelector('#editAvatar');
 var userName = document.querySelector('#userName');
 var submitprofile = document.querySelector('#submitprofile');
 var inputprofile = Array.from(document.getElementsByClassName('inputprofile'));
-var link = document.querySelector('#link');
-var birthday = document.querySelector('#birthday');
 var rightAvatar = document.querySelector('#rightAvatar');
 var leftAvatar = document.querySelector('#leftAvatar');
 var imgavt = document.querySelector('#imgavt');
@@ -13,6 +11,18 @@ var inputavatar = document.querySelector('#inputavatar');
 var formUpAvatar = document.querySelector('#formUpAvatar');
 var labelinputavatar = document.getElementById('labelinputavatar');
 var setimg = document.getElementById('setimg');
+
+var itemfullname = document.getElementById('itemfullname');
+var itembirthday = document.getElementById('itembirthday');
+var itemcity = document.getElementById('itemcity');
+var itemlink = document.getElementById('itemlink');
+var itemusername = document.getElementById('itemusername');
+
+var link = document.querySelector('#link');
+var birthday = document.querySelector('#birthday');
+var FullName = document.getElementById('FullName');
+var userName = document.getElementById('userName');
+var city = document.getElementById('city');
 
 
 inputavatar.onchange = () => {
@@ -60,11 +70,22 @@ modalprofile.onclick = () => {
     history.pushState(null, '', `/${submitprofile.name}`)
 }
 
-
-if (!birthday.value) {
-    birthday.value = '2004-09-09'
-}
 if (userName.value != submitprofile.name) {
+    if (!birthday.value) {
+        itembirthday.style.display = 'none';
+    }
+    if (!link.value) {
+        itemlink.style.display = 'none';
+    }
+    if (!FullName.value) {
+        itemfullname.style.display = 'none';
+    }
+    if (!userName.value) {
+        itemusername.style.display = 'none';
+    }
+    if (!city.value) {
+        itemcity.style.display = 'none';
+    }
     rightAvatar.style.display = 'block';
     submitprofile.style.display = 'none';
     inputprofile.forEach((elm) => {

@@ -16,13 +16,13 @@
         <div class="spaceInfo">
             <form action="" method="post" class="formprofile">
                 <ul class="info">
-                    <li class="iteminfo">Tên đầy đủ : <input class="inputprofile" type="text" name="FullName"
+                    <li class="iteminfo" id="itemfullname">Tên đầy đủ : <input class="inputprofile" type="text" name="FullName"
                             id="FullName" value="{{user._name}}"></li>
-                    <li class="iteminfo">Tên người dùng : <input class="inputprofile" type="text" name="userName"
+                    <li class="iteminfo" id="itemusername">Tên người dùng : <input class="inputprofile" type="text" name="userName" readonly
                             id="userName" value="{{user.username}}"></li>
-                    <li class="iteminfo">Ngày sinh : <input class="inputprofile" type="date" name="birthday"
+                    <li class="iteminfo" id="itembirthday">Ngày sinh : <input class="inputprofile" type="date" name="birthday"
                             id="birthday" value="{{birthday}}"> </li>
-                    <li class="iteminfo">Quê quán : <input class="inputprofile" type="text" name="city" id="city"
+                    <li class="iteminfo" id="itemcity">Quê quán : <input class="inputprofile" type="text" name="city" id="city"
                             value="{{user.city}}"> </li>
                     <li class="iteminfo" id="itemlink">Link Facebook : <input class="inputprofile" type="text"
                             name="link" id="link" value="{{user.link}}"></li>
