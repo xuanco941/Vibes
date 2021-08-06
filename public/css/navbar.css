@@ -1,6 +1,4 @@
-body{
-    background-color: var(--main-background-color);
-}
+
 .spaceNavbar{
     display: flex;
     height: 55px;

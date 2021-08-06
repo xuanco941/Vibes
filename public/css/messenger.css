@@ -151,6 +151,7 @@ img{ max-width:100%;}
 .mesgs{
   position: relative;
   z-index: 1;
+  background-color: rgba(0, 0, 0, 0.932);
 }
 .messaging{
   margin-top: 70px;

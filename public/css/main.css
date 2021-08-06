@@ -6,7 +6,9 @@
     --purple-color : purple;
     
 }
-body { margin:0; }
+body { margin:0;
+    background-color: #c8c8c8;
+}
 * { margin:0; padding:0; box-sizing:border-box; }
 .btn-check:focus+.btn, .btn:focus{
     box-shadow: none;

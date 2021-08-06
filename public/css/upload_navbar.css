@@ -7,7 +7,30 @@
     font-size: 18px;
     margin-left: 5px;
     line-height: 35px;
+    padding: 5px;
 }
 #modal-title:focus{
     outline: none;
+}
+#file{
+    display: none;
+}
+.modal-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.label-file{
+    height: 70px;
+    width: 150px;
+    background-color: plum;
+    text-align: center;
+    padding: 10px;
+    border: 1px var(--border-color) solid;
+    border-radius: 4px;
+}
+.label-file:hover{
+    cursor: pointer;
+    font-size: 18px;
+    border: 1px purple solid;
 }
