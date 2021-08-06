@@ -1,5 +1,10 @@
 const express = require('express');
 const app = express();
+
+// connect database
+const connectDataBase = require('./model/connectDataBase');
+connectDataBase();
+
 //socket.io
 
 const server = require('http').createServer(app);
@@ -23,9 +28,6 @@ const path = require('path');
 app.use(express.static(path.join(__dirname, '')));
 
 
-// connect database
-const connectDataBase = require('./model/connectDataBase');
-connectDataBase();
 // use cookie-parse
 const cookieParser = require('cookie-parser');
 app.use(cookieParser())
@@ -39,9 +41,10 @@ const multer = require('multer');
 const routes = require('./routes/index');
 routes(app);
 
+const Port = process.env.Port || 3000;
 
-server.listen(3000, () => {
-  console.log(`Example app listening at http://localhost:3000`);
+server.listen(Port, () => {
+  console.log(`Example app listening at port ${Port}`);
 })
 
 

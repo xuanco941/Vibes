@@ -1,44 +1,6 @@
 body{
     background-color: var(--main-background-color);
 }
-@media (max-width: 767.98px) { 
-    .spaceNews{
-        padding: 0;
-        margin-top: 0px !important;
-    }
-    .spaceApp{
-        margin-left: 0;
-        margin-right: 0;
-    }
-}
-@media (min-width: 768px) { 
-    .spaceNews{
-        margin-left: 16vw;
-    }
-    
- }
- @media (max-width: 1000px) {
-    .spaceFooter{
-        display: none;
-    }
-    .footerMain{
-        display: none !important;
-    }
-    .spaceBonus{
-        display: none !important;
-    }
- }
- @media (max-width: 1400px) {
-    .spaceBonus{
-        display: none !important;
-    }
-    
- }
-@media (max-width: 1500px) { 
-    .spaceBonus{
-        right: 220px !important;
-    }
-   }
 
 .spaceBonus{
     display: flex;
@@ -145,16 +107,19 @@ body{
     width: 100%;
     margin: 0 auto;
     margin-bottom: 3vh;
+    justify-content: center;
     
 }
 #inputStatus{
     min-height: 55px;
     max-height: 1000px;
-    width: 100%;
+    width: 70%;
     border: 1px var(--border-color) solid;
     resize: none;
+    border-radius: 10px;
     font-size: 17px;
-    overflow: hidden;
+    overflow: auto;
+    padding: 5px;
 }
 #inputStatus:focus{
     outline: none;
@@ -165,7 +130,49 @@ body{
     border: none;
     background-color: plum;
     border: 1px var(--border-color) solid;
+    border-radius: 10px;
+    font-size: 20px;
 }
 #submitStatus:hover{
     font-size: 30px;
+    background-color: purple;
+    color: white;
 }
+@media (max-width: 767.98px) { 
+    .spaceNews{
+        padding: 0;
+        margin-top: 0px !important;
+    }
+    .spaceApp{
+        margin-left: 0;
+        margin-right: 0;
+    }
+}
+@media (min-width: 768px) { 
+    .spaceNews{
+        margin-left: 16vw;
+    }
+    
+ }
+ @media (max-width: 1000px) {
+    .spaceFooter{
+        display: none;
+    }
+    .footerMain{
+        display: none !important;
+    }
+    .spaceBonus{
+        display: none !important;
+    }
+ }
+ @media (max-width: 1400px) {
+    .spaceBonus{
+        display: none !important;
+    }
+    
+ }
+@media (max-width: 1500px) { 
+    .spaceBonus{
+        right: 220px !important;
+    }
+   }
