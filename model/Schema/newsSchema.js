@@ -6,7 +6,8 @@ const News = new Schema (
         userpost : String ,
         title : String ,
         filename : String ,
-        path : String ,
+        pathVideo : {type : String , default : 'none'},
+        pathImg : {type : String , default : 'none'},
         comment : [] ,
         match : Number,
         usermatch : []

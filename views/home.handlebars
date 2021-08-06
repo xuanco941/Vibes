@@ -30,7 +30,8 @@
             </div>
 
             <div class="matchStatus">
-                <i class="far fa-heart fa-heart-status heartmatchstatus" id="heartstatus-{{this._id}}">{{this.match}}</i>
+                <i class="far fa-heart fa-heart-status heartmatchstatus"
+                    id="heartstatus-{{this._id}}">{{this.match}}</i>
             </div>
             <div class="commentHistory-status" id="commenthistorystatus-{{this._id}}">
 
@@ -65,9 +66,8 @@
                 </button>
             </div>
             <div class="contentNews">
-                <a href="/{{this.path}}">
-                    <img src="/{{this.path}}" alt="" srcset="" class="imgNews">
-                </a>
+                <img src="/{{this.pathImg}}" id="{{this.pathImg}}" alt="img" srcset="" class="imgNews ImageNews">
+                <video src="{{this.pathVideo}}" id="{{this.pathVideo}}" controls class="imgNews VideoNews"></video>
             </div>
             <div class="titleNews matchNews">
                 <div class="match">
@@ -117,6 +117,21 @@
         </div>
     </footer>
 </div>
+
+<script>
+    var ImageNews = Array.from(document.getElementsByClassName('ImageNews'));
+    var VideoNews = Array.from(document.getElementsByClassName('VideoNews'));
+    ImageNews.forEach((i) => {
+        if (i.id == 'none') {
+            i.style.display = 'none';
+        }
+    });
+    VideoNews.forEach((i) => {
+        if (i.id == 'none') {
+            i.style.display = 'none';
+        }
+    })
+</script>
 
 
 <script src="../public/JSclient/home.js"></script>

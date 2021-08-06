@@ -18,11 +18,16 @@ class uploadController {
     postUpload(req, res, next) {
         authSchema.findById(req.cookies.userCookie).then(async (user) => {
             var path = req.file.path;
-            if (path.indexOf('png') > -1 || path.indexOf('jpg') > -1 || path.indexOf('jpeg') > -1 || path.indexOf('gif') > -1 || path.indexOf('psd') > -1) {
+            if (path.indexOf('png') > -1 || path.indexOf('jpg') > -1 || path.indexOf('jpeg') > -1 || path.indexOf('gif') > -1 || path.indexOf('psd') > -1)  {
                 await newsSchema.create({
-                    userpost: user.username, title: req.body.title, filename: req.file.filename, path: path
+                    userpost: user.username, title: req.body.title, filename: req.file.filename, pathImg: path
                 })
             }
+            if (path.indexOf('mp4') > -1 || path.indexOf('avi') > -1 || path.indexOf('mkv') > -1 || path.indexOf('wmv') > -1 || path.indexOf('xvid') > -1)  {
+                await newsSchema.create({
+                    userpost: user.username, title: req.body.title, filename: req.file.filename, pathVideo: path
+                })
+            } 
             res.redirect('/home');
         })
             .catch(next);
