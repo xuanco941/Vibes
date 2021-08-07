@@ -3,7 +3,6 @@
 
 <div class="row spaceApp">
     <div class="col-md-6 col-xxl-5 spaceNews">
-
         <form action="/home" method="post" id="PostStatus">
             <textarea name="status" id="inputStatus" placeholder="Đăng trạng thái"></textarea>
             <button type="submit" id="submitStatus" disabled='true'>Post</button>
@@ -32,6 +31,7 @@
             <div class="matchStatus">
                 <i class="far fa-heart fa-heart-status heartmatchstatus"
                     id="heartstatus-{{this._id}}">{{this.match}}</i>
+                <div class="seeUserLike seeUserLikeSTT" id="seeUserLikeSTT-{{this._id}}">Xem ai like</div>
             </div>
             <div class="commentHistory-status" id="commenthistorystatus-{{this._id}}">
 
@@ -72,6 +72,7 @@
             <div class="titleNews matchNews">
                 <div class="match">
                     <i class="far fa-heart fa-heart-2 heartmatchnews" id="heartnews-{{this._id}}">{{this.match}}</i>
+                    <div class="seeUserLike seeUserLikeNews" id="seeUserLikeNews-{{this._id}}">Xem ai like</div>
                 </div>
                 <div class="title">{{this.title}}</div>
             </div>
@@ -91,8 +92,6 @@
             </div>
         </div>
         {{/each}}
-
-
     </div>
 </div>
 <div class="spaceBonus">
@@ -117,5 +116,68 @@
         </div>
     </footer>
 </div>
+<div class="modal-seeUserLike" id="modal-seeUserLike">
+    <div class="modal-spaceUserLike" id="modal-spaceUserLike">
+        <div class="titleUserLike">
+            <h6>Những người đã thich bài viết này</h6>
+        </div>
+        <div class="listUserLike" id="listUserLike"></div>
+        <button id="btnCloseUserLike" class="btnCloseUserLike">Đóng</button>
+    </div>
+</div>
+<script>
 
+
+    //usermatch
+
+    var seeUserLikeNews = Array.from(document.getElementsByClassName('seeUserLikeNews'));
+    var seeUserLikeSTT = Array.from(document.getElementsByClassName('seeUserLikeSTT'));
+    var btnCloseUserLike = document.getElementById('btnCloseUserLike');
+    var modalseeUserLike = document.getElementById('modal-seeUserLike');
+    var modalspaceUserLike = document.getElementById('modal-spaceUserLike');
+    var listUserLike = document.getElementById('listUserLike');
+
+    seeUserLikeNews.forEach((e) => {
+        e.onclick = () => {
+            var ID = e.id.slice(e.id.indexOf('-') + 1);
+            modalseeUserLike.style.display = 'block';
+            socket.emit('get-user-like-news', ID);
+        }
+    })
+
+    seeUserLikeSTT.forEach((e) => {
+        e.onclick = () => {
+            var ID = e.id.slice(e.id.indexOf('-') + 1);
+            modalseeUserLike.style.display = 'block';
+            socket.emit('get-user-like-stt', ID);
+        }
+    })
+
+    socket.on('user-like-news', (usermatch) => {
+        console.log(usermatch);
+        usermatch.forEach((n) => {
+            listUserLike.insertAdjacentHTML('beforeend', `<a href="/${n}" class="itemUserLike">${n}</a>`);
+        })
+    });
+
+    socket.on('user-like-stt', (usermatch) => {
+        usermatch.forEach((n) => {
+            listUserLike.insertAdjacentHTML('beforeend', `<a href="/${n}" class="itemUserLike">${n}</a>`);
+        })
+    });
+
+    modalseeUserLike.onclick = () => {
+        modalseeUserLike.style.display = 'none';
+        listUserLike.innerHTML = '';
+    }
+    modalspaceUserLike.onclick = (e) => {
+        e.stopPropagation();
+    }
+
+    btnCloseUserLike.onclick = () => {
+        modalseeUserLike.style.display = 'none';
+        listUserLike.innerHTML = '';
+    }
+
+</script>
 <script src="../public/JSclient/home.js"></script>

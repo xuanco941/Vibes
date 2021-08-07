@@ -57,6 +57,18 @@ const postSchema = require('./model/Schema/postSchema');
 var usersOnline = [];
 io.on('connect', (socket) => {
   console.log('a people connect');
+  //get userlike
+  socket.on('get-user-like-news' , async (ID) => {
+    await newsSchema.findById(ID).then((aPost) => {
+      socket.emit('user-like-news' , aPost.usermatch)
+    })
+  });
+  socket.on('get-user-like-stt' , async (ID) => {
+    await postSchema.findById(ID).then((aPost) => {
+      socket.emit('user-like-stt' , aPost.usermatch)
+    })
+  });
+
 
   //match
   socket.on('matchnews', (ID, count, usermatch) => {
@@ -133,5 +145,4 @@ io.on('connect', (socket) => {
       io.emit('aCommentNews', Newsid, aComment);
     })
   });
-
 });

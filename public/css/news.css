@@ -46,6 +46,7 @@
     background-color: var(--component-color);
     display: flex;
     flex-wrap: nowrap;
+    max-height: 40px;
 }
 .contentNews{
     background-color: rgba(0, 0, 0, 0.1);
@@ -59,6 +60,7 @@
     background-color: var(--component-color);
     display: flex;
     flex-wrap: nowrap;
+    max-height: 65px;
 }
 .match-status{
     overflow-y: visible;
@@ -223,4 +225,106 @@
     font-size: 12px;
     opacity: 0.5;
     display: none;
+}
+.seeUserLike{
+    background-color: rgba(0, 0, 0, 0.2);
+    font-size: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+.seeUserLikeSTT{
+    width: 70%;
+}
+.seeUserLike:hover{
+    cursor: pointer;
+    font-size: 14px;
+    background-color: rgba(0, 0, 0, 0.15);
+}
+.heartmatchstatus{
+    width: 30%;
+}
+.modal-seeUserLike{
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    position: fixed;
+    z-index: 200;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: none;
+}
+.modal-spaceUserLike{
+    width: 400px;
+    height: 500px;
+    border: 3px var(--border-color) solid;
+    border-radius: 5px;
+    background-color: slategrey;
+    position: fixed;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.titleUserLike{
+    text-align: center;
+    width: 100%;
+    padding: 5px 15px;
+    height: 10%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 15px;
+    background-color: plum;
+}
+.listUserLike{
+    display: flex;
+    width: 95%;
+    justify-content: center;
+    overflow-y: auto;
+    min-height: 75%;
+    flex-wrap: wrap;
+    align-content: flex-start;
+}
+.itemUserLike{
+    height: 10%;
+    border: 1px var(--border-color) solid;
+    border-radius: 15px;
+    width: 90% ;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: black;
+    text-decoration: none;
+    margin-bottom: 5px;
+}
+.itemUserLike:hover{
+    font-size: 17px;
+    background-color: rgba(0, 0, 0, 0.2);
+    color: white;
+}
+.btnCloseUserLike{
+    width: 50%;
+    min-width: 100px;
+    border: none;
+    height: 7%;
+    margin-top: 2%;
+    border-radius: 5px;
+    margin-bottom: 2%;
+}
+.btnCloseUserLike:hover{
+    background-color: rgba(0, 0, 0, 0.3);
+    color: white;
+}
+
+@media (max-width: 767.98px){
+    .modal-spaceUserLike{
+        width: 300px;
+        height: 450px;
+    }
 }
