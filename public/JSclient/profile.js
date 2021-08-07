@@ -29,7 +29,6 @@ inputavatar.onchange = () => {
     var [file] = inputavatar.files;
     var reader = new FileReader();
     reader.onload = (e) => {
-        console.log(e.target)
         setimg.src = e.target.result;
     }
     reader.readAsDataURL(file);

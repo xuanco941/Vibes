@@ -11,10 +11,29 @@ var formUpload = document.querySelector('#formUpload');
 var modaltitle = document.querySelector('#modal-title');
 var file = document.querySelector('#file');
 
+var labelfile = document.querySelector('#label-file');
+
+file.onchange = () => {
+    var reader = new FileReader();
+    var [afile] = file.files;
+    reader.onload = (e) => {
+        var tg = e.target.result;
+        if (tg.indexOf('image') > -1) {
+            labelfile.innerHTML = `<img class="filepreview" style="max-width: 100% ; max-height: 100%;" src="${tg}" alt="filepreview">`;
+        }
+        if (tg.indexOf('video') > -1) {
+            labelfile.innerHTML = `<video class="filepreview" style="max-width: 100% ; max-height: 100%;" src="${tg}"></video>`
+        }
+        else {
+            return false;
+        }
+    }
+    reader.readAsDataURL(afile);
+}
+
 
 formUpload.onsubmit = (e) => {
-    if ((modaltitle.textContent == '' && file.value == '') ?? modaltitle.textContent)
-    {
+    if ((modaltitle.textContent == '' && file.value == '') ?? modaltitle.textContent) {
         modal.style.display = 'none';
         return false;
     }

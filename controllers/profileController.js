@@ -64,7 +64,7 @@ class profileController {
     postAvatar(req, res, next) {
         authSchema.findById(req.cookies.userCookie).then((user) => {
             var path = req.file.path;
-            if (path.indexOf('png') > -1 || path.indexOf('jpg') > -1 || path.indexOf('jpeg') > -1 || path.indexOf('gif') > -1 || path.indexOf('psd') > -1) {
+            if (path.indexOf('.png') > -1 || path.indexOf('.jpg') > -1 || path.indexOf('.jpeg') > -1 || path.indexOf('.gif') > -1 || path.indexOf('.psd') > -1) {
                 user.avatar = req.file.path;
                 user.save();
             }

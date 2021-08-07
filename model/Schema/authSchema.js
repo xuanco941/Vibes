@@ -8,7 +8,8 @@ const User = new Schema({
   birthday : Date ,
   city : String ,
   link : String ,
-  avatar : {type : String , default : '../public/img/avatar-default.png'}
+  avatar : {type : String , default : '../public/img/avatar-default.png'},
+  roomchat: []
 }, {
   timestamps: true,
   collection: 'User'
