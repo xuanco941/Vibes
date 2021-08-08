@@ -9,7 +9,7 @@ const News = new Schema (
         pathVideo : {type : String , default : 'none'},
         pathImg : {type : String , default : 'none'},
         comment : [] ,
-        match : Number,
+        match : {type : Number , default : 0},
         usermatch : []
     },
     {

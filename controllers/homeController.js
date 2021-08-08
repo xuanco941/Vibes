@@ -1,4 +1,3 @@
-const { query } = require('express');
 const authSchema = require('../model/Schema/authSchema');
 const newsSchema = require('../model/Schema/newsSchema');
 const postSchema = require('../model/Schema/postSchema');

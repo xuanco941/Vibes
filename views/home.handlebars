@@ -2,7 +2,7 @@
 <link rel="stylesheet" href="../public/css/news.css">
 
 <div class="row spaceApp">
-    <div class="col-md-6 col-xxl-5 spaceNews">
+    <div class="col-md-6 col-xxl-5 spaceNews" id="spaceNews">
         <form action="/home" method="post" id="PostStatus">
             <textarea name="status" id="inputStatus" placeholder="Đăng trạng thái"></textarea>
             <button type="submit" id="submitStatus" disabled='true'>Post</button>
@@ -126,67 +126,135 @@
     </div>
 </div>
 
-<script>
-    var h = document.querySelector('html');
-    window.onscroll = () => {
-        var a = h.scrollHeight-400;
-        if ((h.scrollTop + h.clientHeight) >= a) {
-            console.log('da toi diem upload')
-        }
-    }
-</script>
-<script>
-
-
-    //usermatch
-
-    var seeUserLikeNews = Array.from(document.getElementsByClassName('seeUserLikeNews'));
-    var seeUserLikeSTT = Array.from(document.getElementsByClassName('seeUserLikeSTT'));
-    var btnCloseUserLike = document.getElementById('btnCloseUserLike');
-    var modalseeUserLike = document.getElementById('modal-seeUserLike');
-    var modalspaceUserLike = document.getElementById('modal-spaceUserLike');
-    var listUserLike = document.getElementById('listUserLike');
-
-    seeUserLikeNews.forEach((e) => {
-        e.onclick = () => {
-            var ID = e.id.slice(e.id.indexOf('-') + 1);
-            modalseeUserLike.style.display = 'block';
-            socket.emit('get-user-like-news', ID);
-        }
-    })
-
-    seeUserLikeSTT.forEach((e) => {
-        e.onclick = () => {
-            var ID = e.id.slice(e.id.indexOf('-') + 1);
-            modalseeUserLike.style.display = 'block';
-            socket.emit('get-user-like-stt', ID);
-        }
-    })
-
-    socket.on('user-like-news', (usermatch) => {
-        usermatch.forEach((n) => {
-            listUserLike.insertAdjacentHTML('beforeend', `<a href="/${n}" class="itemUserLike">${n}</a>`);
-        })
-    });
-
-    socket.on('user-like-stt', (usermatch) => {
-        usermatch.forEach((n) => {
-            listUserLike.insertAdjacentHTML('beforeend', `<a href="/${n}" class="itemUserLike">${n}</a>`);
-        })
-    });
-
-    modalseeUserLike.onclick = () => {
-        modalseeUserLike.style.display = 'none';
-        listUserLike.innerHTML = '';
-    }
-    modalspaceUserLike.onclick = (e) => {
-        e.stopPropagation();
-    }
-
-    btnCloseUserLike.onclick = () => {
-        modalseeUserLike.style.display = 'none';
-        listUserLike.innerHTML = '';
-    }
-
-</script>
 <script src="../public/JSclient/home.js"></script>
+<script>
+
+    var h = document.querySelector('html');
+    var Status = document.getElementsByClassName('Status');
+    var News = document.getElementsByClassName('News');
+    var spaceNews = document.getElementById('spaceNews');
+
+    window.onscroll = () => {
+        if ((h.scrollTop + h.clientHeight) == h.scrollHeight) {
+            console.log('Status dang co : ', Status.length);
+            console.log(' News dang co : ', News.length);
+            socket.emit('get-10-element', Status.length, News.length);
+        }
+    }
+
+    socket.on('next-status', (statusElement) => {
+        statusElement.forEach((s) => {
+            var arrComment = s.comment;
+            spaceNews.insertAdjacentHTML('beforeend',
+
+                `<div class="Status" id="${s._id}">
+            <div class="headStatus">
+                <a href="/${s.userpost}" class="link-user-news">
+                    <div class="user-status" id="userstatus-${s._id}">${s.userpost}</div>
+                </a>
+                <button type="button" class="btn btn-option btn-option-Status" id="btnoptionstatus-${s._id}">. .
+                    .
+                    <ul class="list-group" id="listgroupstatus-${s._id}">
+                        <li class="list-group-item item-remove" id="itemremovestatus-${s._id}">Xóa khỏi bản tin
+                        </li>
+                        <li class="list-group-item item-close" id="itemclosestatus-${s._id}">Đóng</li>
+                    </ul>
+                </button>
+            </div>
+            <div class="textcontent">
+                <div class="contentStatus">
+                    ${s.content}
+                </div>
+            </div>
+
+            <div class="matchStatus">
+                <i class="far fa-heart fa-heart-status heartmatchstatus"
+                    id="heartstatus-${s._id}">${s.match}</i>
+                <div class="seeUserLike seeUserLikeSTT" id="seeUserLikeSTT-${s._id}">Xem ai like</div>
+            </div>
+            <div class="commentHistory-status" id="commenthistorystatus-${s._id}">
+
+               <!-- {{#each this.comment}}
+                <div class="detailComment">
+                    <div class="userComment"><a href="/{{this.usercomment}}">{{this.usercomment}}</a></div>:<div
+                        class="textComment">{{this.text}}</div>
+                </div>
+                {{/each}} -->
+
+            </div>
+            <div class="typing" id="typing-${s._id}">Có người đang nhập bình luận . . .</div>
+            <div class="comment-status">
+                <textarea type="text" name="comment" id="inputCommentstatus-${s._id}" class="inputComment"
+                    placeholder="Thêm bình luận"></textarea>
+                <button type="button" class="submitCommentStatus" id="submitCommentstatus-${s._id}">Đăng</button>
+            </div>
+        </div>`
+
+            );
+            var commenthistorystatus = document.getElementById(`commenthistorystatus-${s._id}`);
+            arrComment.forEach((aComment) => {
+                commenthistorystatus.insertAdjacentHTML('beforeend', `<div class="detailComment">
+                    <div class="userComment"><a href="/${aComment.usercomment}">${aComment.usercomment}</a></div>:<div
+                        class="textComment">${aComment.text}</div>
+                </div>`)
+            })
+        });
+
+    }
+    );
+
+
+    socket.on('next-news', (newsElement) => {
+        newsElement.forEach((n) => {
+            var arrComment = n.comment;
+            spaceNews.insertAdjacentHTML('beforeend', `<div class="News" id="${n._id}">
+            <div class="headNews">
+                <a href="/${n.userpost}" class="link-user-news">
+                    <div class="user-news">${n.userpost}</div>
+                </a>
+                <button type="button" class="btn btn-option btn-option-News" id="btnoption-${n._id}">. . .
+                    <ul class="list-group list-group-News" id="listgroup-${n._id}">
+                        <li class="list-group-item item-remove" id="itemremove-${n._id}">Xóa khỏi bản tin</li>
+                        <li class="list-group-item item-close" id="itemclose-${n._id}">Đóng</li>
+                    </ul>
+                </button>
+            </div>
+            <div class="contentNews">
+                <img src="/${n.pathImg}" id="${n.pathImg}" alt="img" srcset="" class="imgNews ImageNews">
+                <video src="${n.pathVideo}" id="${n.pathVideo}" controls class="imgNews VideoNews"></video>
+            </div>
+            <div class="titleNews matchNews">
+                <div class="match">
+                    <i class="far fa-heart fa-heart-2 heartmatchnews" id="heartnews-${n._id}">${n.match}</i>
+                    <div class="seeUserLike seeUserLikeNews" id="seeUserLikeNews-${n._id}">Xem ai like</div>
+                </div>
+                <div class="title">${n.title}</div>
+            </div>
+            <div class="commentHistory" id="commentHistory-${n._id}">
+                <!-- {{#each this.comment}}
+                <div class="detailComment">
+                    <div class="userComment"><a href="/{{this.usercomment}}">{{this.usercomment}}</a></div>:<div
+                        class="textComment">{{this.text}}</div>
+                </div>
+                {{/each}} -->
+            </div>
+            <div class="typing" id="typing-${n._id}">Có người đang nhập bình luận . . .</div>
+            <div class="comment">
+                <textarea type="text" name="comment" id="inputComment-${n._id}" class="inputComment"
+                    placeholder="Thêm bình luận"></textarea>
+                <button type="button" class="submitComment" id="submitComent-${n._id}">Đăng</button>
+            </div>
+        </div>`);
+            var commentHistory = document.getElementById(`commentHistory-${n._id}`);
+            arrComment.forEach((aComment) => {
+                commentHistory.insertAdjacentHTML('beforeend', `<div class="detailComment">
+                    <div class="userComment"><a href="/${aComment.usercomment}">${aComment.usercomment}</a></div>:<div
+                        class="textComment">${aComment.text}</div>
+                </div>`)
+            })
+        })
+    });
+
+
+
+</script>

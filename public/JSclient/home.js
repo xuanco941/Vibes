@@ -18,21 +18,70 @@ PostStatus.onsubmit = (e) => {
     }
 }
 
-var ImageNews = Array.from(document.getElementsByClassName('ImageNews'));
-var VideoNews = Array.from(document.getElementsByClassName('VideoNews'));
-ImageNews.forEach((i) => {
-    if (i.id == 'none') {
-        i.style.display = 'none';
-    }
-});
-VideoNews.forEach((i) => {
-    if (i.id == 'none') {
-        i.style.display = 'none';
+//usermatch
+
+var seeUserLikeNews = Array.from(document.getElementsByClassName('seeUserLikeNews'));
+var seeUserLikeSTT = Array.from(document.getElementsByClassName('seeUserLikeSTT'));
+var btnCloseUserLike = document.getElementById('btnCloseUserLike');
+var modalseeUserLike = document.getElementById('modal-seeUserLike');
+var modalspaceUserLike = document.getElementById('modal-spaceUserLike');
+var listUserLike = document.getElementById('listUserLike');
+
+seeUserLikeNews.forEach((e) => {
+    e.onclick = () => {
+        var ID = e.id.slice(e.id.indexOf('-') + 1);
+        modalseeUserLike.style.display = 'block';
+        socket.emit('get-user-like-news', ID);
     }
 })
 
-window.onload = () => {
+seeUserLikeSTT.forEach((e) => {
+    e.onclick = () => {
+        var ID = e.id.slice(e.id.indexOf('-') + 1);
+        modalseeUserLike.style.display = 'block';
+        socket.emit('get-user-like-stt', ID);
+    }
+})
 
+socket.on('user-like-news', (usermatch) => {
+    usermatch.forEach((n) => {
+        listUserLike.insertAdjacentHTML('beforeend', `<a href="/${n}" class="itemUserLike">${n}</a>`);
+    })
+});
+
+socket.on('user-like-stt', (usermatch) => {
+    usermatch.forEach((n) => {
+        listUserLike.insertAdjacentHTML('beforeend', `<a href="/${n}" class="itemUserLike">${n}</a>`);
+    })
+});
+
+modalseeUserLike.onclick = () => {
+    modalseeUserLike.style.display = 'none';
+    listUserLike.innerHTML = '';
+}
+modalspaceUserLike.onclick = (e) => {
+    e.stopPropagation();
+}
+
+btnCloseUserLike.onclick = () => {
+    modalseeUserLike.style.display = 'none';
+    listUserLike.innerHTML = '';
+}
+
+
+window.onload = () => {
+    var ImageNews = Array.from(document.getElementsByClassName('ImageNews'));
+    var VideoNews = Array.from(document.getElementsByClassName('VideoNews'));
+    ImageNews.forEach((i) => {
+        if (i.id == 'none') {
+            i.style.display = 'none';
+        }
+    });
+    VideoNews.forEach((i) => {
+        if (i.id == 'none') {
+            i.style.display = 'none';
+        }
+    })
     //match news
     var heartmatchnews = Array.from(document.getElementsByClassName('heartmatchnews'));
     socket.on('usermain', (usermatch) => {
@@ -172,7 +221,6 @@ window.onload = () => {
                 // Comment
                 if (inputCommentstatus.value) {
                     var aComment = { usercomment: `${usermain}`, text: `${inputCommentstatus.value.trim()}`, commentAt: new Date(Date.now()) };
-                    console.log(aComment);
                     // send comment to server
                     socket.emit('Comment', Statusid, aComment);
                     inputCommentstatus.value = '';
@@ -183,7 +231,6 @@ window.onload = () => {
     // server response
     socket.on('aComment', (Statusid, aComment) => {
         // add element in comment history client
-        console.log(aComment);
         var commenthistorystatus = document.querySelector(`#commenthistorystatus-${Statusid}`);
         commenthistorystatus.insertAdjacentHTML('beforeend',
             `<div class="detailComment"><div class="userComment"><a href="/${aComment.usercomment}">${aComment.usercomment}</a></div>:<div class="textComment">${aComment.text}</div></div>`);

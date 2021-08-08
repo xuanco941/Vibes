@@ -56,16 +56,35 @@ const postSchema = require('./model/Schema/postSchema');
 
 var usersOnline = [];
 io.on('connect', (socket) => {
+
   console.log('a people connect');
+  //get-10-element
+  socket.on('get-10-element', async (statusLength, newsLength) => {
+    var queryStatus = postSchema.find({}).skip(statusLength).limit(5);
+    var queryNews = newsSchema.find({}).skip(newsLength).limit(5);
+    await queryStatus.exec((err, status) => {
+      if (status) {
+        socket.emit('next-status', status);
+      }
+    });
+    await queryNews.exec((err, news) => {
+      if (news) {
+        socket.emit('next-news', news);
+      }
+    });
+  });
+
+
+
   //get userlike
-  socket.on('get-user-like-news' , async (ID) => {
+  socket.on('get-user-like-news', async (ID) => {
     await newsSchema.findById(ID).then((aPost) => {
-      socket.emit('user-like-news' , aPost.usermatch)
+      socket.emit('user-like-news', aPost.usermatch)
     })
   });
-  socket.on('get-user-like-stt' , async (ID) => {
+  socket.on('get-user-like-stt', async (ID) => {
     await postSchema.findById(ID).then((aPost) => {
-      socket.emit('user-like-stt' , aPost.usermatch)
+      socket.emit('user-like-stt', aPost.usermatch)
     })
   });
 
