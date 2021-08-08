@@ -58,21 +58,22 @@ var usersOnline = [];
 io.on('connect', (socket) => {
 
   console.log('a people connect');
-  //get-10-element
-  socket.on('get-10-element', async (statusLength, newsLength) => {
-    var queryStatus = postSchema.find({}).skip(statusLength).limit(5);
-    var queryNews = newsSchema.find({}).skip(newsLength).limit(5);
-    await queryStatus.exec((err, status) => {
-      if (status) {
-        socket.emit('next-status', status);
-      }
-    });
-    await queryNews.exec((err, news) => {
-      if (news) {
-        socket.emit('next-news', news);
-      }
-    });
-  });
+  
+  //get-10-element infinity-scroll
+  // socket.on('get-10-element', async (statusLength, newsLength) => {
+  //   var queryStatus = postSchema.find({}).skip(statusLength).limit(5);
+  //   var queryNews = newsSchema.find({}).skip(newsLength).limit(5);
+  //   await queryStatus.exec((err, status) => {
+  //     if (status) {
+  //       socket.emit('next-status', status);
+  //     }
+  //   });
+  //   await queryNews.exec((err, news) => {
+  //     if (news) {
+  //       socket.emit('next-news', news);
+  //     }
+  //   });
+  // });
 
 
 

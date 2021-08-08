@@ -6,7 +6,8 @@ const Post = new Schema({
   content: String,
   comment: [],
   match : {type : Number , default : 0},
-  usermatch : []
+  usermatch : [],
+  index : Number
 }, {
   timestamps: true,
   collection: 'Post'

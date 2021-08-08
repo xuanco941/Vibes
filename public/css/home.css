@@ -1,4 +1,6 @@
-
+html{
+    overflow-x: hidden;
+}
 .spaceBonus{
     display: flex;
     flex-direction: column;
@@ -6,7 +8,7 @@
     top: 7.5vh;
     right: 400px;
     width: 350px;
-    height: 85vh;
+    height: 70vh;
     z-index: 1;
 }
 .headerBonus{
@@ -83,7 +85,7 @@
  
 .spaceApp{
     display: flex;
-    margin-top: 56px
+    margin-top: 7.5vh;
 }
 .spaceNews{
     margin-top: 15px;
@@ -100,10 +102,10 @@
     min-height: 55px;
     max-height: 1000px;
     display: flex;
-    margin-bottom: 2vh;
+    margin-bottom: 2vh !important;
     width: 100%;
     margin: 0 auto;
-    margin-bottom: 3vh;
+    margin-top: 1vh;
     justify-content: center;
     
 }
@@ -135,6 +137,46 @@
     background-color: purple;
     color: white;
 }
+
+.spaceEnd{
+    display: flex;
+    height: 20vh;
+    align-items: center;
+    margin-bottom: 7.5vh;
+}
+.spaceNextPage{
+    height: 100%;
+}
+.list-item-page{
+    display: flex;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.9);
+    height: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+}
+.itemPage{
+    height: 50%;
+    min-width: 18%;
+    background-color: plum;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1%;
+    margin-right: 1%;
+    font-size: 25px;
+    color: black;
+    border-radius: 100%;
+}
+.itemPage:hover{
+    cursor: pointer;
+    font-size: 40px;
+    color:dodgerblue;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+
+
+
 @media (max-width: 767.98px) { 
     .spaceNews{
         padding: 0;
@@ -144,9 +186,15 @@
         margin-left: 0;
         margin-right: 0;
     }
+    .spaceNextPage{
+        width: 100%;
+    }
 }
 @media (min-width: 768px) { 
     .spaceNews{
+        margin-left: 16vw;
+    }
+    .spaceNextPage{
         margin-left: 16vw;
     }
     
@@ -172,4 +220,4 @@
     .spaceBonus{
         right: 220px !important;
     }
-   }
+}

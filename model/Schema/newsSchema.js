@@ -10,7 +10,8 @@ const News = new Schema (
         pathImg : {type : String , default : 'none'},
         comment : [] ,
         match : {type : Number , default : 0},
-        usermatch : []
+        usermatch : [],
+        index : Number
     },
     {
         timestamps: true,
