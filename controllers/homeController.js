@@ -1,27 +1,29 @@
+const { query } = require('express');
 const authSchema = require('../model/Schema/authSchema');
 const newsSchema = require('../model/Schema/newsSchema');
 const postSchema = require('../model/Schema/postSchema');
 class homeController {
     getHome(req, res, next) {
-        var News; var Status ;
+        var News; var Status;
         authSchema.findById(req.cookies.userCookie)
-            .then(async (usermain) => {
-                await newsSchema.find({}).then((news) => {
+            .then( async (user) => {
+                var queryNews = newsSchema.find({}).limit(5);
+                var queryPost = postSchema.find({}).limit(5);
+                await queryNews.exec((err, news) => {
                     news = news.map(data => data.toObject());
                     News = news;
                 });
-                await postSchema.find({}).then((status) => {
+                await queryPost.exec((err, status) => {
                     status = status.map(data => data.toObject());
                     Status = status;
+                    res.render('home', { News, Status, usermain: user.username });
                 });
-                
-                res.render('home', { News, Status, usermain: usermain.username});
             }
             ).catch(next);
     }
     postHome(req, res, next) {
         authSchema.findById(req.cookies.userCookie)
-            .then( async (userpost) => {
+            .then(async (userpost) => {
                 await postSchema.create({ userpost: userpost.username, content: req.body.status });
                 res.redirect('/home');
             })

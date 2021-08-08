@@ -125,6 +125,16 @@
         <button id="btnCloseUserLike" class="btnCloseUserLike">Đóng</button>
     </div>
 </div>
+
+<script>
+    var h = document.querySelector('html');
+    window.onscroll = () => {
+        var a = h.scrollHeight-400;
+        if ((h.scrollTop + h.clientHeight) >= a) {
+            console.log('da toi diem upload')
+        }
+    }
+</script>
 <script>
 
 
@@ -154,7 +164,6 @@
     })
 
     socket.on('user-like-news', (usermatch) => {
-        console.log(usermatch);
         usermatch.forEach((n) => {
             listUserLike.insertAdjacentHTML('beforeend', `<a href="/${n}" class="itemUserLike">${n}</a>`);
         })

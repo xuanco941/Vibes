@@ -30,7 +30,8 @@
     max-height: 1000px;
     height: 37%;
     background-color: rgba(0, 0, 0, 0.1);
-    font-size: 19px;
+    font-size: 18px;
+    padding: 5px;
 }
 .headNews{
     height:6%;
@@ -204,6 +205,9 @@
     font-size: 24px;
     font-style: italic;
     color: var(--purple-color);
+}
+.user-status{
+    padding-left: 5px;
 }
 .detailComment{
     display: flex;
