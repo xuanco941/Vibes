@@ -72,5 +72,12 @@ class profileController {
         })
             .catch(next);
     }
+
+
+    getPosts(req , res , next) {
+        authSchema.findById(req.cookies.userCookie).then((user) => {
+            res.render('posts' , {usermain : user.username});
+        } )
+    }
 }
 module.exports = new profileController;
