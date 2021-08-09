@@ -3,7 +3,7 @@
 
 <div class="row spaceApp" id="{{countPage}}">
     <div class="col-md-6 col-xxl-5 spaceNews" id="spaceNews">
-        <form action="/home" method="post" id="PostStatus">
+        <form action="" method="post" id="PostStatus">
             <textarea name="status" id="inputStatus" placeholder="Đăng trạng thái"></textarea>
             <button type="submit" id="submitStatus" disabled='true'>Post</button>
         </form>
@@ -117,9 +117,8 @@
     </footer>
 </div>
 <footer class="row spaceEnd" id="spaceEnd">
-    <div class="col-md-6 col-xxl-5 spaceNextPage">
+    <div class="col-md-6 col-xxl-5 spaceNextPage" id="spaceNextPage">
         <div class="list-item-page" id="list-item-page">
-            <a href="/home/1" class="itemPage">1</a>
         </div>
 
     </div>
@@ -136,18 +135,32 @@
 </div>
 
 <script>
-    console.log(window.location.href.slice(window.location.href.indexOf('e')+1));
+    var spaceEnd = document.getElementById('spaceEnd');
+    var spaceApp = document.querySelector('.row.spaceApp');
+    var listitempage = document.getElementById('list-item-page');
 
-    window.onload = () => {
-        var spaceEnd = document.getElementById('spaceEnd');
-        var listitempage = document.getElementById('list-item-page');
-        var spaceApp = document.querySelector('.row.spaceApp');
-        var numPage = spaceApp.id;
-        if (numPage > 1) {
-            for (i = 1; i <= numPage; i++) {
-                listitempage.insertAdjacentHTML('beforeend', `<a href="/home/${i}" class="itemPage">${i}</a>`)
-            }
+
+    var numPage = spaceApp.id;
+    if (numPage <= 1) {
+        spaceEnd.style.display = 'none';
+    }
+
+    else {
+        for (i = 1; i <= (numPage + 1); i++) {
+            listitempage.insertAdjacentHTML('beforeend', `<a href="/home/${i}" class="itemPage" id="${i}">${i}</a>`)
         }
     }
+
+    var f = window.location.href;
+    var i = f.slice(f.length - 1);
+    if (i == 'e' || i == '/') {
+        document.getElementById('1').style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+    }
+    else {
+        document.getElementById(`${i}`).style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+    }
+
+
+
 </script>
 <script src="../public/JSclient/home.js"></script>

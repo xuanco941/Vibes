@@ -6,10 +6,11 @@ const uploadRoute = require('./uploadRoute');
 const profileRoute = require('./profileRoute');
 const errorRoute = require('./errorRoute');
 const searchRoute = require('./searchRoute');
+const pageRoute = require('./pageRoute');
 
 function route(app) {
     app.use ('/' , authRoute) ;
-    app.use('/' , authMidleware ,homeRoute , messengerRoute , uploadRoute , errorRoute , searchRoute , profileRoute );
+    app.use('/' , authMidleware ,homeRoute , pageRoute , messengerRoute , uploadRoute , errorRoute , searchRoute , profileRoute );
 }
 
 
