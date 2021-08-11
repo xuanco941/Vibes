@@ -36,36 +36,29 @@
             <div class="mesgs">
                 <div class="msg_history" id="msg_history">
 
+                    {{#each userReceive}}
                     <div class="incoming_msg">
                         <div class="incoming_msg_img"> <img src="../public/img/avatar-default.png" alt="sunil"> </div>
                         <div class="received_msg">
                             <div class="received_withd_msg">
-                                <p>hi xuan</p>
+                                <p>{{this.text}}</p>
                                 <span class="time_date"> 11:01 AM | June 9</span>
                             </div>
                         </div>
                     </div>
+                    {{/each}}
 
-
+                    
+                    {{#each userSend}}
                     <div class="outgoing_msg">
                         <div class="sent_msg">
-                            <p>hello</p>
+                            <p>{{this.text}}</p>
                             <span class="time_date"> 11:01 AM | June 9</span>
                         </div>
                     </div>
+                    {{/each}}
 
-
-                    <div class="incoming_msg">
-                        <div class="incoming_msg_img"> <img src="../public/img/avatar-default.png" alt="sunil"> </div>
-                        <div class="received_msg">
-                            <div class="received_withd_msg">
-                                <p>uuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu</p>
-                                <span class="time_date"> 11:01 AM | Yesterday</span>
-                            </div>
-                        </div>
-                    </div>
-
-
+        
                 </div>
                 <div class="type_msg">
                     <div class="input_msg_write">
