@@ -153,11 +153,14 @@
 
     var f = window.location.href;
     var i = f.slice(f.length - 1);
-    if (i == 'e' || i == '/') {
-        document.getElementById('1').style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
-    }
-    else {
-        document.getElementById(`${i}`).style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+    var numC = document.getElementById('1');
+    if (numC) {
+        if (i == 'e' || i == '/') {
+        numC.style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+        }
+        else {
+            document.getElementById(`${i}`).style.backgroundColor = 'rgba(255, 255, 255, 0.8)';
+        }
     }
 
 

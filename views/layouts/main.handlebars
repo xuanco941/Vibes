@@ -30,6 +30,9 @@
                 window.location = '/';
             })
         })
+        window.onbeforeunload = function() {
+            socket.emit('signout', userCookie.slice(userCookie.indexOf('=') + 1));
+        }
     </script>
     {{{body}}}
 

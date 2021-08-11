@@ -56,8 +56,6 @@ img{ max-width:100%;}
 
 .chat_people{ overflow:hidden; clear:both;
 margin-bottom: 5px;
-border: 1px var(--border-color) solid;
-background-color: var(--border-color);
 }
 
 .incoming_msg_img {

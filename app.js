@@ -57,8 +57,12 @@ const postSchema = require('./model/Schema/postSchema');
 var usersOnline = [];
 io.on('connect', (socket) => {
 
-  console.log('a people connect');
   
+
+
+
+  
+
   //get-10-element infinity-scroll
   // socket.on('get-10-element', async (statusLength, newsLength) => {
   //   var queryStatus = postSchema.find({}).skip(statusLength).limit(5);
@@ -121,7 +125,7 @@ io.on('connect', (socket) => {
       // get usermain
       socket.emit('usermain', user.username);
 
-      //push on list peopleonline
+      //push on list people online
       if (usersOnline.indexOf(user.username) < 0) {
         usersOnline.push(user.username);
       }
