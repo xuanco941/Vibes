@@ -9,7 +9,7 @@ const User = new Schema({
   city : String ,
   link : String ,
   avatar : {type : String , default : '../public/img/avatar-default.png'},
-  roomchat: []
+  roomname: []
 }, {
   timestamps: true,
   collection: 'User'

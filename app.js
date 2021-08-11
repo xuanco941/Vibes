@@ -53,15 +53,63 @@ server.listen(Port, () => {
 const authSchema = require('./model/Schema/authSchema');
 const newsSchema = require('./model/Schema/newsSchema');
 const postSchema = require('./model/Schema/postSchema');
+const roomChatSchema = require('./model/Schema/roomChatSchema');
 
 var usersOnline = [];
 io.on('connect', (socket) => {
 
-  
+  // Chat
+
+  socket.on('join-room-chat', async (nameRoom, nameSend, nameReceive) => {
+    var nameRoom2 = `${nameReceive}-${nameSend}`;
+
+    // add room
+    // username send auto dung truoc
+    await authSchema.findOne({ username: nameSend }).then((user) => {
+      if (user.roomname.indexOf(nameRoom) < 0 && user.roomname.indexOf(nameRoom2) < 0) {
+        roomChatSchema.create({
+          roomname: nameRoom
+        });
+        user.roomname.push(nameRoom);
+        user.save();
+      }
+
+      // neu co 1 trong 2 room chat nay roi thi redirect sang trang chat , khong push 
+
+      else {
+        if (user.roomname.indexOf(nameRoom) > -1) {
+          socket.join(nameRoom);
+          socket.emit('redirect-mess', nameRoom);
+        }
+        else {
+          socket.join(nameRoom2);
+          socket.emit('redirect-mess', nameRoom2);
+        }
+      }
+    });
 
 
+    await authSchema.findOne({ username: nameReceive }).then((user) => {
+      if (user.roomname.indexOf(nameRoom) < 0 && user.roomname.indexOf(nameRoom2) < 0) {
+        user.roomname.push(nameRoom);
+        user.save();
+      }
+    });
+  });
 
-  
+
+  socket.on('send-message', async (writeMsg, authUser, nameRoom) => {
+
+    await authSchema.findById({ _id : authUser }).then((user) => {
+      roomChatSchema.findOne({ roomname: nameRoom }).then((room) => {
+        room.body.push({ user: user.username, text: writeMsg });
+        room.save();
+      })
+    });
+    io.to(`${nameRoom}`).emit('response-text' , writeMsg , authUser);
+  });
+
+
 
   //get-10-element infinity-scroll
   // socket.on('get-10-element', async (statusLength, newsLength) => {
@@ -121,6 +169,14 @@ io.on('connect', (socket) => {
 
   socket.on('get-value-cookie', (async (valueCookie) => {
     await authSchema.findById(valueCookie).then(user => {
+
+      //join all room chat 
+      if (user.roomname) {
+        user.roomname.forEach((e) => {
+          socket.join(e);
+        })
+      }
+
 
       // get usermain
       socket.emit('usermain', user.username);

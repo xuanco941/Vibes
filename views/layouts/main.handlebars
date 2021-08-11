@@ -20,6 +20,7 @@
         crossorigin="anonymous"></script>
     {{>navbarHome}}
     <script>
+
         var socket = io('http://localhost:3000/');
         var userCookie = document.cookie;
         var signout = Array.from(document.querySelectorAll('.signout'));
@@ -30,8 +31,14 @@
                 window.location = '/';
             })
         })
-        window.onbeforeunload = function() {
+        window.onbeforeunload = function () {
             socket.emit('signout', userCookie.slice(userCookie.indexOf('=') + 1));
+        }
+
+
+
+        window.onload = () => {
+            socket.emit('get-value-cookie', userCookie.slice(userCookie.indexOf('=') + 1));
         }
     </script>
     {{{body}}}

@@ -14,7 +14,7 @@ class messengerController{
     getSlugMessenger(req , res , next) {
         authSchema.findById(req.cookies.userCookie)
         .then(usermain => {
-            res.render('messenger' , {usermain : usermain.username})
+            res.render('messenger' , {usermain : usermain.username , nameRoom : req.params.room})
         }
     )
     .catch(()=> res.redirect('/vibes/error'));

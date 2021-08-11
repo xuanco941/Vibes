@@ -174,7 +174,11 @@ html{
     color:dodgerblue;
     background-color: rgba(255, 255, 255, 0.8);
 }
-
+.imgonl {
+    margin-top: 12px;
+    max-height: 20px;
+    max-width: 20px;
+}
 
 
 @media (max-width: 767.98px) { 

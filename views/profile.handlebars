@@ -9,21 +9,22 @@
             </div>
             <div class="rightAvatar" id="rightAvatar">
                 <div class="itemAvatar follow">Theo dõi</div>
-                <div class="itemAvatar msg"><i class=" iconmsg far fa-envelope"></i> Nhắn tin</div>
+                <div class="itemAvatar msg" id="{{user.username}}"><i class=" iconmsg far fa-envelope"></i> Nhắn tin
+                </div>
                 <div class="itemAvatar block">Chặn</div>
             </div>
         </div>
         <div class="spaceInfo">
             <form action="" method="post" class="formprofile">
                 <ul class="info">
-                    <li class="iteminfo" id="itemfullname">Tên đầy đủ : <input class="inputprofile" type="text" name="FullName"
-                            id="FullName" value="{{user._name}}"></li>
-                    <li class="iteminfo" id="itemusername">Tên người dùng : <input class="inputprofile" type="text" name="userName" readonly
-                            id="userName" value="{{user.username}}"></li>
-                    <li class="iteminfo" id="itembirthday">Ngày sinh : <input class="inputprofile" type="date" name="birthday"
-                            id="birthday" value="{{birthday}}"> </li>
-                    <li class="iteminfo" id="itemcity">Quê quán : <input class="inputprofile" type="text" name="city" id="city"
-                            value="{{user.city}}"> </li>
+                    <li class="iteminfo" id="itemfullname">Tên đầy đủ : <input class="inputprofile" type="text"
+                            name="FullName" id="FullName" value="{{user._name}}"></li>
+                    <li class="iteminfo" id="itemusername">Tên người dùng : <input class="inputprofile" type="text"
+                            name="userName" readonly id="userName" value="{{user.username}}"></li>
+                    <li class="iteminfo" id="itembirthday">Ngày sinh : <input class="inputprofile" type="date"
+                            name="birthday" id="birthday" value="{{birthday}}"> </li>
+                    <li class="iteminfo" id="itemcity">Quê quán : <input class="inputprofile" type="text" name="city"
+                            id="city" value="{{user.city}}"> </li>
                     <li class="iteminfo" id="itemlink">Link Facebook : <input class="inputprofile" type="text"
                             name="link" id="link" value="{{user.link}}"></li>
                 </ul>
@@ -37,10 +38,28 @@
         <form action="/update/avatar" method="post" class="formUpAvatar" id="formUpAvatar"
             enctype="multipart/form-data">
             <input type="file" name="file" id="inputavatar">
-            <label id="labelinputavatar" for="inputavatar"><img class="setimg" id="setimg" src="{{user.avatar}}" alt="avatar" srcset=""></label>
+            <label id="labelinputavatar" for="inputavatar"><img class="setimg" id="setimg" src="{{user.avatar}}"
+                    alt="avatar" srcset=""></label>
             <button type="submit" id="buttonUpAvatar">Cập nhật</button>
         </form>
     </div>
 </div>
 
 <script src="../public/JSclient/profile.js"></script>
+
+<script>
+    var inbox = document.querySelector('.itemAvatar.msg');
+
+    var nameReceive = inbox.id;
+    var nameSend = document.getElementById('submitprofile').name;
+
+
+    inbox.onclick = () => {
+        var nameRoom = `${nameSend}-${nameReceive}`;
+        socket.emit('join-room-chat', nameRoom, nameSend, nameReceive);
+    }
+    socket.on('redirect-mess', (room) => {
+        window.location = `http://localhost:3000/messenger/${room}`;
+    })
+    
+</script>

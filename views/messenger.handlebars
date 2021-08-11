@@ -2,7 +2,7 @@
     rel="stylesheet">
 <link rel="stylesheet" href="../public/css/messenger.css">
 
-<div class="container container-mess">
+<div class="container container-mess" id="{{nameRoom}}">
     <h3 class=" text-center"></h3>
     <div class="messaging">
         <div class="inbox_msg">
@@ -34,10 +34,10 @@
                 </div>
             </div>
             <div class="mesgs">
-                <div class="msg_history">
+                <div class="msg_history" id="msg_history">
+
                     <div class="incoming_msg">
                         <div class="incoming_msg_img"> <img src="../public/img/avatar-default.png" alt="sunil"> </div>
-
                         <div class="received_msg">
                             <div class="received_withd_msg">
                                 <p>hi xuan</p>
@@ -69,8 +69,8 @@
                 </div>
                 <div class="type_msg">
                     <div class="input_msg_write">
-                        <input type="text" class="write_msg" placeholder="Type a message" />
-                        <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o"
+                        <input type="text" class="write_msg" placeholder="Type a message" id="write_msg" />
+                        <button class="msg_send_btn" type="button"><i class="fa fa-paper-plane-o" id="msg_send_btn"
                                 aria-hidden="true"></i></button>
                     </div>
                 </div>
@@ -83,3 +83,52 @@
 <script src="../public/JSclient/messenger.js"></script>
 
 
+<script>
+    var writeMsg = document.getElementById('write_msg');
+    var msgSendBtn = document.getElementById('msg_send_btn');
+    var nameRoom = document.querySelector('.container.container-mess');
+    var userCookie = document.cookie;
+    var authUser = userCookie.slice(userCookie.indexOf('=') + 1);
+    var msg_history = document.getElementById('msg_history');
+
+
+    writeMsg.onkeypress = (e) => {
+        if(e.keyCode == 13)
+        {
+            msgSendBtn.click();
+        }
+    }
+
+    msgSendBtn.onclick = (e) => {
+        if(writeMsg.value){
+        socket.emit('send-message', writeMsg.value, authUser, nameRoom.id);
+        writeMsg.value = '';
+        }
+        else{
+            e.preventDefault();
+        }
+    }
+
+    socket.on('response-text', (writeMsg, auth) => {
+        if (auth == authUser) {
+            msg_history.insertAdjacentHTML('beforeend', `<div class="outgoing_msg">
+                        <div class="sent_msg">
+                            <p>${writeMsg}</p>
+                            <span class="time_date"> 11:01 AM | June 9</span>
+                        </div>
+                    </div>`);
+        }
+        else{
+            msg_history.insertAdjacentHTML('beforeend' , `<div class="incoming_msg">
+                        <div class="incoming_msg_img"> <img src="../public/img/avatar-default.png" alt="sunil"> </div>
+                        <div class="received_msg">
+                            <div class="received_withd_msg">
+                                <p>${writeMsg}</p>
+                                <span class="time_date"> 11:01 AM | Yesterday</span>
+                            </div>
+                        </div>
+                    </div>`);
+        }
+    });
+
+</script>

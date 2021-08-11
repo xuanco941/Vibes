@@ -133,7 +133,7 @@ window.onload = () => {
     socket.on('get-all-user-online', (usersOnline) => {
         listOnline.innerHTML = '';
         usersOnline.forEach((userOnline) => {
-            listOnline.insertAdjacentHTML('afterbegin', `<div class="itemOnline"><div class="tickOnline"></div> &nbsp<a href="/${userOnline}">${userOnline}</a></div>`);
+            listOnline.insertAdjacentHTML('afterbegin', `<div class="itemOnline"><div class="tickOnline"></div> &nbsp &nbsp <img class="imgonl" src="../public/img/avatar-default.png" alt="imgonl" srcset=""> <a href="/${userOnline}">${userOnline}</a></div>`);
         })
     });
 
