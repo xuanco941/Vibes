@@ -86,7 +86,7 @@ margin-bottom: 5px;
 .received_withd_msg { width: 57%;}
 .mesgs {
   float: left;
-  padding: 30px 15px 0 25px;
+  padding: 0px 15px 0 25px;
   width: 60%;
   height: 100%;
 }
@@ -122,7 +122,7 @@ margin-bottom: 5px;
 
 .type_msg {border-top: 1px solid #c4c4c4;position: relative;
   height: 6vh;
-  min-height: 50px;
+  min-height: 55px;
   
 }
 .msg_send_btn {
@@ -139,8 +139,8 @@ margin-bottom: 5px;
   width: 33px;
 }
 .msg_history {
-  height: 75vh;
-  max-height: 75vh;
+  height: 74vh;
+  max-height: 74vh;
   overflow-y: scroll;
 }
 .container{
@@ -164,6 +164,23 @@ margin-bottom: 5px;
   padding: 18px 16px 10px;
   max-height: 100%;
 }
+.nameUserChat{
+  color:cornflowerblue;
+  text-decoration: none;
+  font-size: 24px;
+}
+.boxName{
+  margin: 0 auto;
+  width: 100%;
+  height: 45px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.nameUserChat:hover{
+  color: cornflowerblue;
+  cursor: pointer;
+}
 @media (max-width: 767.98px) { 
     .inbox_people{
       width: 100%;
@@ -182,8 +199,12 @@ margin-bottom: 5px;
       max-height: 8vh;
     }
     .msg_history {
-      height: 77vh;
-      max-height: 77vh;
+      height: 75.5vh;
+      max-height: 75.5vh;
+    }
+    .boxName{
+      height: 35px;
+      min-width: 35px;
     }
 }
 .input_msg_write{

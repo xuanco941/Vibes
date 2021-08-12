@@ -13,16 +13,20 @@ class messengerController {
     }
 
     getSlugMessenger(req, res, next) {
-        var userSend = [], userReceive = [];
+        var userchat;
+        var bodyRoom;
         authSchema.findById(req.cookies.userCookie)
             .then(async (usermain) => {
                 await roomChatSchema.findOne({ roomname: req.params.room }).then((room) => {
-                    room.body.forEach(element => {
-                        if(element.user == usermain.username) userSend.push({user : element.user , text : element.text})
-                        else userReceive.push({user : element.user , text : element.text});
-                    });
+                    bodyRoom = room.body;
+                    if(room.user1 != usermain.username) {
+                        userchat = room.user1;
+                    } 
+                    if(room.user2 != usermain.username){
+                        userchat = room.user2;
+                    }
                 });
-                res.render('messenger', { usermain: usermain.username, nameRoom: req.params.room, userSend, userReceive });
+                res.render('messenger', { usermain: usermain.username, nameRoom: req.params.room ,bodyRoom : bodyRoom , userchat : userchat });
             })
             .catch(() => res.redirect('/vibes/error'));
     }

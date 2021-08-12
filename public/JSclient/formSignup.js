@@ -56,6 +56,8 @@ var username = document.querySelector('#username');
 
 var routeName = ['home', 'signup', 'signin', 'upload', 'login', 'messenger', 'search', 'admin' , 'profile' , 'notify'];
 
+
+
 username.onkeyup = ()=>{
     for (let index = 0; index < routeName.length; index++) {
         if (username.value == routeName[index]) {
@@ -70,6 +72,16 @@ username.onkeyup = ()=>{
 }
 formSubmit.addEventListener('submit', (e) => {
     
+    for (let index = 0; index < routeName.length; index++) {
+        if (username.value == routeName[index]) {
+            messageerror.textContent = 'Tên tài khoản này không được sử dụng';
+            e.preventDefault();
+            break;
+        }
+        else{
+            messageerror.textContent='';
+        }
+    }
 
     if (name_.value == '') {
         messageerror.textContent = 'Chưa nhập tên đầy đủ';

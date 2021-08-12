@@ -33,32 +33,27 @@
 
                 </div>
             </div>
-            <div class="mesgs">
+            <div class="mesgs pointer" id="{{usermain}}">
+                <div class="boxName"> <a href="/{{userchat}}" class="nameUserChat">{{userchat}}</a>
+                </div>
                 <div class="msg_history" id="msg_history">
 
-                    {{#each userReceive}}
-                    <div class="incoming_msg">
-                        <div class="incoming_msg_img"> <img src="../public/img/avatar-default.png" alt="sunil"> </div>
-                        <div class="received_msg">
-                            <div class="received_withd_msg">
-                                <p>{{this.text}}</p>
-                                <span class="time_date"> 11:01 AM | June 9</span>
+                    {{#each bodyRoom}}
+                    <div class="aMess" id="{{this.user}}">
+                        <div class="incoming_msg">
+                            <div class="incoming_msg_img"> <img src="../public/img/avatar-default.png" alt="sunil">
+                            </div>
+                            <div class="received_msg">
+                                <div class="received_withd_msg">
+                                    <p id="textMess">{{this.text}}</p>
+                                    <span class="time_date"> 11:01 AM | June 9</span>
+                                </div>
                             </div>
                         </div>
                     </div>
                     {{/each}}
 
-                    
-                    {{#each userSend}}
-                    <div class="outgoing_msg">
-                        <div class="sent_msg">
-                            <p>{{this.text}}</p>
-                            <span class="time_date"> 11:01 AM | June 9</span>
-                        </div>
-                    </div>
-                    {{/each}}
 
-        
                 </div>
                 <div class="type_msg">
                     <div class="input_msg_write">
@@ -83,36 +78,22 @@
     var userCookie = document.cookie;
     var authUser = userCookie.slice(userCookie.indexOf('=') + 1);
     var msg_history = document.getElementById('msg_history');
+    var aMess = Array.from(document.getElementsByClassName('aMess'));
+    var mesgs = document.querySelector('.mesgs.pointer');
 
-
-    writeMsg.onkeypress = (e) => {
-        if(e.keyCode == 13)
-        {
-            msgSendBtn.click();
-        }
-    }
-
-    msgSendBtn.onclick = (e) => {
-        if(writeMsg.value){
-        socket.emit('send-message', writeMsg.value, authUser, nameRoom.id);
-        writeMsg.value = '';
-        }
-        else{
-            e.preventDefault();
-        }
-    }
+    // receive data from server , if cookie is mine , dom will change 
 
     socket.on('response-text', (writeMsg, auth) => {
         if (auth == authUser) {
-            msg_history.insertAdjacentHTML('beforeend', `<div class="outgoing_msg">
+            msg_history.insertAdjacentHTML('beforeend', `<div class="aMess"><div class="outgoing_msg">
                         <div class="sent_msg">
                             <p>${writeMsg}</p>
                             <span class="time_date"> 11:01 AM | June 9</span>
                         </div>
-                    </div>`);
+                    </div> </div>`);
         }
-        else{
-            msg_history.insertAdjacentHTML('beforeend' , `<div class="incoming_msg">
+        else {
+            msg_history.insertAdjacentHTML('beforeend', `<div class="aMess"><div class="incoming_msg">
                         <div class="incoming_msg_img"> <img src="../public/img/avatar-default.png" alt="sunil"> </div>
                         <div class="received_msg">
                             <div class="received_withd_msg">
@@ -120,8 +101,38 @@
                                 <span class="time_date"> 11:01 AM | Yesterday</span>
                             </div>
                         </div>
-                    </div>`);
+                    </div> </div>`);
         }
     });
+
+    aMess.forEach((e) => {
+        if (e.id == mesgs.id) {
+            var textMess = e.lastElementChild.lastElementChild.lastElementChild.firstElementChild.textContent;
+            e.innerHTML = '';
+            e.innerHTML = `<div class="outgoing_msg">
+                        <div class="sent_msg">
+                            <p>${textMess}</p>
+                            <span class="time_date"> 11:01 AM | June 9</span>
+                        </div>
+                    </div>`
+        }
+    });
+
+    writeMsg.onkeypress = (e) => {
+        if (e.keyCode == 13) {
+            msgSendBtn.click();
+        }
+    }
+
+    msgSendBtn.onclick = (e) => {
+        if (writeMsg.value) {
+            socket.emit('send-message', writeMsg.value.trim(), authUser, nameRoom.id);
+            writeMsg.value = '';
+        }
+        else {
+            e.preventDefault();
+        }
+    }
+
 
 </script>

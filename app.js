@@ -68,7 +68,7 @@ io.on('connect', (socket) => {
     await authSchema.findOne({ username: nameSend }).then((user) => {
       if (user.roomname.indexOf(nameRoom) < 0 && user.roomname.indexOf(nameRoom2) < 0) {
         roomChatSchema.create({
-          roomname: nameRoom
+          roomname: nameRoom , user1 : nameSend , user2 : nameReceive
         });
         user.roomname.push(nameRoom);
         user.save();

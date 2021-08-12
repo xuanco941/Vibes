@@ -3,7 +3,9 @@ const Schema = mongoose.Schema;
 
 const RoomChat = new Schema({
   roomname : String ,
-  body : []
+  body : [],
+  user1 : String ,
+  user2 : String
 }, {
   timestamps: true,
   collection: 'RoomChat'
