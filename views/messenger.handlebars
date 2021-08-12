@@ -21,12 +21,12 @@
                     </div>
                 </div>
                 <div class="inbox_chat">
-                    {{#each allRoom}}
-                    <a href="" class="chat_people">
+                    {{#each miniBoxChat}}
+                    <a href="/messenger/{{this.roomName}}" class="chat_people">
                         <div class="chat_img"> <img src="../public/img/avatar-default.png" alt="sunil"> </div>
                         <div class="chat_ib">
-                            <h5>{{this.user2}}<span class="chat_date">Dec 25</span></h5>
-                            <p>eeeeeeeeeeeeeeeeeeee.</p>
+                            <h5>{{this.user}}<span class="chat_date">Apr 9</span></h5>
+                            <p>{{this.text}}</p>
                         </div>
                     </a>
                     {{/each}}
@@ -46,7 +46,7 @@
                             <div class="received_msg">
                                 <div class="received_withd_msg">
                                     <p id="textMess">{{this.text}}</p>
-                                    <span class="time_date"> 11:01 AM | June 9</span>
+                                    <span class="time_date"> 09:09 AM | Apr 9</span>
                                 </div>
                             </div>
                         </div>

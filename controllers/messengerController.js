@@ -4,38 +4,66 @@ const roomChatSchema = require('../model/Schema/roomChatSchema');
 
 class messengerController {
     getMessenger(req, res, next) {
-        authSchema.findById(req.cookies.userCookie)
-            .then(usermain => {
-                res.render('messenger', { usermain: usermain.username })
-            }
-            )
-            .catch(next)
-    }
-
-    getSlugMessenger(req, res, next) {
-        var userchat;
-        var bodyRoom;
-        var allRoom;
-        var user, text, roomName;
+        var miniBoxChat = [];
         authSchema.findById(req.cookies.userCookie)
             .then(async (usermain) => {
                 await usermain.roomname.forEach(async (e) => {
                     await roomChatSchema.find({ roomname: e }).then((rooms) => {
-
+                        var user, lastestText, roomName;
                         rooms.forEach((room) => {
-                            console.log(room);
-                            console.log(room.user1, room.user2, room.roomname)
                             if (room.user1 != usermain.username) {
                                 user = room.user1;
                             }
                             if (room.user2 != usermain.username) {
                                 user = room.user2;
                             }
-                            text = room[room.length - 1].text;
+                            var arrText = [];
+                            room.body.forEach((elm) => {
+                                if (elm.user == user) {
+                                    arrText.push(elm.text);
+                                }
+                            });
+                            lastestText = arrText[arrText.length - 1];
                             roomName = room.roomname;
-                            console.log(user, text, roomName);
+
+                            miniBoxChat.push({ roomName: roomName, user: user, text: lastestText });
                         })
-                    })
+                    });
+                });
+                res.render('messenger', { usermain: usermain.username, miniBoxChat });
+            })
+            .catch(next);
+    }
+
+
+    getSlugMessenger(req, res, next) {
+        var userchat;
+        var bodyRoom;
+        var miniBoxChat = [];
+        authSchema.findById(req.cookies.userCookie)
+            .then(async (usermain) => {
+                await usermain.roomname.forEach(async (e) => {
+                    await roomChatSchema.find({ roomname: e }).then((rooms) => {
+                        var user, lastestText, roomName;
+                        rooms.forEach((room) => {
+                            if (room.user1 != usermain.username) {
+                                user = room.user1;
+                            }
+                            if (room.user2 != usermain.username) {
+                                user = room.user2;
+                            }
+                            var arrText = [];
+                            room.body.forEach((elm) => {
+                                if (elm.user == user) {
+                                    arrText.push(elm.text);
+                                }
+                            });
+                            lastestText = arrText[arrText.length - 1];
+                            roomName = room.roomname;
+
+                            miniBoxChat.push({ roomName: roomName, user: user, text: lastestText });
+                        })
+                    });
                 });
                 await roomChatSchema.findOne({ roomname: req.params.room }).then((room) => {
                     bodyRoom = room.body;
@@ -46,7 +74,7 @@ class messengerController {
                         userchat = room.user2;
                     }
                 });
-                res.render('messenger', { usermain: usermain.username, nameRoom: req.params.room, bodyRoom: bodyRoom, userchat: userchat, allRoom });
+                res.render('messenger', { usermain: usermain.username, nameRoom: req.params.room, bodyRoom, userchat, miniBoxChat });
             })
             .catch(() => res.redirect('/vibes/error'));
     }
