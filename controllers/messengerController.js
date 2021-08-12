@@ -19,9 +19,7 @@ class messengerController {
                             }
                             var arrText = [];
                             room.body.forEach((elm) => {
-                                if (elm.user == user) {
-                                    arrText.push(elm.text);
-                                }
+                                arrText.push(elm.text);
                             });
                             lastestText = arrText[arrText.length - 1];
                             roomName = room.roomname;
@@ -54,9 +52,9 @@ class messengerController {
                             }
                             var arrText = [];
                             room.body.forEach((elm) => {
-                                if (elm.user == user) {
-                                    arrText.push(elm.text);
-                                }
+
+                                arrText.push(elm.text);
+
                             });
                             lastestText = arrText[arrText.length - 1];
                             roomName = room.roomname;

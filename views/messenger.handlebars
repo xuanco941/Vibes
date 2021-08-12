@@ -6,23 +6,24 @@
     <h3 class=" text-center"></h3>
     <div class="messaging">
         <div class="inbox_msg">
-            <div class="inbox_people">
+            <div class="inbox_people" id="inbox_people">
                 <div class="headind_srch">
                     <div class="recent_heading">
                         <h4>Gần đây</h4>
                     </div>
                     <div class="srch_bar">
                         <div class="stylish-input-group">
-                            <input type="text" class="search-bar" placeholder="Tìm kiếm">
+                            <input type="text" class="search-bar" id="search-bar" placeholder="Tìm kiếm">
                             <span class="input-group-addon">
-                                <button type="button"> <i class="fa fa-search" aria-hidden="true"></i> </button>
+                                <button id="btn-search-bar" type="button"> <i class="fa fa-search"
+                                        aria-hidden="true"></i> </button>
                             </span>
                         </div>
                     </div>
                 </div>
                 <div class="inbox_chat">
                     {{#each miniBoxChat}}
-                    <a href="/messenger/{{this.roomName}}" class="chat_people">
+                    <a href="/messenger/{{this.roomName}}" class="chat_people user-name" id="{{this.user}}">
                         <div class="chat_img"> <img src="../public/img/avatar-default.png" alt="sunil"> </div>
                         <div class="chat_ib">
                             <h5>{{this.user}}<span class="chat_date">Apr 9</span></h5>
@@ -80,6 +81,52 @@
     var msg_history = document.getElementById('msg_history');
     var aMess = Array.from(document.getElementsByClassName('aMess'));
     var mesgs = document.querySelector('.mesgs.pointer');
+    var inbox_people = document.querySelector('.inbox_people');
+
+
+    var searchbar = document.getElementById('search-bar');
+    var btnsearchbar = document.getElementById('btn-search-bar');
+    var UserNamE = Array.from(document.getElementsByClassName('user-name'));
+
+    searchbar.onkeypress = (e) => {
+        if (e.keyCode == 13) {
+            btnsearchbar.onclick();
+        }
+    }
+
+    window.onload = () => {
+        msg_history.scrollTop = msg_history.scrollHeight;
+    }
+    btnsearchbar.onclick = () => {
+        if (searchbar.value) {
+            UserNamE.forEach((e) => {
+                if (searchbar.value.trim() != e.id) {
+                    e.style.display = 'none';
+                }
+                else {
+                    e.style.display = 'block';
+                }
+            })
+        }
+        else {
+            UserNamE.forEach((e) => {
+                e.style.display = 'block';
+            })
+        }
+        searchbar.value = '';
+    }
+
+    //reponsive js 
+
+    var x = window.matchMedia('(max-width : 767.98px)');
+    var chat_people = Array.from(document.getElementsByClassName('chat_people'));
+
+    if (x.matches) {
+        if (window.location.href != 'http://localhost:3000/messenger/' && window.location.href != 'http://localhost:3000/messenger') {
+            inbox_people.style.display = 'none';
+            mesgs.style.display = 'block';
+        }
+    }
 
     // receive data from server , if cookie is mine , dom will change 
 
@@ -103,6 +150,7 @@
                         </div>
                     </div> </div>`);
         }
+        msg_history.scrollTop = msg_history.scrollHeight;
     });
 
     aMess.forEach((e) => {
@@ -126,8 +174,13 @@
 
     msgSendBtn.onclick = (e) => {
         if (writeMsg.value) {
-            socket.emit('send-message', writeMsg.value.trim(), authUser, nameRoom.id);
-            writeMsg.value = '';
+            if (window.location.href != 'http://localhost:3000/messenger/' && window.location.href != 'http://localhost:3000/messenger') {
+                socket.emit('send-message', writeMsg.value.trim(), authUser, nameRoom.id);
+                writeMsg.value = '';
+            }
+            else {
+                alert('fix gòy , không có người nhận kh gửi đc đâu')
+            }
         }
         else {
             e.preventDefault();

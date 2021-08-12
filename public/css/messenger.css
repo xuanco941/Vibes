@@ -139,11 +139,11 @@ padding: 10px;
   color: #fff;
   cursor: pointer;
   font-size: 17px;
-  height: 33px;
+  min-height: 33px;
   position: absolute;
   right: 0;
   top: 11px;
-  width: 33px;
+  min-width: 33px;
 }
 .msg_history {
   height: 74vh;
@@ -160,7 +160,8 @@ padding: 10px;
   background-color: rgba(0, 0, 0, 0.932);
 }
 .messaging{
-  margin-top: 70px;
+  margin-top: 7.5vh;
+  margin-bottom: 7.5vh;
 
 }
 .inbox_chat{
@@ -198,16 +199,13 @@ padding: 10px;
         padding: 0;
         display: none;
     }
-    .messaging{
-      margin-top: 7.5vh;
-    }
     .type_msg{
       height: 8vh;
       max-height: 8vh;
     }
     .msg_history {
-      height: 75.5vh;
-      max-height: 75.5vh;
+      height: 72vh;
+      max-height: 72vh;
     }
     .boxName{
       height: 35px;
