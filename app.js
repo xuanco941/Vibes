@@ -109,6 +109,11 @@ io.on('connect', (socket) => {
     io.to(`${nameRoom}`).emit('response-text' , writeMsg , authUser);
   });
 
+  //focus inbox
+
+  // socket.on('focus-mess' ,(nameRoom) => {
+  //   socket.to(`${nameRoom}`).emit('reponse-focus');
+  // })
 
 
   //get-10-element infinity-scroll
