@@ -14,12 +14,12 @@ class homeController {
                 var queryNews = newsSchema.find({}).sort({ index: 'desc' }).limit(9);
                 var queryPost = postSchema.find({}).sort({ index: 'desc' }).limit(6);
                 await queryNews.exec( async(err, news) => {
-                    news = news.map(data => data.toObject());
-                    News = await news;
+                    News = await news.map(data => data.toObject());
+                    
                 });
                 await queryPost.exec( async (err, status) => {
-                    status = status.map(data => data.toObject());
-                    Status = await status;
+                    Status = await status.map(data => data.toObject());
+                    
                     res.render('home', { News, Status, usermain: user.username , countPage : numAll/15});
                 });
             }

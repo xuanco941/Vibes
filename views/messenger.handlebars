@@ -21,15 +21,15 @@
                     </div>
                 </div>
                 <div class="inbox_chat">
-
+                    {{#each allRoom}}
                     <a href="" class="chat_people">
                         <div class="chat_img"> <img src="../public/img/avatar-default.png" alt="sunil"> </div>
                         <div class="chat_ib">
-                            <h5>Xuan<span class="chat_date">Dec 25</span></h5>
+                            <h5>{{this.user2}}<span class="chat_date">Dec 25</span></h5>
                             <p>eeeeeeeeeeeeeeeeeeee.</p>
                         </div>
                     </a>
-
+                    {{/each}}
 
                 </div>
             </div>
